@@ -113,12 +113,12 @@
 <meta property="og:site_name" content="DongSheng&#39;s Blog">
 <meta property="og:description" content="SSL证书格式详解及转换">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://mds1455975151.github.io/archives/5f9114b/ssl证书格式.jpg">
-<meta property="og:updated_time" content="2018-02-23T04:03:09.281Z">
+<meta property="og:image" content="https://mds1455975151.github.io/archives/4b72e495/ssl证书格式.jpg">
+<meta property="og:updated_time" content="2018-02-23T04:13:05.911Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SSL证书格式详解及转换">
 <meta name="twitter:description" content="SSL证书格式详解及转换">
-<meta name="twitter:image" content="https://mds1455975151.github.io/archives/5f9114b/ssl证书格式.jpg">
+<meta name="twitter:image" content="https://mds1455975151.github.io/archives/4b72e495/ssl证书格式.jpg">
 
 
 
@@ -489,7 +489,7 @@ var _hmt = _hmt || [];
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">1,070(字)</span>
+           <span class="post-count">1,076(字)</span>
 
          </span>
 
@@ -528,14 +528,15 @@ var _hmt = _hmt || [];
 <p>SSL证书格式详解及转换</p>
 </blockquote>
 <a id="more"></a>
-<p>一般来说，主流的 Web 服务软件，通常都基于 OpenSSL 和 Java 两种基础密码库。</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>一般来说，主流的 Web 服务软件，通常都基于 OpenSSL 和 Java 两种基础密码库。</p>
 <ul>
 <li>Tomcat、Weblogic、JBoss 等 Web 服务软件，一般使用 Java 提供的密码库。通过 Java Development Kit （JDK）工具包中的 Keytool 工具，生成 Java Keystore（JKS）格式的证书文件。</li>
 <li>Apache、Nginx 等 Web 服务软件，一般使用 OpenSSL 工具提供的密码库，生成 PEM、KEY、CRT 等格式的证书文件。</li>
 <li>IBM 的 Web 服务产品，如 Websphere、IBM Http Server（IHS）等，一般使用 IBM 产品自带的 iKeyman 工具，生成 KDB 格式的证书文件。</li>
 <li>微软 Windows Server 中的 Internet Information Services（IIS）服务，使用 Windows 自带的证书库生成 PFX 格式的证书文件。</li>
 </ul>
-<h1 id="判断证书文件是文本格式还是二进制格式"><a href="#判断证书文件是文本格式还是二进制格式" class="headerlink" title="判断证书文件是文本格式还是二进制格式"></a>判断证书文件是文本格式还是二进制格式</h1><ul>
+<h1 id="判断证书格式"><a href="#判断证书格式" class="headerlink" title="判断证书格式"></a>判断证书格式</h1><p>证书格式一般分为文本格式和二进制格式两种</p>
+<ul>
 <li><em>.DER 或 </em>.CER 文件： 这样的证书文件是二进制格式，只含有证书信息，不包含私钥。</li>
 <li><em>.CRT 文件：这样的证书文件可以是二进制格式，也可以是文本格式，一般均为文本格式，功能与 </em>.DER 及 *.CER 证书文件相同。</li>
 <li><em>.PEM 文件：这样的证书文件一般是文本格式，可以存放证书或私钥，或者两者都包含。 </em>.PEM 文件如果只包含私钥，一般用 *.KEY 文件代替。</li>
@@ -547,7 +548,7 @@ var _hmt = _hmt || [];
 <li>如果存在——BEGIN CERTIFICATE——，则说明这是一个证书文件。</li>
 <li>如果存在—–BEGIN RSA PRIVATE KEY—–，则说明这是一个私钥文件。</li>
 </ul>
-<h1 id="证书格式转换"><a href="#证书格式转换" class="headerlink" title="证书格式转换"></a>证书格式转换</h1><p><img src="/archives/5f9114b/ssl证书格式.jpg" alt=""><br>可使用以下方式实现证书格式之间的转换：</p>
+<h1 id="证书格式转换"><a href="#证书格式转换" class="headerlink" title="证书格式转换"></a>证书格式转换</h1><p><img src="/archives/4b72e495/ssl证书格式.jpg" alt=""><br>可使用以下方式实现证书格式之间的转换：</p>
 <ol>
 <li><p>将JKS格式证书转换成PFX格式<br>使用 JDK 中自带的 Keytool 工具，将 JKS 格式证书文件转换成 PFX 格式。<br>例如，可以执行以下命令将 server.jks 证书文件转换成 server.pfx 证书文件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keytool -importkeystore -srckeystore D:\server.jks -destkeystore D:\server.pfx -srcstoretype JKS -deststoretype PKCS12</span><br></pre></td></tr></table></figure>
@@ -558,11 +559,12 @@ var _hmt = _hmt || [];
 <li><p>将 PEM/KEY/CRT 格式证书转换为 PFX 格式<br>可以使用 OpenSSL工具，将 KEY 格式密钥文件和 CRT 格式公钥文件转换成 PFX 格式证书文件。<br>例如，将 KEY 格式密钥文件（server.key）和 CRT 格式公钥文件（server.crt）拷贝至 OpenSSL 工具安装目录，使用 OpenSSL 工具执行以下命令将证书转换成 server.pfx证书文件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl pkcs12 -<span class="built_in">export</span> -out server.pfx -inkey server.key -<span class="keyword">in</span> server.crt</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>将PFX转换为PEM/KEY/CRT<br>可以使用 OpenSSL工具，将 PFX 格式证书文件转化为 KEY 格式密钥文件和 CRT 格式公钥文件。<br>例如，将 PFX 格式证书文件拷贝至 OpenSSL 安装目录，使用 OpenSSL 工具执行以下命令将证书转换成 server.pem 证书文件、KEY 格式密钥文件（server.key）和 CRT 格式公钥文件（server.crt）：</p>
+<li><p>将PFX转换为PEM/KEY/CRT<br>可以使用OpenSSL工具，将PFX格式证书文件转化为KEY格式密钥文件和CRT格式公钥文件。<br>例如，将PFX格式证书文件拷贝至OpenSSL安装目录，使用OpenSSL工具执行以下命令将证书转换成 server.pem 证书文件、KEY 格式密钥文件（server.key）和 CRT 格式公钥文件（server.crt）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">openssl pkcs12 -<span class="keyword">in</span> server.pfx -nodes -out server.pem</span><br><span class="line">openssl rsa -<span class="keyword">in</span> server.pem -out server.key</span><br><span class="line">openssl x509 -<span class="keyword">in</span> server.pem -out server.crt</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h1 id="此转换步骤是专用于通过-Keytool-工具生成私钥和-CSR-申请证书文件的，并且通过此方法可以在获取到-PEM-格式证书公钥的情况下分离私钥。在实际部署数字证书时，请使用通过此转换步骤分离出来的私钥和申请得到的公钥证书匹配进行部署。"><a href="#此转换步骤是专用于通过-Keytool-工具生成私钥和-CSR-申请证书文件的，并且通过此方法可以在获取到-PEM-格式证书公钥的情况下分离私钥。在实际部署数字证书时，请使用通过此转换步骤分离出来的私钥和申请得到的公钥证书匹配进行部署。" class="headerlink" title="此转换步骤是专用于通过 Keytool 工具生成私钥和 CSR 申请证书文件的，并且通过此方法可以在获取到 PEM 格式证书公钥的情况下分离私钥。在实际部署数字证书时，请使用通过此转换步骤分离出来的私钥和申请得到的公钥证书匹配进行部署。"></a>此转换步骤是专用于通过 Keytool 工具生成私钥和 CSR 申请证书文件的，并且通过此方法可以在获取到 PEM 格式证书公钥的情况下分离私钥。在实际部署数字证书时，请使用通过此转换步骤分离出来的私钥和申请得到的公钥证书匹配进行部署。</h1><p>希望各位朋友支持一下</p>
+<p>此转换步骤是专用于通过Keytool工具生成私钥和CSR申请证书文件的，并且通过此方法可以在获取到 PEM 格式证书公钥的情况下分离私钥。在实际部署数字证书时，请使用通过此转换步骤分离出来的私钥和申请得到的公钥证书匹配进行部署。</p>
+<p>======================================================<br>希望各位朋友支持一下</p>
 <ul>
 <li>领取我的<a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=xpdsz87p&amp;utm_source=xpdsz87p" target="_blank" rel="noopener">阿里云幸运券</a>,谢谢.</li>
 <li>使用<a href="https://cloud.tencent.com/redirect.php?redirect=1005&amp;cps_key=5a162632de40024cd01aabff4d3f1370" target="_blank" rel="noopener">腾讯云资源</a></li>
@@ -901,7 +903,7 @@ var _hmt = _hmt || [];
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#判断证书文件是文本格式还是二进制格式"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x5224;&#x65AD;&#x8BC1;&#x4E66;&#x6587;&#x4EF6;&#x662F;&#x6587;&#x672C;&#x683C;&#x5F0F;&#x8FD8;&#x662F;&#x4E8C;&#x8FDB;&#x5236;&#x683C;&#x5F0F;" class="headerlink" title="&#x5224;&#x65AD;&#x8BC1;&#x4E66;&#x6587;&#x4EF6;&#x662F;&#x6587;&#x672C;&#x683C;&#x5F0F;&#x8FD8;&#x662F;&#x4E8C;&#x8FDB;&#x5236;&#x683C;&#x5F0F;"></a>&#x5224;&#x65AD;&#x8BC1;&#x4E66;&#x6587;&#x4EF6;&#x662F;&#x6587;&#x672C;&#x683C;&#x5F0F;&#x8FD8;&#x662F;&#x4E8C;&#x8FDB;&#x5236;&#x683C;&#x5F0F;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#证书格式转换"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x8BC1;&#x4E66;&#x683C;&#x5F0F;&#x8F6C;&#x6362;" class="headerlink" title="&#x8BC1;&#x4E66;&#x683C;&#x5F0F;&#x8F6C;&#x6362;"></a>&#x8BC1;&#x4E66;&#x683C;&#x5F0F;&#x8F6C;&#x6362;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#此转换步骤是专用于通过-Keytool-工具生成私钥和-CSR-申请证书文件的，并且通过此方法可以在获取到-PEM-格式证书公钥的情况下分离私钥。在实际部署数字证书时，请使用通过此转换步骤分离出来的私钥和申请得到的公钥证书匹配进行部署。"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x6B64;&#x8F6C;&#x6362;&#x6B65;&#x9AA4;&#x662F;&#x4E13;&#x7528;&#x4E8E;&#x901A;&#x8FC7;-Keytool-&#x5DE5;&#x5177;&#x751F;&#x6210;&#x79C1;&#x94A5;&#x548C;-CSR-&#x7533;&#x8BF7;&#x8BC1;&#x4E66;&#x6587;&#x4EF6;&#x7684;&#xFF0C;&#x5E76;&#x4E14;&#x901A;&#x8FC7;&#x6B64;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x5728;&#x83B7;&#x53D6;&#x5230;-PEM-&#x683C;&#x5F0F;&#x8BC1;&#x4E66;&#x516C;&#x94A5;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x5206;&#x79BB;&#x79C1;&#x94A5;&#x3002;&#x5728;&#x5B9E;&#x9645;&#x90E8;&#x7F72;&#x6570;&#x5B57;&#x8BC1;&#x4E66;&#x65F6;&#xFF0C;&#x8BF7;&#x4F7F;&#x7528;&#x901A;&#x8FC7;&#x6B64;&#x8F6C;&#x6362;&#x6B65;&#x9AA4;&#x5206;&#x79BB;&#x51FA;&#x6765;&#x7684;&#x79C1;&#x94A5;&#x548C;&#x7533;&#x8BF7;&#x5F97;&#x5230;&#x7684;&#x516C;&#x94A5;&#x8BC1;&#x4E66;&#x5339;&#x914D;&#x8FDB;&#x884C;&#x90E8;&#x7F72;&#x3002;" class="headerlink" title="&#x6B64;&#x8F6C;&#x6362;&#x6B65;&#x9AA4;&#x662F;&#x4E13;&#x7528;&#x4E8E;&#x901A;&#x8FC7; Keytool &#x5DE5;&#x5177;&#x751F;&#x6210;&#x79C1;&#x94A5;&#x548C; CSR &#x7533;&#x8BF7;&#x8BC1;&#x4E66;&#x6587;&#x4EF6;&#x7684;&#xFF0C;&#x5E76;&#x4E14;&#x901A;&#x8FC7;&#x6B64;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x5728;&#x83B7;&#x53D6;&#x5230; PEM &#x683C;&#x5F0F;&#x8BC1;&#x4E66;&#x516C;&#x94A5;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x5206;&#x79BB;&#x79C1;&#x94A5;&#x3002;&#x5728;&#x5B9E;&#x9645;&#x90E8;&#x7F72;&#x6570;&#x5B57;&#x8BC1;&#x4E66;&#x65F6;&#xFF0C;&#x8BF7;&#x4F7F;&#x7528;&#x901A;&#x8FC7;&#x6B64;&#x8F6C;&#x6362;&#x6B65;&#x9AA4;&#x5206;&#x79BB;&#x51FA;&#x6765;&#x7684;&#x79C1;&#x94A5;&#x548C;&#x7533;&#x8BF7;&#x5F97;&#x5230;&#x7684;&#x516C;&#x94A5;&#x8BC1;&#x4E66;&#x5339;&#x914D;&#x8FDB;&#x884C;&#x90E8;&#x7F72;&#x3002;"></a>&#x6B64;&#x8F6C;&#x6362;&#x6B65;&#x9AA4;&#x662F;&#x4E13;&#x7528;&#x4E8E;&#x901A;&#x8FC7; Keytool &#x5DE5;&#x5177;&#x751F;&#x6210;&#x79C1;&#x94A5;&#x548C; CSR &#x7533;&#x8BF7;&#x8BC1;&#x4E66;&#x6587;&#x4EF6;&#x7684;&#xFF0C;&#x5E76;&#x4E14;&#x901A;&#x8FC7;&#x6B64;&#x65B9;&#x6CD5;&#x53EF;&#x4EE5;&#x5728;&#x83B7;&#x53D6;&#x5230; PEM &#x683C;&#x5F0F;&#x8BC1;&#x4E66;&#x516C;&#x94A5;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x5206;&#x79BB;&#x79C1;&#x94A5;&#x3002;&#x5728;&#x5B9E;&#x9645;&#x90E8;&#x7F72;&#x6570;&#x5B57;&#x8BC1;&#x4E66;&#x65F6;&#xFF0C;&#x8BF7;&#x4F7F;&#x7528;&#x901A;&#x8FC7;&#x6B64;&#x8F6C;&#x6362;&#x6B65;&#x9AA4;&#x5206;&#x79BB;&#x51FA;&#x6765;&#x7684;&#x79C1;&#x94A5;&#x548C;&#x7533;&#x8BF7;&#x5F97;&#x5230;&#x7684;&#x516C;&#x94A5;&#x8BC1;&#x4E66;&#x5339;&#x914D;&#x8FDB;&#x884C;&#x90E8;&#x7F72;&#x3002;</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#判断证书格式"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x5224;&#x65AD;&#x8BC1;&#x4E66;&#x683C;&#x5F0F;" class="headerlink" title="&#x5224;&#x65AD;&#x8BC1;&#x4E66;&#x683C;&#x5F0F;"></a>&#x5224;&#x65AD;&#x8BC1;&#x4E66;&#x683C;&#x5F0F;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#证书格式转换"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x8BC1;&#x4E66;&#x683C;&#x5F0F;&#x8F6C;&#x6362;" class="headerlink" title="&#x8BC1;&#x4E66;&#x683C;&#x5F0F;&#x8F6C;&#x6362;"></a>&#x8BC1;&#x4E66;&#x683C;&#x5F0F;&#x8F6C;&#x6362;</span></a></li></ol></div>
             
 
           </div>

@@ -9,14 +9,15 @@
 <p>SSL证书格式详解及转换</p>
 </blockquote>
 <a id="more"></a>
-<p>一般来说，主流的 Web 服务软件，通常都基于 OpenSSL 和 Java 两种基础密码库。</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>一般来说，主流的 Web 服务软件，通常都基于 OpenSSL 和 Java 两种基础密码库。</p>
 <ul>
 <li>Tomcat、Weblogic、JBoss 等 Web 服务软件，一般使用 Java 提供的密码库。通过 Java Development Kit （JDK）工具包中的 Keytool 工具，生成 Java Keystore（JKS）格式的证书文件。</li>
 <li>Apache、Nginx 等 Web 服务软件，一般使用 OpenSSL 工具提供的密码库，生成 PEM、KEY、CRT 等格式的证书文件。</li>
 <li>IBM 的 Web 服务产品，如 Websphere、IBM Http Server（IHS）等，一般使用 IBM 产品自带的 iKeyman 工具，生成 KDB 格式的证书文件。</li>
 <li>微软 Windows Server 中的 Internet Information Services（IIS）服务，使用 Windows 自带的证书库生成 PFX 格式的证书文件。</li>
 </ul>
-<h1 id="判断证书文件是文本格式还是二进制格式"><a href="#判断证书文件是文本格式还是二进制格式" class="headerlink" title="判断证书文件是文本格式还是二进制格式"></a>判断证书文件是文本格式还是二进制格式</h1><ul>
+<h1 id="判断证书格式"><a href="#判断证书格式" class="headerlink" title="判断证书格式"></a>判断证书格式</h1><p>证书格式一般分为文本格式和二进制格式两种</p>
+<ul>
 <li><em>.DER 或 </em>.CER 文件： 这样的证书文件是二进制格式，只含有证书信息，不包含私钥。</li>
 <li><em>.CRT 文件：这样的证书文件可以是二进制格式，也可以是文本格式，一般均为文本格式，功能与 </em>.DER 及 *.CER 证书文件相同。</li>
 <li><em>.PEM 文件：这样的证书文件一般是文本格式，可以存放证书或私钥，或者两者都包含。 </em>.PEM 文件如果只包含私钥，一般用 *.KEY 文件代替。</li>
@@ -28,7 +29,7 @@
 <li>如果存在——BEGIN CERTIFICATE——，则说明这是一个证书文件。</li>
 <li>如果存在—–BEGIN RSA PRIVATE KEY—–，则说明这是一个私钥文件。</li>
 </ul>
-<h1 id="证书格式转换"><a href="#证书格式转换" class="headerlink" title="证书格式转换"></a>证书格式转换</h1><p><img src="/archives/5f9114b/ssl证书格式.jpg" alt=""><br>可使用以下方式实现证书格式之间的转换：</p>
+<h1 id="证书格式转换"><a href="#证书格式转换" class="headerlink" title="证书格式转换"></a>证书格式转换</h1><p><img src="/archives/4b72e495/ssl证书格式.jpg" alt=""><br>可使用以下方式实现证书格式之间的转换：</p>
 <ol>
 <li><p>将JKS格式证书转换成PFX格式<br>使用 JDK 中自带的 Keytool 工具，将 JKS 格式证书文件转换成 PFX 格式。<br>例如，可以执行以下命令将 server.jks 证书文件转换成 server.pfx 证书文件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keytool -importkeystore -srckeystore D:\server.jks -destkeystore D:\server.pfx -srcstoretype JKS -deststoretype PKCS12</span><br></pre></td></tr></table></figure>
@@ -39,11 +40,12 @@
 <li><p>将 PEM/KEY/CRT 格式证书转换为 PFX 格式<br>可以使用 OpenSSL工具，将 KEY 格式密钥文件和 CRT 格式公钥文件转换成 PFX 格式证书文件。<br>例如，将 KEY 格式密钥文件（server.key）和 CRT 格式公钥文件（server.crt）拷贝至 OpenSSL 工具安装目录，使用 OpenSSL 工具执行以下命令将证书转换成 server.pfx证书文件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl pkcs12 -<span class="built_in">export</span> -out server.pfx -inkey server.key -<span class="keyword">in</span> server.crt</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>将PFX转换为PEM/KEY/CRT<br>可以使用 OpenSSL工具，将 PFX 格式证书文件转化为 KEY 格式密钥文件和 CRT 格式公钥文件。<br>例如，将 PFX 格式证书文件拷贝至 OpenSSL 安装目录，使用 OpenSSL 工具执行以下命令将证书转换成 server.pem 证书文件、KEY 格式密钥文件（server.key）和 CRT 格式公钥文件（server.crt）：</p>
+<li><p>将PFX转换为PEM/KEY/CRT<br>可以使用OpenSSL工具，将PFX格式证书文件转化为KEY格式密钥文件和CRT格式公钥文件。<br>例如，将PFX格式证书文件拷贝至OpenSSL安装目录，使用OpenSSL工具执行以下命令将证书转换成 server.pem 证书文件、KEY 格式密钥文件（server.key）和 CRT 格式公钥文件（server.crt）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">openssl pkcs12 -<span class="keyword">in</span> server.pfx -nodes -out server.pem</span><br><span class="line">openssl rsa -<span class="keyword">in</span> server.pem -out server.key</span><br><span class="line">openssl x509 -<span class="keyword">in</span> server.pem -out server.crt</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<h1 id="此转换步骤是专用于通过-Keytool-工具生成私钥和-CSR-申请证书文件的，并且通过此方法可以在获取到-PEM-格式证书公钥的情况下分离私钥。在实际部署数字证书时，请使用通过此转换步骤分离出来的私钥和申请得到的公钥证书匹配进行部署。"><a href="#此转换步骤是专用于通过-Keytool-工具生成私钥和-CSR-申请证书文件的，并且通过此方法可以在获取到-PEM-格式证书公钥的情况下分离私钥。在实际部署数字证书时，请使用通过此转换步骤分离出来的私钥和申请得到的公钥证书匹配进行部署。" class="headerlink" title="此转换步骤是专用于通过 Keytool 工具生成私钥和 CSR 申请证书文件的，并且通过此方法可以在获取到 PEM 格式证书公钥的情况下分离私钥。在实际部署数字证书时，请使用通过此转换步骤分离出来的私钥和申请得到的公钥证书匹配进行部署。"></a>此转换步骤是专用于通过 Keytool 工具生成私钥和 CSR 申请证书文件的，并且通过此方法可以在获取到 PEM 格式证书公钥的情况下分离私钥。在实际部署数字证书时，请使用通过此转换步骤分离出来的私钥和申请得到的公钥证书匹配进行部署。</h1><p>希望各位朋友支持一下</p>
+<p>此转换步骤是专用于通过Keytool工具生成私钥和CSR申请证书文件的，并且通过此方法可以在获取到 PEM 格式证书公钥的情况下分离私钥。在实际部署数字证书时，请使用通过此转换步骤分离出来的私钥和申请得到的公钥证书匹配进行部署。</p>
+<p>======================================================<br>希望各位朋友支持一下</p>
 <ul>
 <li>领取我的<a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=xpdsz87p&amp;utm_source=xpdsz87p" target="_blank" rel="noopener">阿里云幸运券</a>,谢谢.</li>
 <li>使用<a href="https://cloud.tencent.com/redirect.php?redirect=1005&amp;cps_key=5a162632de40024cd01aabff4d3f1370" target="_blank" rel="noopener">腾讯云资源</a></li>
@@ -6101,7 +6103,7 @@
 <p><a href="http://bruce-sha.github.io" target="_blank" rel="noopener">不如</a></p>
 <h2 id="自动链接"><a href="#自动链接" class="headerlink" title="自动链接"></a>自动链接</h2><p>尖括号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;http://ibruce.info&gt;</span><br><span class="line">&lt;bu.ru@qq.com&gt;</span><br></pre></td></tr></table></figure></p>
 <p>效果如下：<br><a href="http://ibruce.info" target="_blank" rel="noopener">http://ibruce.info</a></p>
-<a href="&#109;&#x61;&#x69;&#108;&#x74;&#111;&#x3a;&#98;&#117;&#46;&#114;&#117;&#64;&#113;&#x71;&#46;&#99;&#111;&#x6d;">&#98;&#117;&#46;&#114;&#117;&#64;&#113;&#x71;&#46;&#99;&#111;&#x6d;</a>
+<a href="&#x6d;&#x61;&#105;&#108;&#x74;&#x6f;&#58;&#98;&#x75;&#46;&#114;&#x75;&#64;&#113;&#113;&#x2e;&#99;&#x6f;&#x6d;">&#98;&#x75;&#46;&#114;&#x75;&#64;&#113;&#113;&#x2e;&#99;&#x6f;&#x6d;</a>
 
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="行内代码"><a href="#行内代码" class="headerlink" title="行内代码"></a>行内代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">``` python</span><br><span class="line">@requires_authorization</span><br><span class="line">def somefunc(param1=&apos;&apos;, param2=0):</span><br><span class="line">    &apos;&apos;&apos;A docstring&apos;&apos;&apos;</span><br><span class="line">    if param1 &gt; param2: # interesting</span><br><span class="line">        print &apos;Greater&apos;</span><br><span class="line">    return (param2 - param1 + 1) or None</span><br><span class="line">class SomeClass:</span><br><span class="line">    pass</span><br><span class="line">&gt;&gt;&gt; message = &apos;&apos;&apos;interpreter</span><br><span class="line">... prompt&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">可代码高亮</span><br><span class="line">``` python</span><br><span class="line">@requires_authorization</span><br><span class="line">def somefunc(param1=&apos;&apos;, param2=0):</span><br><span class="line">    &apos;&apos;&apos;A docstring&apos;&apos;&apos;</span><br><span class="line">    if param1 &gt; param2: # interesting</span><br><span class="line">        print &apos;Greater&apos;</span><br><span class="line">    return (param2 - param1 + 1) or None</span><br><span class="line">class SomeClass:</span><br><span class="line">    pass</span><br><span class="line">&gt;&gt;&gt; message = &apos;&apos;&apos;interpreter</span><br><span class="line">... prompt&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
