@@ -3,6 +3,74 @@
   
     
     <entry>
+      <title><![CDATA[SSL证书格式详解及转换]]></title>
+      <url>/archives/4b72e495.html</url>
+      <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>SSL证书格式详解及转换</p>
+</blockquote>
+<a id="more"></a>
+<p>一般来说，主流的 Web 服务软件，通常都基于 OpenSSL 和 Java 两种基础密码库。</p>
+<ul>
+<li>Tomcat、Weblogic、JBoss 等 Web 服务软件，一般使用 Java 提供的密码库。通过 Java Development Kit （JDK）工具包中的 Keytool 工具，生成 Java Keystore（JKS）格式的证书文件。</li>
+<li>Apache、Nginx 等 Web 服务软件，一般使用 OpenSSL 工具提供的密码库，生成 PEM、KEY、CRT 等格式的证书文件。</li>
+<li>IBM 的 Web 服务产品，如 Websphere、IBM Http Server（IHS）等，一般使用 IBM 产品自带的 iKeyman 工具，生成 KDB 格式的证书文件。</li>
+<li>微软 Windows Server 中的 Internet Information Services（IIS）服务，使用 Windows 自带的证书库生成 PFX 格式的证书文件。</li>
+</ul>
+<h1 id="判断证书文件是文本格式还是二进制格式"><a href="#判断证书文件是文本格式还是二进制格式" class="headerlink" title="判断证书文件是文本格式还是二进制格式"></a>判断证书文件是文本格式还是二进制格式</h1><ul>
+<li><em>.DER 或 </em>.CER 文件： 这样的证书文件是二进制格式，只含有证书信息，不包含私钥。</li>
+<li><em>.CRT 文件：这样的证书文件可以是二进制格式，也可以是文本格式，一般均为文本格式，功能与 </em>.DER 及 *.CER 证书文件相同。</li>
+<li><em>.PEM 文件：这样的证书文件一般是文本格式，可以存放证书或私钥，或者两者都包含。 </em>.PEM 文件如果只包含私钥，一般用 *.KEY 文件代替。</li>
+<li><em>.PFX 或 </em>.P12 文件： 这样的证书文件是二进制格式，同时包含证书和私钥，且一般有密码保护。</li>
+</ul>
+<p>也可以使用记事本直接打开证书文件。如果显示的是规则的数字字母，例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">—–BEGIN CERTIFICATE—–</span><br><span class="line">MIIE5zCCA8+gAwIBAgIQN+whYc2BgzAogau0dc3PtzANBgkqh......</span><br><span class="line">—–END CERTIFICATE—–</span><br></pre></td></tr></table></figure></p>
+<p>那么，该证书文件是文本格式的。</p>
+<ul>
+<li>如果存在——BEGIN CERTIFICATE——，则说明这是一个证书文件。</li>
+<li>如果存在—–BEGIN RSA PRIVATE KEY—–，则说明这是一个私钥文件。</li>
+</ul>
+<h1 id="证书格式转换"><a href="#证书格式转换" class="headerlink" title="证书格式转换"></a>证书格式转换</h1><p><img src="/archives/5f9114b/ssl证书格式.jpg" alt=""><br>可使用以下方式实现证书格式之间的转换：</p>
+<ol>
+<li><p>将JKS格式证书转换成PFX格式<br>使用 JDK 中自带的 Keytool 工具，将 JKS 格式证书文件转换成 PFX 格式。<br>例如，可以执行以下命令将 server.jks 证书文件转换成 server.pfx 证书文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keytool -importkeystore -srckeystore D:\server.jks -destkeystore D:\server.pfx -srcstoretype JKS -deststoretype PKCS12</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将 PFX 格式证书转换为 JKS 格式<br>使用 JDK 中自带的 Keytool 工具，将 PFX 格式证书文件转换成 JKS 格式。<br>例如，可以执行以下命令将 server.pfx 证书文件转换成 server.jks 证书文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">keytool -importkeystore -srckeystore D:\server.pfx -destkeystore D:\server.jks -srcstoretype PKCS12 -deststoretype JKS</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将 PEM/KEY/CRT 格式证书转换为 PFX 格式<br>可以使用 OpenSSL工具，将 KEY 格式密钥文件和 CRT 格式公钥文件转换成 PFX 格式证书文件。<br>例如，将 KEY 格式密钥文件（server.key）和 CRT 格式公钥文件（server.crt）拷贝至 OpenSSL 工具安装目录，使用 OpenSSL 工具执行以下命令将证书转换成 server.pfx证书文件：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl pkcs12 -<span class="built_in">export</span> -out server.pfx -inkey server.key -<span class="keyword">in</span> server.crt</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>将PFX转换为PEM/KEY/CRT<br>可以使用 OpenSSL工具，将 PFX 格式证书文件转化为 KEY 格式密钥文件和 CRT 格式公钥文件。<br>例如，将 PFX 格式证书文件拷贝至 OpenSSL 安装目录，使用 OpenSSL 工具执行以下命令将证书转换成 server.pem 证书文件、KEY 格式密钥文件（server.key）和 CRT 格式公钥文件（server.crt）：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">openssl pkcs12 -<span class="keyword">in</span> server.pfx -nodes -out server.pem</span><br><span class="line">openssl rsa -<span class="keyword">in</span> server.pem -out server.key</span><br><span class="line">openssl x509 -<span class="keyword">in</span> server.pem -out server.crt</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h1 id="此转换步骤是专用于通过-Keytool-工具生成私钥和-CSR-申请证书文件的，并且通过此方法可以在获取到-PEM-格式证书公钥的情况下分离私钥。在实际部署数字证书时，请使用通过此转换步骤分离出来的私钥和申请得到的公钥证书匹配进行部署。"><a href="#此转换步骤是专用于通过-Keytool-工具生成私钥和-CSR-申请证书文件的，并且通过此方法可以在获取到-PEM-格式证书公钥的情况下分离私钥。在实际部署数字证书时，请使用通过此转换步骤分离出来的私钥和申请得到的公钥证书匹配进行部署。" class="headerlink" title="此转换步骤是专用于通过 Keytool 工具生成私钥和 CSR 申请证书文件的，并且通过此方法可以在获取到 PEM 格式证书公钥的情况下分离私钥。在实际部署数字证书时，请使用通过此转换步骤分离出来的私钥和申请得到的公钥证书匹配进行部署。"></a>此转换步骤是专用于通过 Keytool 工具生成私钥和 CSR 申请证书文件的，并且通过此方法可以在获取到 PEM 格式证书公钥的情况下分离私钥。在实际部署数字证书时，请使用通过此转换步骤分离出来的私钥和申请得到的公钥证书匹配进行部署。</h1><p>希望各位朋友支持一下</p>
+<ul>
+<li>领取我的<a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=xpdsz87p&amp;utm_source=xpdsz87p" target="_blank" rel="noopener">阿里云幸运券</a>,谢谢.</li>
+<li>使用<a href="https://cloud.tencent.com/redirect.php?redirect=1005&amp;cps_key=5a162632de40024cd01aabff4d3f1370" target="_blank" rel="noopener">腾讯云资源</a></li>
+<li>自己的网站承接广告<a href="http://www.sudianlm.com/track/c/?rid=2056" target="_blank" rel="noopener">速点广告联盟</a></li>
+<li>广告位招商QQ:1455975151</li>
+<li>喜欢购物的朋友可以看看，<a href="http://www.1zhe.com/yq/1066027" target="_blank" rel="noopener">一折特卖</a><!--注册一折特卖，免费领集分宝，集分宝可以当钱花，免费购物不是梦，注册马上送你10集分宝。-->
+</li>
+</ul>
+<p><strong>本文作者</strong>：dongsheng<br><strong>本文地址</strong>： <a href="https://mds1455975151.github.io/archives/4b72e495.html">https://mds1455975151.github.io/archives/4b72e495.html</a> <br><strong>版权声明</strong>：转载请注明出处！</p>
+]]></content>
+      
+        <categories>
+            
+            <category> SSL证书 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> SSL证书 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Linux之设置大批量服务器使用key登录验证方式实践方案]]></title>
       <url>/archives/94454339.html</url>
       <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
@@ -48,7 +116,9 @@
     <entry>
       <title><![CDATA[Nexus之Nexus3尝鲜]]></title>
       <url>/archives/5f9114b.html</url>
-      <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>&gt;</p>
+      <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>Nexus3尝鲜</p>
+</blockquote>
 <a id="more"></a>
 <h1 id="Nexus简介"><a href="#Nexus简介" class="headerlink" title="Nexus简介"></a>Nexus简介</h1><p><a href="https://www.sonatype.com/" target="_blank" rel="noopener">官网地址</a><br><a href="https://help.sonatype.com/" target="_blank" rel="noopener">官网帮助文档</a></p>
 <h1 id="Nexus2和Nexus3支持formats差别"><a href="#Nexus2和Nexus3支持formats差别" class="headerlink" title="Nexus2和Nexus3支持formats差别"></a>Nexus2和Nexus3支持formats差别</h1><p><img src="/archives/5f9114b/02.png" alt=""><br><img src="/archives/5f9114b/01.png" alt=""></p>
@@ -59,7 +129,28 @@
 <h2 id="Run-Behind-a-Reverse-Proxy"><a href="#Run-Behind-a-Reverse-Proxy" class="headerlink" title="Run Behind a Reverse Proxy"></a>Run Behind a Reverse Proxy</h2><p>请<a href="https://help.sonatype.com/display/NXRM3/Run+Behind+a+Reverse+Proxy" target="_blank" rel="noopener">点击</a></p>
 <p>配置完成后，您可以访问web界面 <a href="http://{IP}:8081/nexus/" target="_blank" rel="noopener">http://{IP}:8081/nexus/</a> ，进入系统进行设置<br>默认管理账号：admin 密码：admin123<br><img src="/archives/5f9114b/03.png" alt=""></p>
 <p>修复文件描述符问题<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">[root@linux-node9 nexus]<span class="comment"># vim /etc/security/limits.conf</span></span><br><span class="line">@root - nofile 65536</span><br><span class="line">[root@linux-node9 ~]<span class="comment"># ulimit -a</span></span><br><span class="line">core file size          (blocks, -c) 0</span><br><span class="line">data seg size           (kbytes, -d) unlimited</span><br><span class="line">scheduling priority             (-e) 0</span><br><span class="line">file size               (blocks, -f) unlimited</span><br><span class="line">pending signals                 (-i) 15062</span><br><span class="line">max locked memory       (kbytes, -l) 64</span><br><span class="line">max memory size         (kbytes, -m) unlimited</span><br><span class="line">open files                      (-n) 65536</span><br><span class="line">pipe size            (512 bytes, -p) 8</span><br><span class="line">POSIX message queues     (bytes, -q) 819200</span><br><span class="line">real-time priority              (-r) 0</span><br><span class="line">stack size              (kbytes, -s) 8192</span><br><span class="line">cpu time               (seconds, -t) unlimited</span><br><span class="line">max user processes              (-u) 15062</span><br><span class="line">virtual memory          (kbytes, -v) unlimited</span><br><span class="line">file locks                      (-x) unlimited</span><br><span class="line">[root@linux-node9 ~]<span class="comment"># /usr/local/nexus/bin/nexus restart</span></span><br><span class="line">WARNING: ************************************************************</span><br><span class="line">WARNING: Detected execution as <span class="string">"root"</span> user.  This is NOT recommended!</span><br><span class="line">WARNING: ************************************************************</span><br><span class="line">Shutting down nexus</span><br><span class="line">Stopped.</span><br><span class="line">Restarting nexus</span><br></pre></td></tr></table></figure></p>
-<h1 id="Nexus管理"><a href="#Nexus管理" class="headerlink" title="Nexus管理"></a>Nexus管理</h1><h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://www.sonatype.com/" target="_blank" rel="noopener">https://www.sonatype.com/</a></p>
+<h1 id="Nexus管理"><a href="#Nexus管理" class="headerlink" title="Nexus管理"></a>Nexus管理</h1><h2 id="Proxying-Maven-and-NPM"><a href="#Proxying-Maven-and-NPM" class="headerlink" title="Proxying Maven and NPM"></a>Proxying Maven and NPM</h2><p>参考资料：<a href="https://help.sonatype.com/display/NXRM3/Quick+Start+Guide+-+Proxying+Maven+and+NPM" target="_blank" rel="noopener">https://help.sonatype.com/display/NXRM3/Quick+Start+Guide+-+Proxying+Maven+and+NPM</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># npm init    # 初始化一个package.json文件</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="High-Availability-Introduction"><a href="#High-Availability-Introduction" class="headerlink" title="High Availability - Introduction"></a>High Availability - Introduction</h2><p>参考资料：<a href="https://help.sonatype.com/display/NXRM3/High+Availability+-+Introduction" target="_blank" rel="noopener">https://help.sonatype.com/display/NXRM3/High+Availability+-+Introduction</a><br><img src="/archives/5f9114b/04.png" alt=""></p>
+<h2 id="Backup-and-Restore"><a href="#Backup-and-Restore" class="headerlink" title="Backup and Restore"></a>Backup and Restore</h2><p>参考资料：<a href="https://help.sonatype.com/display/NXRM3/Configure+and+Run+the+Backup+Task" target="_blank" rel="noopener">https://help.sonatype.com/display/NXRM3/Configure+and+Run+the+Backup+Task</a></p>
+<h2 id="Maven-Repositories"><a href="#Maven-Repositories" class="headerlink" title="Maven Repositories"></a>Maven Repositories</h2><p>参考资料：<a href="https://help.sonatype.com/display/NXRM3/Maven+Repositories" target="_blank" rel="noopener">https://help.sonatype.com/display/NXRM3/Maven+Repositories</a></p>
+<h2 id="Private-Registry-for-Docker"><a href="#Private-Registry-for-Docker" class="headerlink" title="Private Registry for Docker"></a>Private Registry for Docker</h2><p>参考资料：<a href="https://help.sonatype.com/display/NXRM3/Private+Registry+for+Docker" target="_blank" rel="noopener">https://help.sonatype.com/display/NXRM3/Private+Registry+for+Docker</a></p>
+<h2 id="Security"><a href="#Security" class="headerlink" title="Security"></a>Security</h2><h3 id="Realms"><a href="#Realms" class="headerlink" title="Realms"></a>Realms</h3><h3 id="Privileges"><a href="#Privileges" class="headerlink" title="Privileges"></a>Privileges</h3><h3 id="Roles"><a href="#Roles" class="headerlink" title="Roles"></a>Roles</h3><h3 id="Users"><a href="#Users" class="headerlink" title="Users"></a>Users</h3><h3 id="Anonymous-Access"><a href="#Anonymous-Access" class="headerlink" title="Anonymous Access"></a>Anonymous Access</h3><h3 id="LDAP"><a href="#LDAP" class="headerlink" title="LDAP"></a>LDAP</h3><h3 id="Security-Setup-with-User-Tokens"><a href="#Security-Setup-with-User-Tokens" class="headerlink" title="Security Setup with User Tokens"></a>Security Setup with User Tokens</h3><h3 id="Authentication-via-Remote-User-Token"><a href="#Authentication-via-Remote-User-Token" class="headerlink" title="Authentication via Remote User Token"></a>Authentication via Remote User Token</h3><h3 id="Configuring-SSL"><a href="#Configuring-SSL" class="headerlink" title="Configuring SSL"></a>Configuring SSL</h3><ul>
+<li>Outbound SSL - Trusting SSL Certificates of Remote Repositories</li>
+<li>Outbound SSL - Trusting SSL Certificates Globally</li>
+<li>Outbound SSL - Trusting SSL Certificates Using Keytool</li>
+<li>Inbound SSL - Configuring to Serve Content via HTTPS<ul>
+<li>Using A Reverse Proxy Server</li>
+<li>Serving SSL Directly</li>
+<li>How to Enable the HTTPS Connector</li>
+<li>How to Redirect All Plain HTTP Requests to HTTPS</li>
+<li>How to Disable the HTTP Connector<blockquote>
+<p>重点：掌握Inbound SSL配置方法</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="Auditing"><a href="#Auditing" class="headerlink" title="Auditing"></a>Auditing</h3><h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://www.sonatype.com/" target="_blank" rel="noopener">https://www.sonatype.com/</a></p>
 <p>======================================================<br>希望各位朋友支持一下</p>
 <ul>
 <li>领取我的<a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=xpdsz87p&amp;utm_source=xpdsz87p" target="_blank" rel="noopener">阿里云幸运券</a>,谢谢.</li>
@@ -6010,7 +6101,7 @@
 <p><a href="http://bruce-sha.github.io" target="_blank" rel="noopener">不如</a></p>
 <h2 id="自动链接"><a href="#自动链接" class="headerlink" title="自动链接"></a>自动链接</h2><p>尖括号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;http://ibruce.info&gt;</span><br><span class="line">&lt;bu.ru@qq.com&gt;</span><br></pre></td></tr></table></figure></p>
 <p>效果如下：<br><a href="http://ibruce.info" target="_blank" rel="noopener">http://ibruce.info</a></p>
-<a href="&#x6d;&#97;&#x69;&#108;&#116;&#111;&#58;&#x62;&#x75;&#x2e;&#114;&#117;&#64;&#113;&#113;&#x2e;&#x63;&#111;&#x6d;">&#x62;&#x75;&#x2e;&#114;&#117;&#64;&#113;&#113;&#x2e;&#x63;&#111;&#x6d;</a>
+<a href="&#109;&#x61;&#x69;&#108;&#x74;&#111;&#x3a;&#98;&#117;&#46;&#114;&#117;&#64;&#113;&#x71;&#46;&#99;&#111;&#x6d;">&#98;&#117;&#46;&#114;&#117;&#64;&#113;&#x71;&#46;&#99;&#111;&#x6d;</a>
 
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="行内代码"><a href="#行内代码" class="headerlink" title="行内代码"></a>行内代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">``` python</span><br><span class="line">@requires_authorization</span><br><span class="line">def somefunc(param1=&apos;&apos;, param2=0):</span><br><span class="line">    &apos;&apos;&apos;A docstring&apos;&apos;&apos;</span><br><span class="line">    if param1 &gt; param2: # interesting</span><br><span class="line">        print &apos;Greater&apos;</span><br><span class="line">    return (param2 - param1 + 1) or None</span><br><span class="line">class SomeClass:</span><br><span class="line">    pass</span><br><span class="line">&gt;&gt;&gt; message = &apos;&apos;&apos;interpreter</span><br><span class="line">... prompt&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">可代码高亮</span><br><span class="line">``` python</span><br><span class="line">@requires_authorization</span><br><span class="line">def somefunc(param1=&apos;&apos;, param2=0):</span><br><span class="line">    &apos;&apos;&apos;A docstring&apos;&apos;&apos;</span><br><span class="line">    if param1 &gt; param2: # interesting</span><br><span class="line">        print &apos;Greater&apos;</span><br><span class="line">    return (param2 - param1 + 1) or None</span><br><span class="line">class SomeClass:</span><br><span class="line">    pass</span><br><span class="line">&gt;&gt;&gt; message = &apos;&apos;&apos;interpreter</span><br><span class="line">... prompt&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
