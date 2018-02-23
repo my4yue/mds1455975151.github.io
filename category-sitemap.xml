@@ -63,13 +63,6 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/categories/%E7%AE%A1%E7%90%86/</loc>
-        <lastmod>2017-12-27T06:21:23.949Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/categories/%E5%A4%87%E6%A1%88/</loc>
         <lastmod>2017-12-27T06:21:23.963Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -259,13 +252,6 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/categories/%E6%8A%80%E6%9C%AF%E8%B4%9F%E8%B4%A3%E4%BA%BA/</loc>
-        <lastmod>2018-01-30T07:14:51.057Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/categories/%E7%BB%88%E7%AB%AF%E6%93%8D%E4%BD%9C%E8%AE%B0%E5%BD%95/</loc>
         <lastmod>2018-01-30T08:49:51.186Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -287,22 +273,8 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/categories/2017/</loc>
-        <lastmod>2018-02-02T12:52:36.219Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/categories/Vagrant/</loc>
         <lastmod>2018-02-03T04:00:08.572Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://mds1455975151.github.io/categories/%E5%85%AC%E6%9C%89%E4%BA%91/</loc>
-        <lastmod>2018-02-11T04:57:41.169Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -329,22 +301,8 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/categories/%E7%94%B5%E5%BD%B1/</loc>
-        <lastmod>2018-02-21T04:29:26.639Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/categories/Docker/</loc>
         <lastmod>2018-02-21T06:18:29.538Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://mds1455975151.github.io/categories/jenkins/</loc>
-        <lastmod>2018-02-21T11:56:33.222Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -366,6 +324,41 @@
     <url>
         <loc>https://mds1455975151.github.io/categories/SSL%E8%AF%81%E4%B9%A6/</loc>
         <lastmod>2018-02-23T04:13:05.911Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/categories/jenkins/</loc>
+        <lastmod>2018-02-23T08:16:38.931Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/categories/%E4%B8%AA%E4%BA%BA%E6%84%9F%E6%82%9F/</loc>
+        <lastmod>2018-02-23T08:19:31.188Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/categories/Linux%E8%BF%90%E7%BB%B4/</loc>
+        <lastmod>2018-02-23T08:21:02.899Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/categories/%E7%AE%A1%E7%90%86/</loc>
+        <lastmod>2018-02-23T08:21:41.693Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/</loc>
+        <lastmod>2018-02-23T08:22:03.760Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

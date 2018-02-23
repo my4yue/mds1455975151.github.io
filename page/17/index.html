@@ -383,6 +383,208 @@ var _hmt = _hmt || [];
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://mds1455975151.github.io/archives/a46f702f.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DongSheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DongSheng's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/archives/a46f702f.html" itemprop="url">
+                  Jenkins之Jenkins配置
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-16T16:17:40+08:00">
+                2017-12-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/jenkins/" itemprop="url" rel="index">
+                    <span itemprop="name">jenkins</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/archives/a46f702f.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="archives/a46f702f.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/archives/a46f702f.html" class="leancloud_visitors" data-flag-title="Jenkins之Jenkins配置">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+         <span class="post-time">
+	   &nbsp; | &nbsp;
+           <span class="post-meta-item-icon">
+             <i class="fa fa-calendar-o"></i>
+           </span>
+           <span class="post-meta-item-text">字数统计:</span>
+           <span class="post-count">890(字)</span>
+
+         </span>
+
+      <span class="post-time">
+	   &nbsp; | &nbsp;
+           <span class="post-meta-item-icon">
+             <i class="fa fa-calendar-o"></i>
+           </span>
+           <span class="post-meta-item-text">阅读时长:</span>
+           <span class="post-count">3(分)</span>
+
+         </span>
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="\assets\js\APlayer.min.js"> </script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>使用之前，对Jenkins的相关配置有个基本了解，做一些基本的设置及优化，后期用到具体的功能再详细介绍.</p>
+<h1 id="首页介绍"><a href="#首页介绍" class="headerlink" title="首页介绍"></a>首页介绍</h1><p><img src="/archives/a46f702f/01.png" alt=""><br>主要包含以下几个部分：<br>1、新建 新建job<br>2、用户  用户管理<br>3、任务历史 查看job的历史执行情况<br>4、My Views 用户视图<br>5、Credentials 密钥管理<br>6、New View 新建视图<br>7、构建队列<br>8、构建执行状态</p>
+<h1 id="系统管理介绍"><a href="#系统管理介绍" class="headerlink" title="系统管理介绍"></a>系统管理介绍</h1><p><img src="/archives/a46f702f/02.png" alt=""><br>主要包含以下几个部分，相应功能都有说明：<br>01、系统设置<br>  主要包含主目录、执行者数量、用法、生成前等待时间、SCM签出重试次数、Jenkins Location、Extended E-mail Notification<br>02、全局安全配置<br>03、Configure Credentials<br>04、全局工具配置<br>  各类工具环境变量配置，例如：Ant、Maven、Docker、Git、JDK等等<br>05、读取设置<br>06、管理插件<br>07、系统信息<br>  显示系统环境信息以帮助解决问题，主要包括以下几部分：系统属性、环境变量、插件版本信息、Thread Dumps<br>08、系统日志<br>09、负载统计<br>10、Jenkins CLI<br> 可以通过命令行工具操作Jenkins的许多特性，案例：java -jar jenkins-cli.jar -s <a href="http://182.61.49.83:9090/" target="_blank" rel="noopener">http://182.61.49.83:9090/</a> help<br>11、脚本命令行<br>12、管理节点<br>13、关于Jenkins<br>14、Manage Old Data<br>15、管理用户<br>16、准备关机</p>
+<h1 id="REST-API介绍"><a href="#REST-API介绍" class="headerlink" title="REST API介绍"></a>REST API介绍</h1><p><a href="http://{IP}:{Port}/api/" target="_blank" rel="noopener">http://{IP}:{Port}/api/</a><br>API类型<br>1、XML API<br>2、JSON API<br>3、Python API</p>
+<h1 id="用户管理"><a href="#用户管理" class="headerlink" title="用户管理"></a>用户管理</h1><p>系统管理–管理用户–新建用户–添加用户信息–点击新建用户即可<br><img src="/archives/a46f702f/03.png" alt=""></p>
+<h1 id="设置几个重要的全局设置"><a href="#设置几个重要的全局设置" class="headerlink" title="设置几个重要的全局设置"></a>设置几个重要的全局设置</h1><p>系统管理–系统设置–系统消息、执行者数量、用法、生成前等待时间，SCM签出重试次数<br><img src="/archives/a46f702f/04.png" alt=""></p>
+<h1 id="邮件配置"><a href="#邮件配置" class="headerlink" title="邮件配置"></a>邮件配置</h1><p>Email是Jenkins最常用的通知方式之一。什么情况下，需要Jenkins发送电子邮件，发送给哪些干系人员？例如：在构建成功或者失败的情况下，发送通知邮件。<br><img src="/archives/a46f702f/11.png" alt=""></p>
+<h1 id="角色及权限管理"><a href="#角色及权限管理" class="headerlink" title="角色及权限管理"></a>角色及权限管理</h1><p>设置全局角色和项目角色，其中 Pattern 是用来设置构建作业名的命名规范，例如：规定了构建作业名的命名规范是{项目名称}_{业务类型名称}.{发布环境}<br>用户分配角色<br><img src="/archives/a46f702f/12.png" alt=""><br>项目用户权限划分<br><img src="/archives/a46f702f/13.png" alt=""><br>全局角色权限配置<br><img src="/archives/a46f702f/14.png" alt=""><br>角色权限配置<br><img src="/archives/a46f702f/15.png" alt=""></p>
+<h1 id="创建一个简单的job"><a href="#创建一个简单的job" class="headerlink" title="创建一个简单的job"></a>创建一个简单的job</h1><p>案例：显示当前服务器时间<br>新建–输入job名称(建议各类job以特定前缀开始，后期做权限控制划分view都方便)–选择项目类型–确认<br><img src="/archives/a46f702f/05.png" alt=""><br>自由风格项目主要包含以下几类配置：<br>1、General 项目通用配置<br>2、源码管理<br>3、构建触发器<br>4、构建环境<br>5、构建<br>6、构建后操作<br>本项目比较简单，配置general和构建部分即可，<br><img src="/archives/a46f702f/06.png" alt=""><br><img src="/archives/a46f702f/07.png" alt=""><br>配置完成，点击构建<br><img src="/archives/a46f702f/08.png" alt=""><br>查看构建日志，查看输出结果<br><img src="/archives/a46f702f/09.png" alt=""><br>回到首页，查看现在的界面<br><img src="/archives/a46f702f/10.png" alt=""><br>如果不明白相关图例的含义，可以单击图例，里面有详细介绍</p>
+<font color="red" size="3">注：所有功能的详细配置及使用在项目中进行配置</font>
+
+
+<p>======================================================<br>希望各位朋友支持一下</p>
+<ul>
+<li>领取我的<a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=xpdsz87p&amp;utm_source=xpdsz87p" target="_blank" rel="noopener">阿里云幸运券</a>,谢谢.</li>
+<li>使用<a href="https://cloud.tencent.com/redirect.php?redirect=1005&amp;cps_key=5a162632de40024cd01aabff4d3f1370" target="_blank" rel="noopener">腾讯云资源</a></li>
+<li>自己的网站承接广告<a href="http://www.sudianlm.com/track/c/?rid=2056" target="_blank" rel="noopener">速点广告联盟</a></li>
+<li>广告位招商QQ:1455975151</li>
+<li>喜欢购物的朋友可以看看，<a href="http://www.1zhe.com/yq/1066027" target="_blank" rel="noopener">一折特卖</a><!--注册一折特卖，免费领集分宝，集分宝可以当钱花，免费购物不是梦，注册马上送你10集分宝。-->
+<img src="/archives/f7ea3e07/zhifubao.jpg" width="50%"></li>
+</ul>
+<p><strong>本文作者</strong>：dongsheng<br><strong>本文地址</strong>： <a href="https://mds1455975151.github.io/archives/a46f702f.html">https://mds1455975151.github.io/archives/a46f702f.html</a> <br><strong>版权声明</strong>：转载请注明出处！</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://mds1455975151.github.io/archives/a8c286cc.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1133,191 +1335,6 @@ var _hmt = _hmt || [];
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://mds1455975151.github.io/archives/4d9895b3.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="DongSheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DongSheng's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/archives/4d9895b3.html" itemprop="url">
-                  Python查看函数代码内容
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-16T14:51:47+08:00">
-                2017-12-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Python/" itemprop="url" rel="index">
-                    <span itemprop="name">Python</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/archives/4d9895b3.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="archives/4d9895b3.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/archives/4d9895b3.html" class="leancloud_visitors" data-flag-title="Python查看函数代码内容">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-         <span class="post-time">
-	   &nbsp; | &nbsp;
-           <span class="post-meta-item-icon">
-             <i class="fa fa-calendar-o"></i>
-           </span>
-           <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">271(字)</span>
-
-         </span>
-
-      <span class="post-time">
-	   &nbsp; | &nbsp;
-           <span class="post-meta-item-icon">
-             <i class="fa fa-calendar-o"></i>
-           </span>
-           <span class="post-meta-item-text">阅读时长:</span>
-           <span class="post-count">1(分)</span>
-
-         </span>
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>方法1：使用help(random)<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> random</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>help(random)</span><br><span class="line">Help on module random:</span><br><span class="line"></span><br><span class="line">NAME</span><br><span class="line">    random - Random variable generators.</span><br><span class="line"></span><br><span class="line">FILE</span><br><span class="line">    c:\python27\lib\random.py　　　　　　　　<span class="comment"># 文件存放位置</span></span><br></pre></td></tr></table></figure></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/archives/4d9895b3.html#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1409,7 +1426,7 @@ var _hmt = _hmt || [];
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">127</span>
+                <span class="site-state-item-count">128</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1418,7 +1435,7 @@ var _hmt = _hmt || [];
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-count">55</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -1427,7 +1444,7 @@ var _hmt = _hmt || [];
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">177</span>
+                <span class="site-state-item-count">178</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

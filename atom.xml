@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://mds1455975151.github.io/"/>
-  <updated>2018-02-23T04:13:05.911Z</updated>
+  <updated>2018-02-23T08:16:38.931Z</updated>
   <id>https://mds1455975151.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Jenkins之Android多渠道打包实践</title>
+    <link href="https://mds1455975151.github.io/archives/fdc5d0de.html"/>
+    <id>https://mds1455975151.github.io/archives/fdc5d0de.html</id>
+    <published>2018-02-23T07:21:27.000Z</published>
+    <updated>2018-02-23T08:16:38.931Z</updated>
+    
+    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote><p>Jenkins之Android多渠道打包实践</p></blockquote><a id="more"></a><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>多渠道主要目的是为了统计各个应用市场用户数据分析(比如活跃数，崩溃率等)，收集用户信息，这时需要唯一标识来区分这些渠道，本文主要针对多渠道(几百个渠道甚至更多的情况)如何快速打包?</p><h1 id="流程说明"><a href="#流程说明" class="headerlink" title="流程说明"></a>流程说明</h1><ul><li>Jenkins集成Gradle实现打包自动化</li><li>通过Jenkins参数化构建实现自定义环境和渠道打包，签名</li><li>测试包自动上传fir并通过钉钉发送通知</li><li>正式包按照版本归档大奥OSS，发布时拷贝到发布目录</li><li>自动刷新CDN</li></ul><h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@linux-node9 ~]<span class="comment"># cat /etc/redhat-release</span></span><br><span class="line">CentOS Linux release 7.2.1511 (Core)</span><br><span class="line">[root@linux-node9 ~]<span class="comment"># uname -r</span></span><br><span class="line">3.10.0-327.el7.x86_64</span><br><span class="line">[root@linux-node9 ~]<span class="comment"># uname -m</span></span><br><span class="line">x86_64</span><br></pre></td></tr></table></figure><h1 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h1><p>openjdk比较精简，会出现各种奇葩问题，故切换到Oracle JDK版本<br><a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">下载地址</a> 下载jdk-8u151-linux-x64.rpm<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># rpm -ivh jdk-8u151-linux-x64.rpm</span></span><br><span class="line"><span class="comment"># vim /etc/profile</span></span><br><span class="line"><span class="comment"># JAVA bin PATH setup</span></span><br><span class="line"><span class="built_in">export</span> JAVA_HOME=/usr/java/jdk1.8.0_151/</span><br><span class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$JAVA_HOME</span>/jre/lib/rt.jar:<span class="variable">$JAVA_HOME</span>/lib/dt.jar:<span class="variable">$JAVA_HOME</span>/lib/tools.jar</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:<span class="variable">$JAVA_HOME</span>/bin</span><br><span class="line"><span class="comment"># source /etc/profile</span></span><br><span class="line"><span class="comment"># java -version</span></span><br><span class="line">openjdk version <span class="string">"1.8.0_151"</span></span><br><span class="line">OpenJDK Runtime Environment (build 1.8.0_151-b12)</span><br><span class="line">OpenJDK 64-Bit Server VM (build 25.151-b12, mixed mode)</span><br></pre></td></tr></table></figure></p><h1 id="安装Jenkins"><a href="#安装Jenkins" class="headerlink" title="安装Jenkins"></a>安装Jenkins</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">[root@linux-node9 ~]<span class="comment"># wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo</span></span><br><span class="line">[root@linux-node9 ~]<span class="comment"># rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key</span></span><br><span class="line">[root@linux-node9 ~]<span class="comment"># yum install -y jenkins</span></span><br><span class="line">[root@linux-node9 ~]<span class="comment"># vim /etc/sysconfig/jenkins</span></span><br><span class="line">JENKINS_PORT=<span class="string">"9090"</span>   <span class="comment"># 修改启动端口，本机端口冲突可以考虑，默认8080</span></span><br><span class="line">[root@linux-node9 ~]<span class="comment"># /etc/init.d/jenkins start</span></span><br><span class="line">[root@linux-node9 ~]<span class="comment"># chkconfig jenkins on</span></span><br><span class="line">[root@linux-node9 ~]<span class="comment"># netstat -tunlp|grep java</span></span><br><span class="line">tcp6       0      0 :::9090                 :::*                    LISTEN      28491/java</span><br></pre></td></tr></table></figure><h1 id="安装Gradle"><a href="#安装Gradle" class="headerlink" title="安装Gradle"></a>安装Gradle</h1><h1 id="安装Android-SDK"><a href="#安装Android-SDK" class="headerlink" title="安装Android SDK"></a>安装Android SDK</h1><h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="http://www.simlinux.com/2016/04/21/android-pack-deploy.html" target="_blank" rel="noopener">http://www.simlinux.com/2016/04/21/android-pack-deploy.html</a></p><p>======================================================<br>希望各位朋友支持一下</p><ul><li>领取我的<a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=xpdsz87p&amp;utm_source=xpdsz87p" target="_blank" rel="noopener">阿里云幸运券</a>,谢谢.</li><li>使用<a href="https://cloud.tencent.com/redirect.php?redirect=1005&amp;cps_key=5a162632de40024cd01aabff4d3f1370" target="_blank" rel="noopener">腾讯云资源</a></li><li>自己的网站承接广告<a href="http://www.sudianlm.com/track/c/?rid=2056" target="_blank" rel="noopener">速点广告联盟</a></li><li>广告位招商QQ:1455975151</li><li>喜欢购物的朋友可以看看，<a href="http://www.1zhe.com/yq/1066027" target="_blank" rel="noopener">一折特卖</a><!--注册一折特卖，免费领集分宝，集分宝可以当钱花，免费购物不是梦，注册马上送你10集分宝。--></li></ul><p><strong>本文作者</strong>：dongsheng<br><strong>本文地址</strong>： <a href="https://mds1455975151.github.io/archives/fdc5d0de.html">https://mds1455975151.github.io/archives/fdc5d0de.html</a> <br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
+    
+    <summary type="html">
+    
+      Jenkins之Android多渠道打包实践
+    
+    </summary>
+    
+      <category term="jenkins" scheme="https://mds1455975151.github.io/categories/jenkins/"/>
+    
+    
+      <category term="jenkins" scheme="https://mds1455975151.github.io/tags/jenkins/"/>
+    
+      <category term="多渠道打包" scheme="https://mds1455975151.github.io/tags/%E5%A4%9A%E6%B8%A0%E9%81%93%E6%89%93%E5%8C%85/"/>
+    
+  </entry>
   
   <entry>
     <title>SSL证书格式详解及转换</title>
@@ -141,7 +165,7 @@
     <link href="https://mds1455975151.github.io/archives/888965e1.html"/>
     <id>https://mds1455975151.github.io/archives/888965e1.html</id>
     <published>2018-02-11T03:02:04.000Z</published>
-    <updated>2018-02-11T04:57:41.169Z</updated>
+    <updated>2018-02-23T08:21:02.899Z</updated>
     
     <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote><p>弹性伸缩是根据用户的业务需求和策略，自动调整其弹性计算资源的管理服务。</p></blockquote><a id="more"></a><h1 id="弹性伸缩简介"><a href="#弹性伸缩简介" class="headerlink" title="弹性伸缩简介"></a>弹性伸缩简介</h1><p>弹性伸缩（Auto Scaling）是根据用户的业务需求和策略，自动调整其弹性计算资源的管理服务。用户根据自己的业务需求自动调整其弹性计算资源，在业务需求增长时，无缝增加云实例，在业务需求下降时，自动减少云实例以节约成本。弹性伸缩策略不仅能够让需求稳定规律的应用程序实现自动化管理，同时告别业务突增或者cc攻击等带来的烦恼，对于每天、每周、每月使用量不停波动的应用程序还能够根据业务负载分钟级扩展。弹性伸缩策略让集群保持恰到好处的实例数量。<br>弹性伸缩一般都是免费的服务，但是通过弹性伸缩自动创建的云实例，需要按照云厂商付费策略进行付费。</p><p><strong>弹性伸缩特点</strong><br>1、自动化<br>设置伸缩策略后，根据业务负载情况，动态实时自动创建或释放云实例，做到全程无需人工干预，免去人工部署负担。<br>2、降低成本<br>以最合适的云实例应对业务高峰，自动化添加、删除实例。提供设备利用率，节约部署和云实例成本。<br>3、计划性<br>针对负载负载有时间规律的业务，根据设置自动化扩容。<br>4、容错性<br>自动检测实例的健康状况，一旦发现异常，自动复制出健康的实例，替换异常实例，确保业务稳定。<br>5、自动配置负载均衡<br>自动管理负载均衡配置，自动增删实例。<br>6、审计需求<br>记录、提醒出现问题可以快速提供判断依据定位问题。</p><p><strong>弹性伸缩适用场景</strong><br>1、电商网站<br>2、微博、新闻类<br>3、视频、直播类<br>4、游戏行业(大区型)<br>5、其他业务峰值波动大的业务场景</p><p><strong>使用弹性伸缩对比</strong><br>传统模式下的集群维护<br><img src="/archives/888965e1/02.png" alt=""><br>采用AS后的效果<br><img src="/archives/888965e1/03.png" alt=""></p><h1 id="弹性伸缩应用讲解"><a href="#弹性伸缩应用讲解" class="headerlink" title="弹性伸缩应用讲解"></a>弹性伸缩应用讲解</h1><h2 id="配置流程"><a href="#配置流程" class="headerlink" title="配置流程"></a>配置流程</h2><p>创建伸缩配置–&gt;创建伸缩组–&gt;添加已有云实例–&gt;创建定时任务–&gt;创建告警触发策略<br><img src="/archives/888965e1/01.png" alt=""></p><h2 id="开发者资源"><a href="#开发者资源" class="headerlink" title="开发者资源"></a>开发者资源</h2><p>一般都提供API供用户自定义完成业务需求</p><h2 id="常见问题"><a href="#常见问题" class="headerlink" title="常见问题"></a>常见问题</h2><ul><li><p>什么是冷却时间？</p><blockquote><p>冷却时间是指在同一个伸缩组内，一个伸缩活动执行完成后的一段锁定时间。在这段时间内，该伸缩组不执行伸缩活动。冷却时间一般都是自定义可选的。</p></blockquote></li><li><p>什么样的机器适合使用弹性伸缩？</p><blockquote><p>伸缩组中的云服务器实例中部署的应用需要是无状态、可替换的。因为伸缩组中的实例有可能在缩容中被回收，所以用于弹性伸缩的云实例不能保存应用的状态信息（如会话）和相关数据（如数据库、日志等）。如果应用中需要保存状态信息，可以考虑把状态信息保存到伸缩组以外的独立云服务器中。</p></blockquote></li><li><p>如何保障云实例配置环境的一致性？</p><blockquote><p>一般都是以预定义的镜像模板来创建实例，如果还需求进行其他代码同步，可以使用svn，rsync等进行同步，这些自定义脚本可以放到/etc/rc.local中。</p></blockquote></li><li><p>密码登录问题</p><blockquote><p>如果自动创建的实例密码无法规定和预先得知，Linux服务器可以利用公钥对实现无密码登录。</p></blockquote></li></ul><h1 id="反思收获"><a href="#反思收获" class="headerlink" title="反思收获"></a>反思收获</h1><p>1、通过公有云的弹性伸缩方案，我们思考自建弹性伸缩方案应该如何做？<br>2、如何将自有业务与公有云方案进行最佳结合？<br>3、有哪些坑可能需要去趟平？</p><h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://aws.amazon.com/cn/autoscaling/?nc2=h_m1" target="_blank" rel="noopener">https://aws.amazon.com/cn/autoscaling/?nc2=h_m1</a><br><a href="https://cloud.tencent.com/product/as" target="_blank" rel="noopener">https://cloud.tencent.com/product/as</a><br><a href="https://cloud.tencent.com/document/product/377/3154" target="_blank" rel="noopener">https://cloud.tencent.com/document/product/377/3154</a><br><a href="https://www.alibabacloud.com/zh/product/auto-scaling?spm=a3c0i.7919406.905353.dznavproductsa2.747e6ecfxusdbX" target="_blank" rel="noopener">https://www.alibabacloud.com/zh/product/auto-scaling?spm=a3c0i.7919406.905353.dznavproductsa2.747e6ecfxusdbX</a></p><p>======================================================<br>希望各位朋友支持一下</p><ul><li>领取我的<a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=xpdsz87p&amp;utm_source=xpdsz87p" target="_blank" rel="noopener">阿里云幸运券</a>,谢谢.</li><li>使用<a href="https://cloud.tencent.com/redirect.php?redirect=1005&amp;cps_key=5a162632de40024cd01aabff4d3f1370" target="_blank" rel="noopener">腾讯云资源</a></li><li>自己的网站承接广告<a href="http://www.sudianlm.com/track/c/?rid=2056" target="_blank" rel="noopener">速点广告联盟</a></li><li>广告位招商QQ:1455975151</li><li>喜欢购物的朋友可以看看，<a href="http://www.1zhe.com/yq/1066027" target="_blank" rel="noopener">一折特卖</a><!--注册一折特卖，免费领集分宝，集分宝可以当钱花，免费购物不是梦，注册马上送你10集分宝。--></li></ul><p><strong>本文作者</strong>：dongsheng<br><strong>本文地址</strong>： <a href="https://mds1455975151.github.io/archives/888965e1.html">https://mds1455975151.github.io/archives/888965e1.html</a> <br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
     
@@ -151,7 +175,7 @@
     
     </summary>
     
-      <category term="公有云" scheme="https://mds1455975151.github.io/categories/%E5%85%AC%E6%9C%89%E4%BA%91/"/>
+      <category term="Linux运维" scheme="https://mds1455975151.github.io/categories/Linux%E8%BF%90%E7%BB%B4/"/>
     
     
       <category term="公有云" scheme="https://mds1455975151.github.io/tags/%E5%85%AC%E6%9C%89%E4%BA%91/"/>
@@ -422,7 +446,7 @@
     <link href="https://mds1455975151.github.io/archives/2d943cb9.html"/>
     <id>https://mds1455975151.github.io/archives/2d943cb9.html</id>
     <published>2018-01-30T07:00:15.000Z</published>
-    <updated>2018-01-30T07:14:51.057Z</updated>
+    <updated>2018-02-23T08:21:41.693Z</updated>
     
     <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote><p>技术负责人</p></blockquote><a id="more"></a><p>0、熟悉现有体系</p><ul><li>用户反馈</li><li>技术支持</li></ul><p>1、研发体系建设</p><ul><li>职级/薪酬确定</li><li>现有人员职级评定</li><li>OKR绩效考核</li></ul><p>2、技术团队组建</p><ul><li>PHP团队</li><li>运维团队</li><li>GO后端团队</li><li>前端团队</li><li>测试QA团队</li><li>AI团队</li><li>数据团队</li></ul><p>3、交付流程管理</p><ul><li>测试与线上环境隔离</li><li>引入敏捷开发</li><li>看板任务管理</li><li>GitFlow和CodeReview</li><li>持续集成jenkins</li><li>单元测试和覆盖率</li><li>jira故障追踪</li><li>关键服务与具体开发解耦</li></ul><p>4、技术架构设计</p><ul><li>微服务</li><li>容器化</li><li>DevOps</li><li>引入消息队列，缓存</li><li>自动化测试</li></ul><p>5、研发文化建设</p><ul><li>技术分享</li><li>Buddy制度</li><li>激励</li><li>技术委员会</li></ul><p>6、IT建设</p><ul><li>监控系统</li><li>VPN跳板机</li><li>LDAP入离职流程</li><li>Confluence Wiki</li><li>ELK日志系统</li><li>邮箱系统、OA</li></ul><p>7、数据平台建设</p><ul><li>数据埋点和采集</li><li>数据dashboard</li><li>数据分析</li><li>A/B testing</li><li>Growth Hacker</li></ul><p>======================================================<br>希望各位朋友支持一下</p><ul><li>领取我的<a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=xpdsz87p&amp;utm_source=xpdsz87p" target="_blank" rel="noopener">阿里云幸运券</a>,谢谢.</li><li>使用<a href="https://cloud.tencent.com/redirect.php?redirect=1005&amp;cps_key=5a162632de40024cd01aabff4d3f1370" target="_blank" rel="noopener">腾讯云资源</a></li><li>自己的网站承接广告<a href="http://www.sudianlm.com/track/c/?rid=2056" target="_blank" rel="noopener">速点广告联盟</a></li><li>广告位招商QQ:1455975151</li><li>喜欢购物的朋友可以看看，<a href="http://www.1zhe.com/yq/1066027" target="_blank" rel="noopener">一折特卖</a><!--注册一折特卖，免费领集分宝，集分宝可以当钱花，免费购物不是梦，注册马上送你10集分宝。--></li></ul><p><strong>本文作者</strong>：dongsheng<br><strong>本文地址</strong>： <a href="https://mds1455975151.github.io/archives/2d943cb9.html">https://mds1455975151.github.io/archives/2d943cb9.html</a> <br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
     
@@ -432,7 +456,7 @@
     
     </summary>
     
-      <category term="技术负责人" scheme="https://mds1455975151.github.io/categories/%E6%8A%80%E6%9C%AF%E8%B4%9F%E8%B4%A3%E4%BA%BA/"/>
+      <category term="管理" scheme="https://mds1455975151.github.io/categories/%E7%AE%A1%E7%90%86/"/>
     
     
   </entry>
@@ -456,28 +480,6 @@
     
     
       <category term="Memcached" scheme="https://mds1455975151.github.io/tags/Memcached/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Squid之基本介绍</title>
-    <link href="https://mds1455975151.github.io/archives/154090c0.html"/>
-    <id>https://mds1455975151.github.io/archives/154090c0.html</id>
-    <published>2018-01-29T06:22:48.000Z</published>
-    <updated>2018-01-30T01:33:19.494Z</updated>
-    
-    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote><p>Squid基本介绍</p></blockquote><a id="more"></a><h1 id="Squid介绍"><a href="#Squid介绍" class="headerlink" title="Squid介绍"></a>Squid介绍</h1><p><img src="/archives/154090c0/01.jpg" alt=""></p><h2 id="Squid简介"><a href="#Squid简介" class="headerlink" title="Squid简介"></a>Squid简介</h2><p>Squid是Web的一个缓存代理，支持HTTP，HTTPS，FTP等等。它通过缓存和重复使用频繁请求的网页来降低带宽并缩短响应时间。Squid有广泛的访问控制，并使一个伟大的服务器加速器。它运行在大多数可用的操作系统上，包括Windows，并在GNU GPL下获得许可。<br><a href="http://www.squid-cache.org/" target="_blank" rel="noopener">官网地址</a></p><h2 id="为什么使用Squid"><a href="#为什么使用Squid" class="headerlink" title="为什么使用Squid"></a>为什么使用Squid</h2><ul><li>对于ISP:节省带宽，改善用户体验</li><li>对于网站：扩展应用程序，不需要大量投资硬件和开发时间</li><li>对于内容分发提供商：在全球分发您的内容</li></ul><h1 id="Squid部署实践"><a href="#Squid部署实践" class="headerlink" title="Squid部署实践"></a>Squid部署实践</h1><h2 id="获取Squid"><a href="#获取Squid" class="headerlink" title="获取Squid"></a>获取Squid</h2><p><a href="http://www.squid-cache.org/Download/" target="_blank" rel="noopener">http://www.squid-cache.org/Download/</a></p><h2 id="Squid部署案例研究"><a href="#Squid部署案例研究" class="headerlink" title="Squid部署案例研究"></a>Squid部署案例研究</h2><ul><li><a href="http://www.squid-cache.org/Library/wikimedia.html" target="_blank" rel="noopener">WikiMedia</a></li><li><a href="http://www.squid-cache.org/Library/flickr.html" target="_blank" rel="noopener">Flickr</a></li><li><a href="http://iopscience.iop.org/article/10.1088/1742-6596/119/7/072007/pdf" target="_blank" rel="noopener">FroNTier</a></li></ul><h2 id="Squid部署"><a href="#Squid部署" class="headerlink" title="Squid部署"></a>Squid部署</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat &gt;/etc/yum.repos.d/squid.repo &lt;&lt;EOF</span></span><br><span class="line">[squid]</span><br><span class="line">name=Squid repo <span class="keyword">for</span> CentOS Linux - <span class="variable">$basearch</span></span><br><span class="line"><span class="comment">#IL mirror</span></span><br><span class="line">baseurl=http://www1.ngtech.co.il/repo/centos/7/<span class="variable">$basearch</span>/</span><br><span class="line">failovermethod=priority</span><br><span class="line">enabled=1</span><br><span class="line">gpgcheck=0</span><br><span class="line">EOF</span><br><span class="line"><span class="comment"># yum install -y squid</span></span><br><span class="line"><span class="comment"># rpm -ql squid</span></span><br><span class="line"><span class="comment"># rpm -qc squid</span></span><br><span class="line"><span class="comment"># systemctl start squid.service</span></span><br><span class="line"><span class="comment"># systemctl enable squid.service</span></span><br></pre></td></tr></table></figure><h1 id="Squid官网资料"><a href="#Squid官网资料" class="headerlink" title="Squid官网资料"></a>Squid官网资料</h1><p><a href="http://www.squid-cache.org/Doc/" target="_blank" rel="noopener">http://www.squid-cache.org/Doc/</a><br><a href="https://wiki.squid-cache.org/FrontPage" target="_blank" rel="noopener">https://wiki.squid-cache.org/FrontPage</a></p><h2 id="为什么使用代理？"><a href="#为什么使用代理？" class="headerlink" title="为什么使用代理？"></a>为什么使用代理？</h2><p>与许多其他网络协议相比，HTTP的一个显着特点是从一开始就具有支持代理的能力。代理是通信流的中介，可以执行许多增值功能来增强整体用户体验。一般而言，代理分为两种：正向代理和反向代理。</p><ul><li><strong>正向代理</strong><br>主要是缓存，通过直接向客户端提供共享数据，认证和授权，日志记录，公司互联网策略执行（又名内容过滤），网络资源使用管理来节省网络资源。</li><li><strong>反向代理</strong><br>一个反向代理通常位于在Web服务器群的前面，并优化Web服务器的工作，通过缓存和服务经常被访问的静态内容，SpoonFeeding慢的客户，也有可能执行请求过滤，以提高Web应用程序的安全。它也可以用作IPv4-IPv6（或v6-v4）网关。</li></ul><h2 id="如何配置Squid"><a href="#如何配置Squid" class="headerlink" title="如何配置Squid"></a>如何配置Squid</h2><p><a href="https://wiki.squid-cache.org/SquidFaq/ConfiguringSquid" target="_blank" rel="noopener">https://wiki.squid-cache.org/SquidFaq/ConfiguringSquid</a></p><p>======================================================<br>希望各位朋友支持一下</p><ul><li>领取我的<a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=xpdsz87p&amp;utm_source=xpdsz87p" target="_blank" rel="noopener">阿里云幸运券</a>,谢谢.</li><li>使用<a href="https://cloud.tencent.com/redirect.php?redirect=1005&amp;cps_key=5a162632de40024cd01aabff4d3f1370" target="_blank" rel="noopener">腾讯云资源</a></li><li>自己的网站承接广告<a href="http://www.sudianlm.com/track/c/?rid=2056" target="_blank" rel="noopener">速点广告联盟</a></li><li>广告位招商QQ:1455975151</li><li>喜欢购物的朋友可以看看，<a href="http://www.1zhe.com/yq/1066027" target="_blank" rel="noopener">一折特卖</a><!--注册一折特卖，免费领集分宝，集分宝可以当钱花，免费购物不是梦，注册马上送你10集分宝。--></li></ul><p><strong>本文作者</strong>：dongsheng<br><strong>本文地址</strong>： <a href="https://mds1455975151.github.io/archives/154090c0.html">https://mds1455975151.github.io/archives/154090c0.html</a> <br><strong>版权声明</strong>：转载请注明出处！</p>]]></content>
-    
-    <summary type="html">
-    
-      Squid
-    
-    </summary>
-    
-      <category term="Squid" scheme="https://mds1455975151.github.io/categories/Squid/"/>
-    
-    
-      <category term="Squid" scheme="https://mds1455975151.github.io/tags/Squid/"/>
     
   </entry>
   
