@@ -114,7 +114,7 @@
 <meta property="og:description" content="前言yum安装软件很方便，但是下载下来的rpm包在安装后默认会被删除掉.如果希望保留yum安装的软件包该如何做呢？ 设置方案详解应用场景1、GFW限制，国内无法顺利下载应用包，利用海外机器安装并保留相应软件包2、公司或者现实应用场景无法连接互联网，只能在外网保存后使用">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://mds1455975151.github.io/archives/f7ea3e07/zhifubao.jpg">
-<meta property="og:updated_time" content="2017-12-27T06:21:23.649Z">
+<meta property="og:updated_time" content="2018-02-23T08:43:56.158Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux之保留yum安装软件后的RPM包">
 <meta name="twitter:description" content="前言yum安装软件很方便，但是下载下来的rpm包在安装后默认会被删除掉.如果希望保留yum安装的软件包该如何做呢？ 设置方案详解应用场景1、GFW限制，国内无法顺利下载应用包，利用海外机器安装并保留相应软件包2、公司或者现实应用场景无法连接互联网，只能在外网保存后使用">
@@ -444,8 +444,8 @@ var _hmt = _hmt || [];
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Linux/" itemprop="url" rel="index">
-                    <span itemprop="name">Linux</span>
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
                   </a>
                 </span>
 
@@ -522,7 +522,7 @@ var _hmt = _hmt || [];
       
         <script src="\assets\js\APlayer.min.js"> </script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>yum安装软件很方便，但是下载下来的rpm包在安装后默认会被删除掉.如果希望保留yum安装的软件包该如何做呢？</p>
 <h1 id="设置方案详解"><a href="#设置方案详解" class="headerlink" title="设置方案详解"></a>设置方案详解</h1><h2 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h2><p>1、GFW限制，国内无法顺利下载应用包，利用海外机器安装并保留相应软件包<br>2、公司或者现实应用场景无法连接互联网，只能在外网保存后使用<br><a id="more"></a></p>
-<h2 id="设置方法"><a href="#设置方法" class="headerlink" title="设置方法"></a>设置方法</h2><p>将/etc/yum.conf里对应的keepcache参数改为1即可，然后用yum安装软件，rpm包便会保留在cachedir对应的目录下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@awstats ~]<span class="comment"># cp /etc/yum.conf&#123;,.`date +%F`&#125;</span></span><br><span class="line">-rw-r--r-- 1 root root 969 Apr 14 16:19 /etc/yum.conf</span><br><span class="line">-rw-r--r-- 1 root root 969 Apr 14 16:19 /etc/yum.conf.20150414</span><br><span class="line">[root@awstats ~]<span class="comment"># sed -i 's#keepcache=0#keepcache=1#g' /etc/yum.conf</span></span><br><span class="line">[root@awstats ~]<span class="comment"># sed -n '2,3p' /etc/yum.conf  </span></span><br><span class="line">cachedir=/var/cache/yum/<span class="variable">$basearch</span>/<span class="variable">$releasever</span></span><br><span class="line">keepcache=1</span><br></pre></td></tr></table></figure></p>
+<h2 id="设置方法"><a href="#设置方法" class="headerlink" title="设置方法"></a>设置方法</h2><p>将/etc/yum.conf里对应的keepcache参数改为1即可，然后用yum安装软件，rpm包便会保留在cachedir对应的目录下<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@awstats ~]<span class="comment"># cp /etc/yum.conf&#123;,.`date +%F`&#125;</span></span><br><span class="line">-rw-r--r-- 1 root root 969 Apr 14 16:19 /etc/yum.conf</span><br><span class="line">-rw-r--r-- 1 root root 969 Apr 14 16:19 /etc/yum.conf.20150414</span><br><span class="line">[root@awstats ~]<span class="comment"># sed -i 's#keepcache=0#keepcache=1#g' /etc/yum.conf</span></span><br><span class="line">[root@awstats ~]<span class="comment"># sed -n '2,3p' /etc/yum.conf</span></span><br><span class="line">cachedir=/var/cache/yum/<span class="variable">$basearch</span>/<span class="variable">$releasever</span></span><br><span class="line">keepcache=1</span><br></pre></td></tr></table></figure></p>
 <p>======================================================<br>希望各位朋友支持一下</p>
 <ul>
 <li>领取我的<a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=xpdsz87p&amp;utm_source=xpdsz87p" target="_blank" rel="noopener">阿里云幸运券</a>,谢谢.</li>
@@ -742,7 +742,7 @@ var _hmt = _hmt || [];
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">36</span>
+                <span class="site-state-item-count">23</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
