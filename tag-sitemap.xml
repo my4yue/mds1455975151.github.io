@@ -856,13 +856,6 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/tags/Git/</loc>
-        <lastmod>2018-02-23T08:41:52.542Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/tags/%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</loc>
         <lastmod>2018-02-23T08:41:52.542Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -884,6 +877,13 @@
     </url>
 
     <url>
+        <loc>https://mds1455975151.github.io/tags/GitLab/</loc>
+        <lastmod>2018-02-23T08:42:39.397Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://mds1455975151.github.io/tags/Gitlab-CI/</loc>
         <lastmod>2018-02-23T08:42:39.397Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -892,13 +892,6 @@
 
     <url>
         <loc>https://mds1455975151.github.io/tags/GitLab-Runner/</loc>
-        <lastmod>2018-02-23T08:42:39.397Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://mds1455975151.github.io/tags/GitLab/</loc>
         <lastmod>2018-02-23T08:42:39.397Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -1257,6 +1250,20 @@
     <url>
         <loc>https://mds1455975151.github.io/tags/NexT/</loc>
         <lastmod>2018-02-23T09:56:41.092Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/Git/</loc>
+        <lastmod>2018-02-24T06:15:12.445Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/Gitosis/</loc>
+        <lastmod>2018-02-24T06:15:12.445Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

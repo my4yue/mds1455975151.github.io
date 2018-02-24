@@ -98,13 +98,6 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/categories/Linux%E8%BF%90%E7%BB%B4/</loc>
-        <lastmod>2018-02-23T09:54:51.945Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/categories/%E5%85%B6%E4%BB%96/</loc>
         <lastmod>2018-02-23T09:55:53.051Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -135,6 +128,13 @@
     <url>
         <loc>https://mds1455975151.github.io/categories/%E6%B8%B8%E6%88%8F/</loc>
         <lastmod>2018-02-23T09:57:04.741Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/categories/Linux%E8%BF%90%E7%BB%B4/</loc>
+        <lastmod>2018-02-24T06:15:12.445Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
