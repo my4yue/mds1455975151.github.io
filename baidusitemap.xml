@@ -5,7 +5,7 @@
     
   <url>
     <loc>https://mds1455975151.github.io/archives/4e0578ac.html</loc>
-    <lastmod>2018-02-27T09:23:01.325Z</lastmod>
+    <lastmod>2018-02-27T09:37:40.639Z</lastmod>
     <data>
         <display>
         <title>Foreman使用体验</title>
@@ -728,11 +728,11 @@
         
         <tag>Docker</tag>
          
+        <tag>GitLab</tag>
+         
         <tag>Gitlab-CI</tag>
          
         <tag>GitLab-Runner</tag>
-         
-        <tag>GitLab</tag>
          
         <tag>持续集成</tag>
          
