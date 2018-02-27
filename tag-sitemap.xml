@@ -877,13 +877,6 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/tags/GitLab/</loc>
-        <lastmod>2018-02-23T08:42:39.397Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/tags/Gitlab-CI/</loc>
         <lastmod>2018-02-23T08:42:39.397Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -892,6 +885,13 @@
 
     <url>
         <loc>https://mds1455975151.github.io/tags/GitLab-Runner/</loc>
+        <lastmod>2018-02-23T08:42:39.397Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/GitLab/</loc>
         <lastmod>2018-02-23T08:42:39.397Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -1264,6 +1264,27 @@
     <url>
         <loc>https://mds1455975151.github.io/tags/Gitosis/</loc>
         <lastmod>2018-02-24T06:15:12.445Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E5%87%8F%E5%8E%8B/</loc>
+        <lastmod>2018-02-27T09:01:03.038Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E5%8E%8B%E5%8A%9B/</loc>
+        <lastmod>2018-02-27T09:01:03.038Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/Foreman/</loc>
+        <lastmod>2018-02-27T09:23:01.325Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

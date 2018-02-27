@@ -3,6 +3,93 @@
   
     
     <entry>
+      <title><![CDATA[Foreman使用体验]]></title>
+      <url>/archives/4e0578ac.html</url>
+      <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>Foreman使用体验</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="Foreman简介"><a href="#Foreman简介" class="headerlink" title="Foreman简介"></a>Foreman简介</h1><blockquote>
+<p>Foreman is a complete lifecycle management tool for physical and virtual servers. We give system administrators the power to easily automate repetitive tasks, quickly deploy applications, and proactively manage servers, on-premise or in the cloud.</p>
+</blockquote>
+<p>官网地址：<a href="https://theforeman.org/" target="_blank" rel="noopener">https://theforeman.org/</a><br>文档地址：<a href="https://theforeman.org/manuals/1.16/index.html" target="_blank" rel="noopener">https://theforeman.org/manuals/1.16/index.html</a></p>
+<h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@linux-node8 ~]<span class="comment"># cat /etc/redhat-release</span></span><br><span class="line">CentOS Linux release 7.2.1511 (Core)</span><br><span class="line">[root@linux-node8 ~]<span class="comment"># uname -r</span></span><br><span class="line">3.10.0-327.el7.x86_64</span><br><span class="line">[root@linux-node8 ~]<span class="comment"># uname -m</span></span><br><span class="line">x86_64</span><br></pre></td></tr></table></figure>
+<h1 id="部署实践"><a href="#部署实践" class="headerlink" title="部署实践"></a>部署实践</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@linux-node8 ~]<span class="comment"># yum -y install https://yum.puppetlabs.com/puppet5/puppet5-release-el-7.noarch.rpm</span></span><br><span class="line">[root@linux-node8 ~]<span class="comment"># yum -y install http://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm</span></span><br><span class="line">[root@linux-node8 ~]<span class="comment"># yum -y install https://yum.theforeman.org/releases/1.16/el7/x86_64/foreman-release.rpm</span></span><br><span class="line">[root@linux-node8 ~]<span class="comment"># yum -y install foreman-installer</span></span><br><span class="line">[root@linux-node8 ~]<span class="comment"># foreman-installer</span></span><br><span class="line">Installing             Done                                               [100%] [...............................................................................................]</span><br><span class="line">  Success!</span><br><span class="line">  * Foreman is running at https://linux-node8.example.com</span><br><span class="line">      Initial credentials are admin / JSkjTzSsVSZWXTJ4</span><br><span class="line">  * Foreman Proxy is running at https://linux-node8.example.com:8443</span><br><span class="line">  * Puppetmaster is running at port 8140</span><br><span class="line">  The full <span class="built_in">log</span> is at /var/<span class="built_in">log</span>/foreman-installer/foreman.log</span><br></pre></td></tr></table></figure>
+<p>登录界面<br><img src="/archives/c46f1d68/02.png" alt=""><br>登录后首页<br><img src="/archives/c46f1d68/02.png" alt=""></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://martinliu.cn/2015/06/16/e59ca8-rhel-7-e4b88ae5ae89e8a385-foreman-1-8/" target="_blank" rel="noopener">https://martinliu.cn/2015/06/16/e59ca8-rhel-7-e4b88ae5ae89e8a385-foreman-1-8/</a></p>
+<p>======================================================<br>希望各位朋友支持一下</p>
+<ul>
+<li>领取我的<a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=xpdsz87p&amp;utm_source=xpdsz87p" target="_blank" rel="noopener">阿里云幸运券</a>,谢谢.</li>
+<li>使用<a href="https://cloud.tencent.com/redirect.php?redirect=1005&amp;cps_key=5a162632de40024cd01aabff4d3f1370" target="_blank" rel="noopener">腾讯云资源</a></li>
+<li>自己的网站承接广告<a href="http://www.sudianlm.com/track/c/?rid=2056" target="_blank" rel="noopener">速点广告联盟</a></li>
+<li>广告位招商QQ:1455975151</li>
+<li>喜欢购物的朋友可以看看，<a href="http://www.1zhe.com/yq/1066027" target="_blank" rel="noopener">一折特卖</a><!--注册一折特卖，免费领集分宝，集分宝可以当钱花，免费购物不是梦，注册马上送你10集分宝。-->
+</li>
+</ul>
+<p><strong>本文作者</strong>：dongsheng<br><strong>本文地址</strong>： <a href="https://mds1455975151.github.io/archives/4e0578ac.html">https://mds1455975151.github.io/archives/4e0578ac.html</a> <br><strong>版权声明</strong>：转载请注明出处！</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Linux运维 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Foreman </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[如何减压？]]></title>
+      <url>/archives/c9789322.html</url>
+      <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>如何面对压力？如何减压？</p>
+</blockquote>
+<a id="more"></a>
+<p>知乎减压话题：<a href="https://www.zhihu.com/search?type=content&amp;q=%E5%A6%82%E4%BD%95%E5%87%8F%E5%8E%8B" target="_blank" rel="noopener">https://www.zhihu.com/search?type=content&amp;q=%E5%A6%82%E4%BD%95%E5%87%8F%E5%8E%8B</a><br>工作压力大的时候如何得到内心的平静：<a href="https://www.zhihu.com/question/22177438" target="_blank" rel="noopener">https://www.zhihu.com/question/22177438</a><br>压力过大首要因素就是对未来即将发生的事情过度的担忧。。。。<br>压在中国人身上的4座大山：1.房子 2.婚姻 3.孩子 4.野心。</p>
+<p>合适自己的减压方式：</p>
+<ul>
+<li>爬山</li>
+<li>跑步</li>
+<li>收拾房间</li>
+<li>音乐</li>
+<li>电影</li>
+</ul>
+<p>======================================================<br>希望各位朋友支持一下</p>
+<ul>
+<li>领取我的<a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=xpdsz87p&amp;utm_source=xpdsz87p" target="_blank" rel="noopener">阿里云幸运券</a>,谢谢.</li>
+<li>使用<a href="https://cloud.tencent.com/redirect.php?redirect=1005&amp;cps_key=5a162632de40024cd01aabff4d3f1370" target="_blank" rel="noopener">腾讯云资源</a></li>
+<li>自己的网站承接广告<a href="http://www.sudianlm.com/track/c/?rid=2056" target="_blank" rel="noopener">速点广告联盟</a></li>
+<li>广告位招商QQ:1455975151</li>
+<li>喜欢购物的朋友可以看看，<a href="http://www.1zhe.com/yq/1066027" target="_blank" rel="noopener">一折特卖</a><!--注册一折特卖，免费领集分宝，集分宝可以当钱花，免费购物不是梦，注册马上送你10集分宝。-->
+</li>
+</ul>
+<p><strong>本文作者</strong>：dongsheng<br><strong>本文地址</strong>： <a href="https://mds1455975151.github.io/archives/c9789322.html">https://mds1455975151.github.io/archives/c9789322.html</a> <br><strong>版权声明</strong>：转载请注明出处！</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 生活记录 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 减压 </tag>
+            
+            <tag> 压力 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Git之Gitosis]]></title>
       <url>/archives/ad17686.html</url>
       <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
@@ -1568,11 +1655,11 @@
             
             <tag> Docker </tag>
             
-            <tag> GitLab </tag>
-            
             <tag> Gitlab-CI </tag>
             
             <tag> GitLab-Runner </tag>
+            
+            <tag> GitLab </tag>
             
             <tag> 持续集成 </tag>
             
@@ -6260,7 +6347,7 @@
 <p><a href="http://bruce-sha.github.io" target="_blank" rel="noopener">不如</a></p>
 <h2 id="自动链接"><a href="#自动链接" class="headerlink" title="自动链接"></a>自动链接</h2><p>尖括号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;http://ibruce.info&gt;</span><br><span class="line">&lt;bu.ru@qq.com&gt;</span><br></pre></td></tr></table></figure></p>
 <p>效果如下：<br><a href="http://ibruce.info" target="_blank" rel="noopener">http://ibruce.info</a></p>
-<a href="&#109;&#97;&#105;&#x6c;&#x74;&#x6f;&#58;&#x62;&#x75;&#x2e;&#114;&#117;&#x40;&#x71;&#x71;&#46;&#x63;&#x6f;&#x6d;">&#x62;&#x75;&#x2e;&#114;&#117;&#x40;&#x71;&#x71;&#46;&#x63;&#x6f;&#x6d;</a>
+<a href="&#x6d;&#97;&#x69;&#108;&#116;&#x6f;&#x3a;&#98;&#117;&#46;&#114;&#x75;&#64;&#113;&#x71;&#46;&#99;&#111;&#109;">&#98;&#117;&#46;&#114;&#x75;&#64;&#113;&#x71;&#46;&#99;&#111;&#109;</a>
 
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="行内代码"><a href="#行内代码" class="headerlink" title="行内代码"></a>行内代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">``` python</span><br><span class="line">@requires_authorization</span><br><span class="line">def somefunc(param1=&apos;&apos;, param2=0):</span><br><span class="line">    &apos;&apos;&apos;A docstring&apos;&apos;&apos;</span><br><span class="line">    if param1 &gt; param2: # interesting</span><br><span class="line">        print &apos;Greater&apos;</span><br><span class="line">    return (param2 - param1 + 1) or None</span><br><span class="line">class SomeClass:</span><br><span class="line">    pass</span><br><span class="line">&gt;&gt;&gt; message = &apos;&apos;&apos;interpreter</span><br><span class="line">... prompt&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">可代码高亮</span><br><span class="line">``` python</span><br><span class="line">@requires_authorization</span><br><span class="line">def somefunc(param1=&apos;&apos;, param2=0):</span><br><span class="line">    &apos;&apos;&apos;A docstring&apos;&apos;&apos;</span><br><span class="line">    if param1 &gt; param2: # interesting</span><br><span class="line">        print &apos;Greater&apos;</span><br><span class="line">    return (param2 - param1 + 1) or None</span><br><span class="line">class SomeClass:</span><br><span class="line">    pass</span><br><span class="line">&gt;&gt;&gt; message = &apos;&apos;&apos;interpreter</span><br><span class="line">... prompt&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
