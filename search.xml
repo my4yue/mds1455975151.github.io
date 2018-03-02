@@ -3,6 +3,81 @@
   
     
     <entry>
+      <title><![CDATA[配置管理工程师之技能需求]]></title>
+      <url>/archives/eee8f7af.html</url>
+      <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>配置管理工程师之技能需求</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="配置管理概念"><a href="#配置管理概念" class="headerlink" title="配置管理概念"></a>配置管理概念</h1><p>配置管理（Configuration Management，CM）是通过技术或行政手段对软件产品及其开发过程和生命周期进行控制、规范的一系列措施。配置管理的目标是记录软件产品的演化过程，确保软件开发者在软件生命周期中各个阶段都能得到精确的产品配置。<br>更详细介绍，请点击<a href="https://baike.baidu.com/item/%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/10090499?fr=aladdin" target="_blank" rel="noopener">这里</a></p>
+<h1 id="岗位职责及技能要求"><a href="#岗位职责及技能要求" class="headerlink" title="岗位职责及技能要求"></a>岗位职责及技能要求</h1><p>岗位职责：<br>1、负责制定合理的配置管理策略、制度、流程，并负责推广、培训和优化；<br>2、负责搭建、维护配置管理系统，负责公司产品的版本控制、构建与发布管理；<br>3、负责项目的基线管理、分支管理、版本管理、编译管理，发布管理、归档管理等工作；<br>4 、持续跟进优化配置管理相关规范及流程，协助解决开发过程中发现的各种与配置相关问题。</p>
+<p>技能要求：<br>1、熟悉配置管理理论方法，了解项目管理过程和产品开发过程，具备配置管理、变更管理、构建发布过程的实际经验（有持续集成环境配置经验优先）；<br>2、熟练使用SVN， git源码管理工具（有gitlab使用及相关工具配置经验优先）；<br>3、熟悉jenkins 持续集成相关工具（如果可以使用gitlab自带的runner等其他持续集成工具完成相应功能亦可）；<br>4、熟悉linux命令（centos使用者加分），可以编写简单的脚本与jenkins等持续集成工具共同完成自动化运维相关任务（可以在服务器安装配置各种开源软件产品如redis，hadoop技术栈，mongodb等加分）；<br>5、工作态度认真、责任心强、工作细心、有良好的沟通能力、能快速融入团队；<br>6、两年以上工作经验，有互联网产品配置管理经验的优先。</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>======================================================<br>希望各位朋友支持一下</p>
+<ul>
+<li>领取我的<a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=xpdsz87p&amp;utm_source=xpdsz87p" target="_blank" rel="noopener">阿里云幸运券</a>,谢谢.</li>
+<li>使用<a href="https://cloud.tencent.com/redirect.php?redirect=1005&amp;cps_key=5a162632de40024cd01aabff4d3f1370" target="_blank" rel="noopener">腾讯云资源</a></li>
+<li>自己的网站承接广告<a href="http://www.sudianlm.com/track/c/?rid=2056" target="_blank" rel="noopener">速点广告联盟</a></li>
+<li>广告位招商QQ:1455975151</li>
+<li>喜欢购物的朋友可以看看，<a href="http://www.1zhe.com/yq/1066027" target="_blank" rel="noopener">一折特卖</a><!--注册一折特卖，免费领集分宝，集分宝可以当钱花，免费购物不是梦，注册马上送你10集分宝。-->
+</li>
+</ul>
+<p><strong>本文作者</strong>：dongsheng<br><strong>本文地址</strong>： <a href="https://mds1455975151.github.io/archives/eee8f7af.html">https://mds1455975151.github.io/archives/eee8f7af.html</a> <br><strong>版权声明</strong>：转载请注明出处！</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 其他 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 配置管理 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Code-Review之Gerrit入门]]></title>
+      <url>/archives/fba2f6b5.html</url>
+      <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>Code-Review之Gerrit入门</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="Tutorial"><a href="#Tutorial" class="headerlink" title="Tutorial"></a>Tutorial</h1><h2 id="Getting-started"><a href="#Getting-started" class="headerlink" title="Getting started"></a>Getting started</h2><h3 id="A-Quick-Introduction-to-Gerrit"><a href="#A-Quick-Introduction-to-Gerrit" class="headerlink" title="A Quick Introduction to Gerrit"></a>A Quick Introduction to Gerrit</h3><p>Gerrit是一个机遇web的代码审查工具，构建在git版本控制系统的基础之上。<br><strong>What is Gerrit?</strong><br><strong>Where does Gerrit fit in?</strong></p>
+<p>The Life and Times of a Change<br>Cloning the Repository<br>Creating the Review<br>Reviewing the Change<br>Reworking the Change<br>Trying out the Change<br>Manually Verifying the Change<br>Submitting the Change</p>
+<h3 id="User-Guide"><a href="#User-Guide" class="headerlink" title="User Guide"></a>User Guide</h3><h3 id="Project-Owner-Guide"><a href="#Project-Owner-Guide" class="headerlink" title="Project Owner Guide"></a>Project Owner Guide</h3><h3 id="Default-Android-Workflow-external"><a href="#Default-Android-Workflow-external" class="headerlink" title="Default Android Workflow (external)"></a>Default Android Workflow (external)</h3><h2 id="Web"><a href="#Web" class="headerlink" title="Web"></a>Web</h2><p>======================================================<br>希望各位朋友支持一下</p>
+<ul>
+<li>领取我的<a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=xpdsz87p&amp;utm_source=xpdsz87p" target="_blank" rel="noopener">阿里云幸运券</a>,谢谢.</li>
+<li>使用<a href="https://cloud.tencent.com/redirect.php?redirect=1005&amp;cps_key=5a162632de40024cd01aabff4d3f1370" target="_blank" rel="noopener">腾讯云资源</a></li>
+<li>自己的网站承接广告<a href="http://www.sudianlm.com/track/c/?rid=2056" target="_blank" rel="noopener">速点广告联盟</a></li>
+<li>广告位招商QQ:1455975151</li>
+<li>喜欢购物的朋友可以看看，<a href="http://www.1zhe.com/yq/1066027" target="_blank" rel="noopener">一折特卖</a><!--注册一折特卖，免费领集分宝，集分宝可以当钱花，免费购物不是梦，注册马上送你10集分宝。-->
+</li>
+</ul>
+<p><strong>本文作者</strong>：dongsheng<br><strong>本文地址</strong>： <a href="https://mds1455975151.github.io/archives/fba2f6b5.html">https://mds1455975151.github.io/archives/fba2f6b5.html</a> <br><strong>版权声明</strong>：转载请注明出处！</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Linux运维 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Code-Review </tag>
+            
+            <tag> Gerrit </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Foreman使用体验]]></title>
       <url>/archives/4e0578ac.html</url>
       <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
@@ -871,6 +946,10 @@
 <h1 id="Why-we-do-Code-Review"><a href="#Why-we-do-Code-Review" class="headerlink" title="Why we do Code Review ?"></a>Why we do Code Review ?</h1><p>1、提高质量<br>2、及早发现潜在缺陷与BUG，降低事故成本。<br>3、促进团队内部知识共享，提高团队整体水平<br>4、评审过程对于评审人员来说，也是一种思路重构的过程。帮助更多的人理解系统。</p>
 <h1 id="Options-of-Code-Review-代码评审的选择"><a href="#Options-of-Code-Review-代码评审的选择" class="headerlink" title="Options of Code Review(代码评审的选择)"></a>Options of Code Review(代码评审的选择)</h1><p>1、最近一次迭代开发的代码<br>2、系统关键模块<br>3、业务较复杂的模块<br>4、缺陷率较高的模块</p>
 <h1 id="Practice-of-Code-Review-代码评审实践"><a href="#Practice-of-Code-Review-代码评审实践" class="headerlink" title="Practice of Code Review(代码评审实践)"></a>Practice of Code Review(代码评审实践)</h1><p>1、代码评审不是批斗会，不能以缺陷和错误来打击开发人员的积极性评审的目标的提高质量和提高整体水平，作者应该带着学习和提高的态度来参加评审。<br>2、代码集体所有制：对发现的问题要本着整体承担责任 的原则，因此建议把代码质量与团队绩效（而不是个人绩效）挂钩。<br>3、评审程度，进行一次整体的地毯式的评审成本很高。<br>4、代码评审的可操作性，首先需要评审团队具备经验丰富的系统架构师和精通业务的行业专家。其次团队需建立其开发规范或指南，在项目初期建立少量的Sample代码与checklist为评审提供依据。<br>5、评审人员的职责是发现工作成果中的缺陷，并帮助开发人员给出消除缺陷的办法，而不是替开发人员消除缺陷 。<br>6、记录评审中出现的问题，跟踪改进。<br>7、评审前充分准备，评审后详细总结。<br>8、不要因为时间和成本问题取消评审。</p>
+<h1 id="工具选型"><a href="#工具选型" class="headerlink" title="工具选型"></a>工具选型</h1><ul>
+<li>Facebook的Phabricator(开源)</li>
+<li>Google的Gerrit (开源)</li>
+</ul>
 <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="http://www.flickering.cn/uncategorized/2014/08/%E8%AE%A9-code-review%E6%88%90%E4%B8%BA%E4%B8%80%E7%A7%8D%E4%B9%A0%E6%83%AF/" target="_blank" rel="noopener">让-code-review成为一种习惯</a><br><a href="http://blog.csdn.net/ejinxian/article/details/44958849" target="_blank" rel="noopener">20最佳代码审查工具</a></p>
 <p>======================================================<br>希望各位朋友支持一下</p>
 <ul>
@@ -1245,6 +1324,7 @@
 <h2 id="狂蟒之灾3：魂泣山溪"><a href="#狂蟒之灾3：魂泣山溪" class="headerlink" title="狂蟒之灾3：魂泣山溪"></a><strong>狂蟒之灾3：魂泣山溪</strong></h2><p>在欧洲乡间的秘密研究室里, 一位顶尖的科学家正对着两只巨蟒进行实验测试. 当资助者(约翰莱斯戴维斯饰) 企图干预实验时, 饥饿的蟒蛇逃出了研究室. 汉密特(戴维赫索霍夫饰) 受雇追捕牠们, 其任务是必须在蟒蛇窜逃到城市且在灾难扩大以前, 实时捉拿这多产又极度致命的生物……</p>
 <h2 id="芳华"><a href="#芳华" class="headerlink" title="芳华"></a><strong>芳华</strong></h2><p>故事发生在上世纪七十年代，寄人篱下的少女何小萍（苗苗 饰）经过重重试炼终于加入了梦寐以求的文工团，哪知道这里和她曾经待过的那些地方并无不同，她依然得忍受遭人唾弃和欺侮的生活。唯一给过她温暖的，是刘峰（黄轩 饰），不仅仅是对何小萍，被称为“活雷锋”的刘峰把自己的爱情和温暖无私的奉献给每一个人。<br>　　实际上，刘峰一直爱慕着美丽活泼的林丁丁（杨采钰 饰），当他选择将这份感情勇敢的表达出来时，却让自己的人生走向了完全不同的方向。战争开始了，刘峰、何小萍和萧穗子前赴后继的走上了前线，在枪弹和炮火之中，每一个人都在用生命和热血绽放着属于他们的芳华。</p>
 <h2 id="逃出绝命镇"><a href="#逃出绝命镇" class="headerlink" title="逃出绝命镇"></a><strong>逃出绝命镇</strong></h2><p>　　黑人小伙克里斯（丹尼尔·卡卢亚 Daniel Kaluuya 饰）和白人女孩露丝（艾莉森·威廉姆斯 Allison Williams 饰）相恋，虽然两人之间的感情十分要好，但克里斯一直为自己的肤色心存芥蒂。某日，两人相约前往露丝家做客，在那里，克里斯见到了露丝的父母迪恩（布莱德利·惠特福德 Bradley Whitford 饰）和米西（凯瑟琳·基纳 Catherine Keener 饰），除了露丝的弟弟吉瑞米（卡莱伯·兰德里·琼斯 Caleb Landry Jones 饰）对克里斯展现出了一丝敌意外，一切都堪称完美。<br>　　隔日，克里斯参加了露丝家举办的派对，在派对中，克里斯遇见了旧友安德鲁（凯斯·斯坦菲尔德 Keith Stanfield 饰），让克里斯百思不得其解的是，安德鲁的穿着、谈吐和举止和先前大相径庭，判若两人。种种诡异的蛛丝马迹让克里斯渐渐察觉，自己似乎陷入了一个阴谋之中。</p>
+<h2 id="时空罪恶"><a href="#时空罪恶" class="headerlink" title="时空罪恶"></a><strong>时空罪恶</strong></h2><p>和恐怖游轮类似的循环电影，只不过只有三次。</p>
 <h1 id="电视剧"><a href="#电视剧" class="headerlink" title="电视剧"></a>电视剧</h1><p><strong>小丈夫</strong><br><strong>蛇蝎女佣</strong><br><strong>黑吃黑</strong></p>
 <h1 id="综艺节目"><a href="#综艺节目" class="headerlink" title="综艺节目"></a>综艺节目</h1><p><strong>圆桌派</strong></p>
 <p>======================================================<br>希望各位朋友支持一下</p>
@@ -4341,6 +4421,7 @@
 <h2 id="持续集成的原则"><a href="#持续集成的原则" class="headerlink" title="持续集成的原则"></a>持续集成的原则</h2><p>业界普遍认同的持续集成的原则包括:<br>1、需要版本控制软件保障团队成员提交的代码不会导致集成失败。常用的版本控制软件有cvs,subversion,git,sourcesafe等；<br>2、开发人员须及时向版本控制库中提交代码，也需经常性的从版本控制库中更新代码到本地；<br>3、需要有专门的集成服务器来执行集成构建。根据项目的具体实际，集成构建可以被软件的修改来直接触发,也可以定时启动，如每半小时构建一次；<br>4、必须保证构建的成功。如果构建失败，修复构建过程中的错误是优先级最高的工作。一旦修复，需手动启动一次构建。</p>
 <h2 id="持续集成的组成"><a href="#持续集成的组成" class="headerlink" title="持续集成的组成"></a>持续集成的组成</h2><p>一个完整的构建系统必须包括:<br>1、一个自动构建过程，包括自动编译、分发、部署和测试等。<br>2、一个代码库，即需要版本控制软件来保障代码的可维护性，同时作为构建过程的素材库。<br>3、一个持续集成服务器。即将介绍的jenkins就是一个配置简单和使用方便的持续集成服务器。</p>
 <h2 id="持续集成最佳实践"><a href="#持续集成最佳实践" class="headerlink" title="持续集成最佳实践"></a>持续集成最佳实践</h2><p>1、维护一个单一的代码库<br>2、使构建自动化<br>3、执行测试是构建的一部分<br>4、集成日志及历史记录<br>5、使用统一的依赖包管理库<br>6、每天至少集成一次</p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>1、<a href="https://zhuanlan.zhihu.com/p/33206437" target="_blank" rel="noopener">微服务化的基石——持续集成</a></p>
 <p>======================================================<br>希望各位朋友支持一下</p>
 <ul>
 <li>领取我的<a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=xpdsz87p&amp;utm_source=xpdsz87p" target="_blank" rel="noopener">阿里云幸运券</a>,谢谢.</li>
@@ -6347,7 +6428,7 @@
 <p><a href="http://bruce-sha.github.io" target="_blank" rel="noopener">不如</a></p>
 <h2 id="自动链接"><a href="#自动链接" class="headerlink" title="自动链接"></a>自动链接</h2><p>尖括号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;http://ibruce.info&gt;</span><br><span class="line">&lt;bu.ru@qq.com&gt;</span><br></pre></td></tr></table></figure></p>
 <p>效果如下：<br><a href="http://ibruce.info" target="_blank" rel="noopener">http://ibruce.info</a></p>
-<a href="&#109;&#97;&#105;&#x6c;&#x74;&#x6f;&#58;&#98;&#117;&#x2e;&#x72;&#117;&#64;&#x71;&#113;&#x2e;&#99;&#x6f;&#x6d;">&#98;&#117;&#x2e;&#x72;&#117;&#64;&#x71;&#113;&#x2e;&#99;&#x6f;&#x6d;</a>
+<a href="&#x6d;&#x61;&#105;&#108;&#x74;&#111;&#58;&#x62;&#x75;&#46;&#114;&#117;&#x40;&#113;&#113;&#46;&#x63;&#x6f;&#109;">&#x62;&#x75;&#46;&#114;&#117;&#x40;&#113;&#113;&#46;&#x63;&#x6f;&#109;</a>
 
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="行内代码"><a href="#行内代码" class="headerlink" title="行内代码"></a>行内代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">``` python</span><br><span class="line">@requires_authorization</span><br><span class="line">def somefunc(param1=&apos;&apos;, param2=0):</span><br><span class="line">    &apos;&apos;&apos;A docstring&apos;&apos;&apos;</span><br><span class="line">    if param1 &gt; param2: # interesting</span><br><span class="line">        print &apos;Greater&apos;</span><br><span class="line">    return (param2 - param1 + 1) or None</span><br><span class="line">class SomeClass:</span><br><span class="line">    pass</span><br><span class="line">&gt;&gt;&gt; message = &apos;&apos;&apos;interpreter</span><br><span class="line">... prompt&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">可代码高亮</span><br><span class="line">``` python</span><br><span class="line">@requires_authorization</span><br><span class="line">def somefunc(param1=&apos;&apos;, param2=0):</span><br><span class="line">    &apos;&apos;&apos;A docstring&apos;&apos;&apos;</span><br><span class="line">    if param1 &gt; param2: # interesting</span><br><span class="line">        print &apos;Greater&apos;</span><br><span class="line">    return (param2 - param1 + 1) or None</span><br><span class="line">class SomeClass:</span><br><span class="line">    pass</span><br><span class="line">&gt;&gt;&gt; message = &apos;&apos;&apos;interpreter</span><br><span class="line">... prompt&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>

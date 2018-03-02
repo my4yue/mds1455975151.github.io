@@ -49,22 +49,8 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/categories/jenkins/</loc>
-        <lastmod>2018-02-23T08:16:38.931Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/categories/svn/</loc>
         <lastmod>2018-02-23T08:28:57.822Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://mds1455975151.github.io/categories/DevOps/</loc>
-        <lastmod>2018-02-23T08:37:32.883Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -86,13 +72,6 @@
     <url>
         <loc>https://mds1455975151.github.io/categories/CI-CD/</loc>
         <lastmod>2018-02-23T09:54:34.510Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://mds1455975151.github.io/categories/%E5%85%B6%E4%BB%96/</loc>
-        <lastmod>2018-02-23T09:55:53.051Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -126,15 +105,36 @@
     </url>
 
     <url>
+        <loc>https://mds1455975151.github.io/categories/jenkins/</loc>
+        <lastmod>2018-03-02T02:38:42.077Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://mds1455975151.github.io/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/</loc>
-        <lastmod>2018-02-27T09:01:03.038Z</lastmod>
+        <lastmod>2018-03-02T02:43:40.883Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/categories/DevOps/</loc>
+        <lastmod>2018-03-02T02:45:48.956Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://mds1455975151.github.io/categories/Linux%E8%BF%90%E7%BB%B4/</loc>
-        <lastmod>2018-02-27T09:37:40.639Z</lastmod>
+        <lastmod>2018-03-02T03:05:07.804Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/categories/%E5%85%B6%E4%BB%96/</loc>
+        <lastmod>2018-03-02T05:23:42.152Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

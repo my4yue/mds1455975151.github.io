@@ -4,6 +4,112 @@
 
     
   <url>
+    <loc>https://mds1455975151.github.io/archives/eee8f7af.html</loc>
+    <lastmod>2018-03-02T05:23:42.152Z</lastmod>
+    <data>
+        <display>
+        <title>配置管理工程师之技能需求</title>
+        <pubTime>2018-03-02T05:14:54.000Z</pubTime>
+        
+        <tag>配置管理</tag>
+         
+         
+           
+             
+              <breadCrumb title="其他" url="https://mds1455975151.github.io/categories/%E5%85%B6%E4%BB%96/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://mds1455975151.github.io/archives/fba2f6b5.html</loc>
+    <lastmod>2018-03-02T03:05:07.804Z</lastmod>
+    <data>
+        <display>
+        <title>Code-Review之Gerrit入门</title>
+        <pubTime>2018-03-02T02:54:29.000Z</pubTime>
+        
+        <tag>Code-Review</tag>
+         
+        <tag>Gerrit</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux运维" url="https://mds1455975151.github.io/categories/Linux%E8%BF%90%E7%BB%B4/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://mds1455975151.github.io/archives/9dd5f347.html</loc>
+    <lastmod>2018-03-02T02:45:48.956Z</lastmod>
+    <data>
+        <display>
+        <title>Code Review</title>
+        <pubTime>2018-02-01T03:01:49.000Z</pubTime>
+        
+        <tag>代码评审</tag>
+         
+        <tag>Code Review</tag>
+         
+         
+           
+             
+              <breadCrumb title="DevOps" url="https://mds1455975151.github.io/categories/DevOps/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://mds1455975151.github.io/archives/75a677a6.html</loc>
+    <lastmod>2018-03-02T02:43:40.883Z</lastmod>
+    <data>
+        <display>
+        <title>电影2018</title>
+        <pubTime>2018-01-27T12:01:24.000Z</pubTime>
+        
+        <tag>电影</tag>
+         
+         
+           
+             
+              <breadCrumb title="生活记录" url="https://mds1455975151.github.io/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://mds1455975151.github.io/archives/bb3df754.html</loc>
+    <lastmod>2018-03-02T02:38:42.077Z</lastmod>
+    <data>
+        <display>
+        <title>Jenkins之持续集成概念</title>
+        <pubTime>2017-12-16T08:09:46.000Z</pubTime>
+        
+        <tag>持续集成</tag>
+         
+        <tag>Jenkins</tag>
+         
+         
+           
+             
+              <breadCrumb title="jenkins" url="https://mds1455975151.github.io/categories/jenkins/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://mds1455975151.github.io/archives/4e0578ac.html</loc>
     <lastmod>2018-02-27T09:37:40.639Z</lastmod>
     <data>
@@ -813,28 +919,6 @@
 
     
   <url>
-    <loc>https://mds1455975151.github.io/archives/9dd5f347.html</loc>
-    <lastmod>2018-02-23T08:37:32.883Z</lastmod>
-    <data>
-        <display>
-        <title>Code Review</title>
-        <pubTime>2018-02-01T03:01:49.000Z</pubTime>
-        
-        <tag>代码评审</tag>
-         
-        <tag>Code Review</tag>
-         
-         
-           
-             
-              <breadCrumb title="DevOps" url="https://mds1455975151.github.io/categories/DevOps/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://mds1455975151.github.io/archives/9357d8a6.html</loc>
     <lastmod>2018-02-23T08:37:09.916Z</lastmod>
     <data>
@@ -1384,26 +1468,6 @@
            
              
               <breadCrumb title="Linux运维" url="https://mds1455975151.github.io/categories/Linux%E8%BF%90%E7%BB%B4/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://mds1455975151.github.io/archives/75a677a6.html</loc>
-    <lastmod>2018-02-23T08:20:39.474Z</lastmod>
-    <data>
-        <display>
-        <title>电影2018</title>
-        <pubTime>2018-01-27T12:01:24.000Z</pubTime>
-        
-        <tag>电影</tag>
-         
-         
-           
-             
-              <breadCrumb title="生活记录" url="https://mds1455975151.github.io/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
           
         </display>
     </data>
@@ -2364,28 +2428,6 @@
         <tag>jenkins</tag>
          
         <tag>游戏</tag>
-         
-         
-           
-             
-              <breadCrumb title="jenkins" url="https://mds1455975151.github.io/categories/jenkins/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://mds1455975151.github.io/archives/bb3df754.html</loc>
-    <lastmod>2017-12-27T06:21:23.616Z</lastmod>
-    <data>
-        <display>
-        <title>Jenkins之持续集成概念</title>
-        <pubTime>2017-12-16T08:09:46.000Z</pubTime>
-        
-        <tag>持续集成</tag>
-         
-        <tag>Jenkins</tag>
          
          
            
