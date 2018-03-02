@@ -387,13 +387,6 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/tags/Minikube/</loc>
-        <lastmod>2018-01-10T09:16:51.200Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/tags/%E6%B8%B8%E6%88%8F/</loc>
         <lastmod>2018-01-10T09:36:42.158Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -508,13 +501,6 @@
     <url>
         <loc>https://mds1455975151.github.io/tags/%E7%A7%81%E6%9C%89CI-CD%E5%B9%B3%E5%8F%B0/</loc>
         <lastmod>2018-02-21T04:26:21.255Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://mds1455975151.github.io/tags/Kubernetes/</loc>
-        <lastmod>2018-02-21T06:18:29.538Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -837,13 +823,6 @@
     <url>
         <loc>https://mds1455975151.github.io/tags/%E5%BE%BD%E7%AB%A0/</loc>
         <lastmod>2018-02-23T08:42:20.460Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://mds1455975151.github.io/tags/Docker/</loc>
-        <lastmod>2018-02-23T08:42:39.397Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -1297,13 +1276,6 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/tags/%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/</loc>
-        <lastmod>2018-03-02T05:23:42.152Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/tags/%E4%BE%9D%E8%B5%96%E7%AE%A1%E7%90%86/</loc>
         <lastmod>2018-03-02T09:52:31.759Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1327,6 +1299,34 @@
     <url>
         <loc>https://mds1455975151.github.io/tags/virtualenv/</loc>
         <lastmod>2018-03-02T10:05:16.558Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/Docker/</loc>
+        <lastmod>2018-03-02T10:10:21.327Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/Kubernetes/</loc>
+        <lastmod>2018-03-02T10:10:21.327Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/Minikube/</loc>
+        <lastmod>2018-03-02T10:10:21.327Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/</loc>
+        <lastmod>2018-03-02T10:10:37.852Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
