@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>https://mds1455975151.github.io/archives/d6923a8b.html</loc>
+    <lastmod>2018-03-03T09:15:44.765Z</lastmod>
+    <data>
+        <display>
+        <title>Docker私有仓库管理系统Harbor部署</title>
+        <pubTime>2018-01-26T07:43:05.000Z</pubTime>
+        
+        <tag>Docker</tag>
+         
+        <tag>Harbor</tag>
+         
+        <tag>私有仓库</tag>
+         
+         
+           
+             
+              <breadCrumb title="Docker" url="https://mds1455975151.github.io/categories/Docker/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://mds1455975151.github.io/archives/508f78f8.html</loc>
     <lastmod>2018-03-02T10:26:58.987Z</lastmod>
     <data>
@@ -1663,9 +1687,9 @@
          
         <tag>jenkins</tag>
          
-        <tag>Maven</tag>
-         
         <tag>Nexus</tag>
+         
+        <tag>Maven</tag>
          
          
            
@@ -1903,30 +1927,6 @@
 
     
   <url>
-    <loc>https://mds1455975151.github.io/archives/d6923a8b.html</loc>
-    <lastmod>2018-01-26T10:36:24.429Z</lastmod>
-    <data>
-        <display>
-        <title>Docker私有仓库管理系统Harbor部署</title>
-        <pubTime>2018-01-26T07:43:05.000Z</pubTime>
-        
-        <tag>Docker</tag>
-         
-        <tag>Harbor</tag>
-         
-        <tag>私有仓库</tag>
-         
-         
-           
-             
-              <breadCrumb title="Docker" url="https://mds1455975151.github.io/categories/Docker/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://mds1455975151.github.io/archives/f3d3f3f5.html</loc>
     <lastmod>2018-01-14T11:19:53.460Z</lastmod>
     <data>
@@ -1934,9 +1934,9 @@
         <title>SaltStack+Docker构建高可用与自动发现服务</title>
         <pubTime>2018-01-13T09:07:04.000Z</pubTime>
         
-        <tag>SaltStack</tag>
-         
         <tag>Docker</tag>
+         
+        <tag>SaltStack</tag>
          
         <tag>自动发现</tag>
          
