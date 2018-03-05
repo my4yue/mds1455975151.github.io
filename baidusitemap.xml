@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>https://mds1455975151.github.io/archives/534d4a72.html</loc>
+    <lastmod>2018-03-05T02:55:05.554Z</lastmod>
+    <data>
+        <display>
+        <title>VMware之文件共享</title>
+        <pubTime>2018-03-04T05:51:07.000Z</pubTime>
+        
+        <tag>VMware</tag>
+         
+        <tag>文件共享</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux运维" url="https://mds1455975151.github.io/categories/Linux%E8%BF%90%E7%BB%B4/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://mds1455975151.github.io/archives/d6923a8b.html</loc>
     <lastmod>2018-03-03T09:15:44.765Z</lastmod>
     <data>
@@ -380,9 +402,9 @@
         
         <tag>Hexo</tag>
          
-        <tag>GitHub</tag>
-         
         <tag>NexT</tag>
+         
+        <tag>GitHub</tag>
          
          
            
@@ -1687,9 +1709,9 @@
          
         <tag>jenkins</tag>
          
-        <tag>Nexus</tag>
-         
         <tag>Maven</tag>
+         
+        <tag>Nexus</tag>
          
          
            
@@ -1934,9 +1956,9 @@
         <title>SaltStack+Docker构建高可用与自动发现服务</title>
         <pubTime>2018-01-13T09:07:04.000Z</pubTime>
         
-        <tag>Docker</tag>
-         
         <tag>SaltStack</tag>
+         
+        <tag>Docker</tag>
          
         <tag>自动发现</tag>
          
