@@ -4,30 +4,8 @@
 
     
   <url>
-    <loc>https://mds1455975151.github.io/archives/534d4a72.html</loc>
-    <lastmod>2018-03-05T02:55:05.554Z</lastmod>
-    <data>
-        <display>
-        <title>VMware之文件共享</title>
-        <pubTime>2018-03-04T05:51:07.000Z</pubTime>
-        
-        <tag>VMware</tag>
-         
-        <tag>文件共享</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux运维" url="https://mds1455975151.github.io/categories/Linux%E8%BF%90%E7%BB%B4/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>https://mds1455975151.github.io/archives/d6923a8b.html</loc>
-    <lastmod>2018-03-03T09:15:44.765Z</lastmod>
+    <lastmod>2018-03-05T05:40:14.390Z</lastmod>
     <data>
         <display>
         <title>Docker私有仓库管理系统Harbor部署</title>
@@ -43,6 +21,28 @@
            
              
               <breadCrumb title="Docker" url="https://mds1455975151.github.io/categories/Docker/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://mds1455975151.github.io/archives/534d4a72.html</loc>
+    <lastmod>2018-03-05T02:55:05.554Z</lastmod>
+    <data>
+        <display>
+        <title>VMware之文件共享</title>
+        <pubTime>2018-03-04T05:51:07.000Z</pubTime>
+        
+        <tag>VMware</tag>
+         
+        <tag>文件共享</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux运维" url="https://mds1455975151.github.io/categories/Linux%E8%BF%90%E7%BB%B4/"/>
           
         </display>
     </data>
@@ -402,9 +402,9 @@
         
         <tag>Hexo</tag>
          
-        <tag>NexT</tag>
-         
         <tag>GitHub</tag>
+         
+        <tag>NexT</tag>
          
          
            
@@ -1035,11 +1035,11 @@
         
         <tag>Docker</tag>
          
-        <tag>GitLab</tag>
-         
         <tag>Gitlab-CI</tag>
          
         <tag>GitLab-Runner</tag>
+         
+        <tag>GitLab</tag>
          
         <tag>持续集成</tag>
          
@@ -1709,9 +1709,9 @@
          
         <tag>jenkins</tag>
          
-        <tag>Maven</tag>
-         
         <tag>Nexus</tag>
+         
+        <tag>Maven</tag>
          
          
            
