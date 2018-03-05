@@ -5,7 +5,7 @@
     
   <url>
     <loc>https://mds1455975151.github.io/archives/d6923a8b.html</loc>
-    <lastmod>2018-03-05T05:40:14.390Z</lastmod>
+    <lastmod>2018-03-05T06:09:53.008Z</lastmod>
     <data>
         <display>
         <title>Docker私有仓库管理系统Harbor部署</title>
@@ -1035,11 +1035,11 @@
         
         <tag>Docker</tag>
          
+        <tag>GitLab</tag>
+         
         <tag>Gitlab-CI</tag>
          
         <tag>GitLab-Runner</tag>
-         
-        <tag>GitLab</tag>
          
         <tag>持续集成</tag>
          
