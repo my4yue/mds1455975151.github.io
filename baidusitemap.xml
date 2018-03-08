@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>https://mds1455975151.github.io/archives/78579e83.html</loc>
+    <lastmod>2018-03-08T06:54:13.970Z</lastmod>
+    <data>
+        <display>
+        <title>使用LetsEncrypt配置网站https</title>
+        <pubTime>2018-03-08T06:20:13.000Z</pubTime>
+        
+        <tag>https</tag>
+         
+        <tag>LetsEncrypt</tag>
+         
+        <tag>免费SSL证书</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux运维" url="https://mds1455975151.github.io/categories/Linux%E8%BF%90%E7%BB%B4/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://mds1455975151.github.io/archives/8bece5b5.html</loc>
     <lastmod>2018-03-08T04:45:53.631Z</lastmod>
     <data>
@@ -1057,11 +1081,11 @@
         
         <tag>Docker</tag>
          
-        <tag>GitLab</tag>
-         
         <tag>Gitlab-CI</tag>
          
         <tag>GitLab-Runner</tag>
+         
+        <tag>GitLab</tag>
          
         <tag>持续集成</tag>
          
@@ -1731,9 +1755,9 @@
          
         <tag>jenkins</tag>
          
-        <tag>Nexus</tag>
-         
         <tag>Maven</tag>
+         
+        <tag>Nexus</tag>
          
          
            
