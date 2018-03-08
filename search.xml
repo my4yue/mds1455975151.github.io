@@ -3,6 +3,57 @@
   
     
     <entry>
+      <title><![CDATA[Nginx之使用Nginx实现灰度发布]]></title>
+      <url>/archives/8bece5b5.html</url>
+      <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>使用Nginx实现灰度发布</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="灰度发布概述"><a href="#灰度发布概述" class="headerlink" title="灰度发布概述"></a>灰度发布概述</h1><p>灰度发布是指在黑与白之间，能够平滑过渡的一种发布方式。AB test就是一种灰度发布方式，让一部分用户继续用A，一部分用户开始用B，如果用户对B没有什么反对意见，那么逐步扩大范围，把所有用户都迁移到B上面来。<br>灰度发布可以保证整体系统的稳定，在初始灰度的时候就可以发现、调整问题，以保证其影响度。<br>灰度发布常见一般有三种方式:</p>
+<ul>
+<li>Nginx+LUA方式</li>
+<li>根据Cookie实现灰度发布</li>
+<li>根据来路IP实现灰度发布<br>本文主要将讲解根据Cookie和来路IP这两种方式实现简单的灰度发布。<h1 id="部署实践"><a href="#部署实践" class="headerlink" title="部署实践"></a>部署实践</h1><h2 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /etc/redhat-release</span></span><br><span class="line">CentOS Linux release 7.4.1708 (Core)</span><br><span class="line"><span class="comment"># uname -r</span></span><br><span class="line">3.10.0-693.el7.x86_64</span><br><span class="line"><span class="comment"># uname -m</span></span><br><span class="line">x86_64</span><br><span class="line"><span class="comment"># nginx -v</span></span><br><span class="line">nginx version: nginx/1.12.2</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="基于IP地址的灰度发布实现"><a href="#基于IP地址的灰度发布实现" class="headerlink" title="基于IP地址的灰度发布实现"></a>基于IP地址的灰度发布实现</h2><p><strong>根据IP地址反向代理到不同的后端server</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">upstream prod &#123;</span><br><span class="line">    server 192.168.1.10;</span><br><span class="line">    server 192.168.1.11;</span><br><span class="line">&#125;</span><br><span class="line">upstream pre-prod &#123;</span><br><span class="line">    server 192.168.1.100;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    access_log /var/<span class="built_in">log</span>/nginx/access.log main;</span><br><span class="line">    <span class="built_in">set</span> <span class="variable">$web_backend</span> prod;</span><br><span class="line">    <span class="keyword">if</span> (<span class="variable">$remote_addr</span> ~ <span class="string">"123.123.123.123"</span>) &#123;</span><br><span class="line">        <span class="built_in">set</span> <span class="variable">$web_backend</span> pre-prod;</span><br><span class="line">    &#125;</span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://<span class="variable">$web_backend</span>;</span><br><span class="line">        include proxy.conf;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>根据IP地址设置不同的网站根目录</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    access_log /var/log/nginx/access.log main;</span><br><span class="line">    set $rootdir &quot;/var/www/html&quot;;</span><br><span class="line">    if ($remote_addr ~ &quot;123.123.123.123&quot;) &#123;</span><br><span class="line">        set $rootdir &quot;/var/www/test&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    location / &#123;</span><br><span class="line">        root $rootdir;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>set 命令依赖rewrite模块</p>
+</blockquote>
+<p><strong>利用geoip做基于地理位置的灰度发布</strong><br>参考：<a href="http://www.mamicode.com/info-detail-1477149.html" target="_blank" rel="noopener">http://www.mamicode.com/info-detail-1477149.html</a></p>
+<h2 id="基于cookie的灰度发布实现"><a href="#基于cookie的灰度发布实现" class="headerlink" title="基于cookie的灰度发布实现"></a>基于cookie的灰度发布实现</h2><p><strong>if指令实现</strong><br><strong>map指令实现</strong><br>参考：<a href="https://www.cnblogs.com/weifeng1463/p/7353710.html" target="_blank" rel="noopener">https://www.cnblogs.com/weifeng1463/p/7353710.html</a></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://www.cnblogs.com/weifeng1463/p/7353710.html" target="_blank" rel="noopener">https://www.cnblogs.com/weifeng1463/p/7353710.html</a><br><a href="https://www.cnblogs.com/zhangyin6985/p/6064350.html" target="_blank" rel="noopener">https://www.cnblogs.com/zhangyin6985/p/6064350.html</a></p>
+<p>======================================================<br>希望各位朋友支持一下</p>
+<ul>
+<li>领取我的<a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=xpdsz87p&amp;utm_source=xpdsz87p" target="_blank" rel="noopener">阿里云幸运券</a>,谢谢.</li>
+<li>使用<a href="https://cloud.tencent.com/redirect.php?redirect=1005&amp;cps_key=5a162632de40024cd01aabff4d3f1370" target="_blank" rel="noopener">腾讯云资源</a></li>
+<li>自己的网站承接广告<a href="http://www.sudianlm.com/track/c/?rid=2056" target="_blank" rel="noopener">速点广告联盟</a></li>
+<li>广告位招商QQ:1455975151</li>
+<li>喜欢购物的朋友可以看看，<a href="http://www.1zhe.com/yq/1066027" target="_blank" rel="noopener">一折特卖</a><!--注册一折特卖，免费领集分宝，集分宝可以当钱花，免费购物不是梦，注册马上送你10集分宝。-->
+</li>
+</ul>
+<p><strong>本文作者</strong>：dongsheng<br><strong>本文地址</strong>： <a href="https://mds1455975151.github.io/archives/8bece5b5.html">https://mds1455975151.github.io/archives/8bece5b5.html</a> <br><strong>版权声明</strong>：转载请注明出处！</p>
+]]></content>
+      
+        <categories>
+            
+            <category> Linux运维 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Nginx </tag>
+            
+            <tag> 灰度发布 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[VMware之文件共享]]></title>
       <url>/archives/534d4a72.html</url>
       <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
@@ -1472,7 +1523,7 @@
 <h2 id="芳华"><a href="#芳华" class="headerlink" title="芳华"></a><strong>芳华</strong></h2><p>故事发生在上世纪七十年代，寄人篱下的少女何小萍（苗苗 饰）经过重重试炼终于加入了梦寐以求的文工团，哪知道这里和她曾经待过的那些地方并无不同，她依然得忍受遭人唾弃和欺侮的生活。唯一给过她温暖的，是刘峰（黄轩 饰），不仅仅是对何小萍，被称为“活雷锋”的刘峰把自己的爱情和温暖无私的奉献给每一个人。<br>　　实际上，刘峰一直爱慕着美丽活泼的林丁丁（杨采钰 饰），当他选择将这份感情勇敢的表达出来时，却让自己的人生走向了完全不同的方向。战争开始了，刘峰、何小萍和萧穗子前赴后继的走上了前线，在枪弹和炮火之中，每一个人都在用生命和热血绽放着属于他们的芳华。</p>
 <h2 id="逃出绝命镇"><a href="#逃出绝命镇" class="headerlink" title="逃出绝命镇"></a><strong>逃出绝命镇</strong></h2><p>　　黑人小伙克里斯（丹尼尔·卡卢亚 Daniel Kaluuya 饰）和白人女孩露丝（艾莉森·威廉姆斯 Allison Williams 饰）相恋，虽然两人之间的感情十分要好，但克里斯一直为自己的肤色心存芥蒂。某日，两人相约前往露丝家做客，在那里，克里斯见到了露丝的父母迪恩（布莱德利·惠特福德 Bradley Whitford 饰）和米西（凯瑟琳·基纳 Catherine Keener 饰），除了露丝的弟弟吉瑞米（卡莱伯·兰德里·琼斯 Caleb Landry Jones 饰）对克里斯展现出了一丝敌意外，一切都堪称完美。<br>　　隔日，克里斯参加了露丝家举办的派对，在派对中，克里斯遇见了旧友安德鲁（凯斯·斯坦菲尔德 Keith Stanfield 饰），让克里斯百思不得其解的是，安德鲁的穿着、谈吐和举止和先前大相径庭，判若两人。种种诡异的蛛丝马迹让克里斯渐渐察觉，自己似乎陷入了一个阴谋之中。</p>
 <h2 id="时空罪恶"><a href="#时空罪恶" class="headerlink" title="时空罪恶"></a><strong>时空罪恶</strong></h2><p>和恐怖游轮类似的循环电影，只不过只有三次。</p>
-<h1 id="电视剧"><a href="#电视剧" class="headerlink" title="电视剧"></a>电视剧</h1><p><strong>小丈夫</strong><br><strong>蛇蝎女佣</strong><br><strong>黑吃黑</strong></p>
+<h2 id="抢钱老兵"><a href="#抢钱老兵" class="headerlink" title="抢钱老兵"></a><strong>抢钱老兵</strong></h2><h1 id="电视剧"><a href="#电视剧" class="headerlink" title="电视剧"></a>电视剧</h1><p><strong>小丈夫</strong><br><strong>蛇蝎女佣</strong><br><strong>黑吃黑</strong></p>
 <h1 id="综艺节目"><a href="#综艺节目" class="headerlink" title="综艺节目"></a>综艺节目</h1><p><strong>圆桌派</strong></p>
 <p>======================================================<br>希望各位朋友支持一下</p>
 <ul>
@@ -1540,8 +1591,9 @@
 <p><strong>镜像仓库</strong><br><img src="/archives/d6923a8b/04.png" alt=""></p>
 <p><strong>成员</strong><br><img src="/archives/d6923a8b/05.png" alt=""></p>
 <p><strong>镜像仓库</strong><br><img src="/archives/d6923a8b/06.png" alt=""></p>
-<h1 id="FQA"><a href="#FQA" class="headerlink" title="FQA"></a>FQA</h1><p>1、报错1：<figure class="highlight plain"><figcaption><span>response from daemon: Get</span><a href="https://registry-1.madslq.cn/v2/:" target="_blank" rel="noopener">x509: certificate is valid for madslq.cn, not registry-1.madslq.cn```</a></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[root@linux-node8 certs.d]# docker login https://registry-1.madslq.cn</span><br><span class="line">Username: admin</span><br><span class="line">Password:</span><br><span class="line">Error response from daemon: Get https://registry-1.madslq.cn/v2/: x509: certificate is valid for madslq.cn, not registry-1.madslq.cn</span><br><span class="line">解决：</span><br><span class="line">保证hostname及证书生成过程中的域名一直即都是registry-1.madslq.cn即可</span><br><span class="line"></span><br><span class="line">2、报错2： ``` bash Error response from daemon: Get https://registry-1.madslq.cn/v2/: dial tcp 192.168.200.108:443: getsockopt: connection refused</span><br></pre></td></tr></table></figure></p>
-<p>[root@linux-node8 certs.d]# docker login <a href="https://registry-1.madslq.cn" target="_blank" rel="noopener">https://registry-1.madslq.cn</a><br>Username: admin<br>Password:<br>Error response from daemon: Get <a href="https://registry-1.madslq.cn/v2/" target="_blank" rel="noopener">https://registry-1.madslq.cn/v2/</a>: dial tcp 192.168.200.108:443: getsockopt: connection refused<br>解决：服务为启动，检查Harbor服务</p>
+<h1 id="Harbor高可用"><a href="#Harbor高可用" class="headerlink" title="Harbor高可用"></a>Harbor高可用</h1><p>私有云相对来说对镜像的请求并非高频，在做HA的时候还是结合实际情况，切勿为了HA而HA,还要综合考量成本，安全等因素。</p>
+<h1 id="FQA"><a href="#FQA" class="headerlink" title="FQA"></a>FQA</h1><p>1、报错1：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@linux-node8 certs.d]# docker login https://registry-1.madslq.cn</span><br><span class="line">Username: admin</span><br><span class="line">Password:</span><br><span class="line">Error response from daemon: Get https://registry-1.madslq.cn/v2/: x509: certificate is valid for madslq.cn, not registry-1.madslq.cn</span><br><span class="line">解决：</span><br><span class="line">保证hostname及证书生成过程中的域名一直即都是registry-1.madslq.cn即可</span><br></pre></td></tr></table></figure></p>
+<p>2、报错2：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[root@linux-node8 certs.d]# docker login https://registry-1.madslq.cn</span><br><span class="line">Username: admin</span><br><span class="line">Password:</span><br><span class="line">Error response from daemon: Get https://registry-1.madslq.cn/v2/: dial tcp 192.168.200.108:443: getsockopt: connection refused</span><br><span class="line">解决：服务为启动，检查Harbor服务</span><br></pre></td></tr></table></figure></p>
 <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://vmware.github.io/harbor/cn/" target="_blank" rel="noopener">官网资料</a><br><a href="https://github.com/vmware/harbor" target="_blank" rel="noopener">Github地址</a></p>
 <p>======================================================<br>希望各位朋友支持一下</p>
 <ul>
@@ -6580,7 +6632,7 @@
 <p><a href="http://bruce-sha.github.io" target="_blank" rel="noopener">不如</a></p>
 <h2 id="自动链接"><a href="#自动链接" class="headerlink" title="自动链接"></a>自动链接</h2><p>尖括号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;http://ibruce.info&gt;</span><br><span class="line">&lt;bu.ru@qq.com&gt;</span><br></pre></td></tr></table></figure></p>
 <p>效果如下：<br><a href="http://ibruce.info" target="_blank" rel="noopener">http://ibruce.info</a></p>
-<a href="&#109;&#x61;&#x69;&#108;&#x74;&#111;&#x3a;&#x62;&#x75;&#x2e;&#x72;&#117;&#x40;&#x71;&#113;&#46;&#x63;&#111;&#x6d;">&#x62;&#x75;&#x2e;&#x72;&#117;&#x40;&#x71;&#113;&#46;&#x63;&#111;&#x6d;</a>
+<a href="&#109;&#x61;&#x69;&#x6c;&#x74;&#x6f;&#x3a;&#x62;&#x75;&#x2e;&#x72;&#117;&#x40;&#113;&#x71;&#x2e;&#x63;&#x6f;&#x6d;">&#x62;&#x75;&#x2e;&#x72;&#117;&#x40;&#113;&#x71;&#x2e;&#x63;&#x6f;&#x6d;</a>
 
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="行内代码"><a href="#行内代码" class="headerlink" title="行内代码"></a>行内代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">``` python</span><br><span class="line">@requires_authorization</span><br><span class="line">def somefunc(param1=&apos;&apos;, param2=0):</span><br><span class="line">    &apos;&apos;&apos;A docstring&apos;&apos;&apos;</span><br><span class="line">    if param1 &gt; param2: # interesting</span><br><span class="line">        print &apos;Greater&apos;</span><br><span class="line">    return (param2 - param1 + 1) or None</span><br><span class="line">class SomeClass:</span><br><span class="line">    pass</span><br><span class="line">&gt;&gt;&gt; message = &apos;&apos;&apos;interpreter</span><br><span class="line">... prompt&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">可代码高亮</span><br><span class="line">``` python</span><br><span class="line">@requires_authorization</span><br><span class="line">def somefunc(param1=&apos;&apos;, param2=0):</span><br><span class="line">    &apos;&apos;&apos;A docstring&apos;&apos;&apos;</span><br><span class="line">    if param1 &gt; param2: # interesting</span><br><span class="line">        print &apos;Greater&apos;</span><br><span class="line">    return (param2 - param1 + 1) or None</span><br><span class="line">class SomeClass:</span><br><span class="line">    pass</span><br><span class="line">&gt;&gt;&gt; message = &apos;&apos;&apos;interpreter</span><br><span class="line">... prompt&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
@@ -7017,9 +7069,9 @@
             
             <tag> Hexo </tag>
             
-            <tag> GitHub </tag>
-            
             <tag> NexT </tag>
+            
+            <tag> GitHub </tag>
             
         </tags>
         
