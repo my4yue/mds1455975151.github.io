@@ -1570,7 +1570,9 @@
 <h2 id="芳华"><a href="#芳华" class="headerlink" title="芳华"></a><strong>芳华</strong></h2><p>故事发生在上世纪七十年代，寄人篱下的少女何小萍（苗苗 饰）经过重重试炼终于加入了梦寐以求的文工团，哪知道这里和她曾经待过的那些地方并无不同，她依然得忍受遭人唾弃和欺侮的生活。唯一给过她温暖的，是刘峰（黄轩 饰），不仅仅是对何小萍，被称为“活雷锋”的刘峰把自己的爱情和温暖无私的奉献给每一个人。<br>　　实际上，刘峰一直爱慕着美丽活泼的林丁丁（杨采钰 饰），当他选择将这份感情勇敢的表达出来时，却让自己的人生走向了完全不同的方向。战争开始了，刘峰、何小萍和萧穗子前赴后继的走上了前线，在枪弹和炮火之中，每一个人都在用生命和热血绽放着属于他们的芳华。</p>
 <h2 id="逃出绝命镇"><a href="#逃出绝命镇" class="headerlink" title="逃出绝命镇"></a><strong>逃出绝命镇</strong></h2><p>　　黑人小伙克里斯（丹尼尔·卡卢亚 Daniel Kaluuya 饰）和白人女孩露丝（艾莉森·威廉姆斯 Allison Williams 饰）相恋，虽然两人之间的感情十分要好，但克里斯一直为自己的肤色心存芥蒂。某日，两人相约前往露丝家做客，在那里，克里斯见到了露丝的父母迪恩（布莱德利·惠特福德 Bradley Whitford 饰）和米西（凯瑟琳·基纳 Catherine Keener 饰），除了露丝的弟弟吉瑞米（卡莱伯·兰德里·琼斯 Caleb Landry Jones 饰）对克里斯展现出了一丝敌意外，一切都堪称完美。<br>　　隔日，克里斯参加了露丝家举办的派对，在派对中，克里斯遇见了旧友安德鲁（凯斯·斯坦菲尔德 Keith Stanfield 饰），让克里斯百思不得其解的是，安德鲁的穿着、谈吐和举止和先前大相径庭，判若两人。种种诡异的蛛丝马迹让克里斯渐渐察觉，自己似乎陷入了一个阴谋之中。</p>
 <h2 id="时空罪恶"><a href="#时空罪恶" class="headerlink" title="时空罪恶"></a><strong>时空罪恶</strong></h2><p>和恐怖游轮类似的循环电影，只不过只有三次。</p>
-<h2 id="抢钱老兵"><a href="#抢钱老兵" class="headerlink" title="抢钱老兵"></a><strong>抢钱老兵</strong></h2><h1 id="电视剧"><a href="#电视剧" class="headerlink" title="电视剧"></a>电视剧</h1><p><strong>小丈夫</strong><br><strong>蛇蝎女佣</strong><br><strong>黑吃黑</strong></p>
+<h2 id="抢钱老兵"><a href="#抢钱老兵" class="headerlink" title="抢钱老兵"></a><strong>抢钱老兵</strong></h2><h1 id="电视剧"><a href="#电视剧" class="headerlink" title="电视剧"></a>电视剧</h1><p><strong>小丈夫</strong></p>
+<h1 id="美剧"><a href="#美剧" class="headerlink" title="美剧"></a>美剧</h1><p><strong>行尸走肉</strong><br><strong>西部世界</strong><br><strong>神盾局特工</strong><br><strong>无耻之徒</strong><br><strong>血族</strong><br><strong>穹顶之下</strong><br><strong>超人前传</strong><br><strong>权利的游戏</strong><br><strong>蛇蝎女佣</strong><br><strong>黑吃黑</strong><br><strong>东区女巫</strong></p>
+<hr>
 <h1 id="综艺节目"><a href="#综艺节目" class="headerlink" title="综艺节目"></a>综艺节目</h1><p><strong>圆桌派</strong></p>
 <p>======================================================<br>希望各位朋友支持一下</p>
 <ul>
@@ -1986,11 +1988,11 @@
             
             <tag> Docker </tag>
             
+            <tag> GitLab </tag>
+            
             <tag> Gitlab-CI </tag>
             
             <tag> GitLab-Runner </tag>
-            
-            <tag> GitLab </tag>
             
             <tag> 持续集成 </tag>
             
@@ -3746,9 +3748,9 @@
             
             <tag> jenkins </tag>
             
-            <tag> Maven </tag>
-            
             <tag> Nexus </tag>
+            
+            <tag> Maven </tag>
             
         </tags>
         
@@ -6679,7 +6681,7 @@
 <p><a href="http://bruce-sha.github.io" target="_blank" rel="noopener">不如</a></p>
 <h2 id="自动链接"><a href="#自动链接" class="headerlink" title="自动链接"></a>自动链接</h2><p>尖括号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;http://ibruce.info&gt;</span><br><span class="line">&lt;bu.ru@qq.com&gt;</span><br></pre></td></tr></table></figure></p>
 <p>效果如下：<br><a href="http://ibruce.info" target="_blank" rel="noopener">http://ibruce.info</a></p>
-<a href="&#x6d;&#x61;&#105;&#108;&#x74;&#x6f;&#x3a;&#x62;&#x75;&#46;&#x72;&#x75;&#x40;&#x71;&#113;&#46;&#99;&#111;&#109;">&#x62;&#x75;&#46;&#x72;&#x75;&#x40;&#x71;&#113;&#46;&#99;&#111;&#109;</a>
+<a href="&#x6d;&#97;&#x69;&#x6c;&#x74;&#111;&#x3a;&#98;&#117;&#x2e;&#114;&#117;&#64;&#x71;&#113;&#46;&#99;&#x6f;&#x6d;">&#98;&#117;&#x2e;&#114;&#117;&#64;&#x71;&#113;&#46;&#99;&#x6f;&#x6d;</a>
 
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="行内代码"><a href="#行内代码" class="headerlink" title="行内代码"></a>行内代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">``` python</span><br><span class="line">@requires_authorization</span><br><span class="line">def somefunc(param1=&apos;&apos;, param2=0):</span><br><span class="line">    &apos;&apos;&apos;A docstring&apos;&apos;&apos;</span><br><span class="line">    if param1 &gt; param2: # interesting</span><br><span class="line">        print &apos;Greater&apos;</span><br><span class="line">    return (param2 - param1 + 1) or None</span><br><span class="line">class SomeClass:</span><br><span class="line">    pass</span><br><span class="line">&gt;&gt;&gt; message = &apos;&apos;&apos;interpreter</span><br><span class="line">... prompt&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">可代码高亮</span><br><span class="line">``` python</span><br><span class="line">@requires_authorization</span><br><span class="line">def somefunc(param1=&apos;&apos;, param2=0):</span><br><span class="line">    &apos;&apos;&apos;A docstring&apos;&apos;&apos;</span><br><span class="line">    if param1 &gt; param2: # interesting</span><br><span class="line">        print &apos;Greater&apos;</span><br><span class="line">    return (param2 - param1 + 1) or None</span><br><span class="line">class SomeClass:</span><br><span class="line">    pass</span><br><span class="line">&gt;&gt;&gt; message = &apos;&apos;&apos;interpreter</span><br><span class="line">... prompt&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
