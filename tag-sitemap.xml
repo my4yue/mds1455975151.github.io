@@ -758,6 +758,13 @@
     </url>
 
     <url>
+        <loc>https://mds1455975151.github.io/tags/GitLab/</loc>
+        <lastmod>2018-02-23T08:42:39.397Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://mds1455975151.github.io/tags/Gitlab-CI/</loc>
         <lastmod>2018-02-23T08:42:39.397Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -766,13 +773,6 @@
 
     <url>
         <loc>https://mds1455975151.github.io/tags/GitLab-Runner/</loc>
-        <lastmod>2018-02-23T08:42:39.397Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://mds1455975151.github.io/tags/GitLab/</loc>
         <lastmod>2018-02-23T08:42:39.397Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -1353,22 +1353,22 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/tags/%E7%94%B5%E5%BD%B1/</loc>
-        <lastmod>2018-03-11T14:14:01.423Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/tags/2017/</loc>
-        <lastmod>2018-03-12T05:03:35.219Z</lastmod>
+        <lastmod>2018-03-12T08:49:14.879Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://mds1455975151.github.io/tags/%E6%80%BB%E7%BB%93/</loc>
-        <lastmod>2018-03-12T05:03:35.219Z</lastmod>
+        <lastmod>2018-03-12T08:49:14.879Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E7%94%B5%E5%BD%B1/</loc>
+        <lastmod>2018-03-12T08:49:51.130Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
