@@ -4,6 +4,43 @@
 
     
   <url>
+    <loc>https://mds1455975151.github.io/archives/43db2491.html</loc>
+    <lastmod>2018-03-14T08:35:03.218Z</lastmod>
+    <data>
+        <display>
+        <title>Kubernetes创建挂载共享存储的容器</title>
+        <pubTime>2018-03-14T08:08:04.000Z</pubTime>
+        
+        <tag>Kubernetes</tag>
+         
+        <tag>共享存储</tag>
+         
+         
+           
+             
+              <breadCrumb title="Docker" url="https://mds1455975151.github.io/categories/Docker/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://mds1455975151.github.io/archives/48164dd0.html</loc>
+    <lastmod>2018-03-14T07:14:45.379Z</lastmod>
+    <data>
+        <display>
+        <title>基于Kubernetes部署jenkins并动态分配资源</title>
+        <pubTime>2018-03-14T07:14:40.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://mds1455975151.github.io/archives/75a677a6.html</loc>
     <lastmod>2018-03-13T13:16:18.018Z</lastmod>
     <data>
