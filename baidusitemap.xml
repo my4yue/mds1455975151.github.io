@@ -4,14 +4,14 @@
 
     
   <url>
-    <loc>https://mds1455975151.github.io/archives/224bdc06.html</loc>
-    <lastmod>2018-03-20T08:18:44.914Z</lastmod>
+    <loc>https://mds1455975151.github.io/archives/f6fea201.html</loc>
+    <lastmod>2018-03-20T08:27:54.877Z</lastmod>
     <data>
         <display>
-        <title>Linux运维之ssh-agent代理讲解</title>
-        <pubTime>2018-03-20T07:47:35.000Z</pubTime>
+        <title>CentOS 7使用问题集锦</title>
+        <pubTime>2018-03-20T08:12:29.000Z</pubTime>
         
-        <tag>ssh-agent</tag>
+        <tag>CentOS</tag>
          
          
            
@@ -24,14 +24,14 @@
 
     
   <url>
-    <loc>https://mds1455975151.github.io/archives/f6fea201.html</loc>
-    <lastmod>2018-03-20T08:15:00.345Z</lastmod>
+    <loc>https://mds1455975151.github.io/archives/224bdc06.html</loc>
+    <lastmod>2018-03-20T08:18:44.914Z</lastmod>
     <data>
         <display>
-        <title>CentOS 7使用问题集锦</title>
-        <pubTime>2018-03-20T08:12:29.000Z</pubTime>
+        <title>Linux运维之ssh-agent代理讲解</title>
+        <pubTime>2018-03-20T07:47:35.000Z</pubTime>
         
-        <tag>CentOS</tag>
+        <tag>ssh-agent</tag>
          
          
            
@@ -1259,11 +1259,11 @@
         
         <tag>Docker</tag>
          
+        <tag>GitLab</tag>
+         
         <tag>Gitlab-CI</tag>
          
         <tag>GitLab-Runner</tag>
-         
-        <tag>GitLab</tag>
          
         <tag>持续集成</tag>
          

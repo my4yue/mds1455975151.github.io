@@ -758,6 +758,13 @@
     </url>
 
     <url>
+        <loc>https://mds1455975151.github.io/tags/GitLab/</loc>
+        <lastmod>2018-02-23T08:42:39.397Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://mds1455975151.github.io/tags/Gitlab-CI/</loc>
         <lastmod>2018-02-23T08:42:39.397Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -766,13 +773,6 @@
 
     <url>
         <loc>https://mds1455975151.github.io/tags/GitLab-Runner/</loc>
-        <lastmod>2018-02-23T08:42:39.397Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://mds1455975151.github.io/tags/GitLab/</loc>
         <lastmod>2018-02-23T08:42:39.397Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -1395,15 +1395,15 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/tags/CentOS/</loc>
-        <lastmod>2018-03-20T08:15:00.345Z</lastmod>
+        <loc>https://mds1455975151.github.io/tags/ssh-agent/</loc>
+        <lastmod>2018-03-20T08:18:44.914Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/tags/ssh-agent/</loc>
-        <lastmod>2018-03-20T08:18:44.914Z</lastmod>
+        <loc>https://mds1455975151.github.io/tags/CentOS/</loc>
+        <lastmod>2018-03-20T08:27:54.877Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
