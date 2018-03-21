@@ -40,7 +40,9 @@
     <entry>
       <title><![CDATA[游戏上线checklist]]></title>
       <url>/archives/c62a0f6f.html</url>
-      <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>&gt;</p>
+      <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>游戏上线checklist</p>
+</blockquote>
 <a id="more"></a>
 <p>======================================================<br>希望各位朋友支持一下</p>
 <ul>
@@ -54,6 +56,20 @@
 <p><strong>本文作者</strong>：dongsheng<br><strong>本文地址</strong>： <a href="https://mds1455975151.github.io/archives/c62a0f6f.html">https://mds1455975151.github.io/archives/c62a0f6f.html</a> <br><strong>版权声明</strong>：转载请注明出处！</p>
 ]]></content>
       
+        <categories>
+            
+            <category> 游戏 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> checklist </tag>
+            
+            <tag> 游戏上线 </tag>
+            
+        </tags>
         
     </entry>
     
@@ -2300,11 +2316,11 @@
             
             <tag> Docker </tag>
             
-            <tag> GitLab </tag>
-            
             <tag> Gitlab-CI </tag>
             
             <tag> GitLab-Runner </tag>
+            
+            <tag> GitLab </tag>
             
             <tag> 持续集成 </tag>
             
@@ -4562,7 +4578,7 @@
 <h2 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h2><p>  Google Chrome、Firefox功能强大插件丰富</p>
 <h2 id="终端仿真程序"><a href="#终端仿真程序" class="headerlink" title="终端仿真程序"></a>终端仿真程序</h2><p>  SecureCRT：一款支持SSH（SSH1和SSH2）的终端仿真程序，简单地说是Windows下登录UNIX或Linux服务器主机的软件。<br>  xshell：一个强大的安全终端模拟软件，它支持SSH1, SSH2, 以及Microsoft Windows 平台的TELNET 协议。<br>  Cygwin：Cygwin是一个在windows平台上运行的类UNIX模拟环境.</p>
 <h2 id="MySQL管理工具"><a href="#MySQL管理工具" class="headerlink" title="MySQL管理工具"></a>MySQL管理工具</h2><p>  SQLyog、Navicat</p>
-<h2 id="文本编辑器"><a href="#文本编辑器" class="headerlink" title="文本编辑器"></a>文本编辑器</h2><p>  Notepad++、Atom、Vim、记事本</p>
+<h2 id="文本编辑器"><a href="#文本编辑器" class="headerlink" title="文本编辑器"></a>文本编辑器</h2><p>  Notepad++、Atom、Vim、记事本<br>  Atom下载镜像站点：<a href="http://npm.taobao.org/mirrors/atom" target="_blank" rel="noopener">http://npm.taobao.org/mirrors/atom</a> </p>
 <h2 id="网络质量测试"><a href="#网络质量测试" class="headerlink" title="网络质量测试"></a>网络质量测试</h2><p>  WinMTR、</p>
 <h2 id="版本控制"><a href="#版本控制" class="headerlink" title="版本控制"></a>版本控制</h2><p>  客户端：Git for Windows、TortoiseSVN</p>
 <h2 id="邮件"><a href="#邮件" class="headerlink" title="邮件"></a>邮件</h2><p>  Foxmail：推荐几个比较好的功能邮件模板、定时收取、过滤器、查找重复邮件等<br>  腾讯企业邮箱</p>
@@ -6996,7 +7012,7 @@
 <p><a href="http://bruce-sha.github.io" target="_blank" rel="noopener">不如</a></p>
 <h2 id="自动链接"><a href="#自动链接" class="headerlink" title="自动链接"></a>自动链接</h2><p>尖括号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;http://ibruce.info&gt;</span><br><span class="line">&lt;bu.ru@qq.com&gt;</span><br></pre></td></tr></table></figure></p>
 <p>效果如下：<br><a href="http://ibruce.info" target="_blank" rel="noopener">http://ibruce.info</a></p>
-<a href="&#x6d;&#x61;&#x69;&#108;&#x74;&#111;&#58;&#x62;&#x75;&#46;&#x72;&#x75;&#x40;&#x71;&#113;&#46;&#x63;&#x6f;&#109;">&#x62;&#x75;&#46;&#x72;&#x75;&#x40;&#x71;&#113;&#46;&#x63;&#x6f;&#109;</a>
+<a href="&#109;&#x61;&#105;&#108;&#x74;&#111;&#x3a;&#98;&#x75;&#x2e;&#x72;&#x75;&#64;&#x71;&#113;&#46;&#x63;&#x6f;&#x6d;">&#98;&#x75;&#x2e;&#x72;&#x75;&#64;&#x71;&#113;&#46;&#x63;&#x6f;&#x6d;</a>
 
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="行内代码"><a href="#行内代码" class="headerlink" title="行内代码"></a>行内代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">``` python</span><br><span class="line">@requires_authorization</span><br><span class="line">def somefunc(param1=&apos;&apos;, param2=0):</span><br><span class="line">    &apos;&apos;&apos;A docstring&apos;&apos;&apos;</span><br><span class="line">    if param1 &gt; param2: # interesting</span><br><span class="line">        print &apos;Greater&apos;</span><br><span class="line">    return (param2 - param1 + 1) or None</span><br><span class="line">class SomeClass:</span><br><span class="line">    pass</span><br><span class="line">&gt;&gt;&gt; message = &apos;&apos;&apos;interpreter</span><br><span class="line">... prompt&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">可代码高亮</span><br><span class="line">``` python</span><br><span class="line">@requires_authorization</span><br><span class="line">def somefunc(param1=&apos;&apos;, param2=0):</span><br><span class="line">    &apos;&apos;&apos;A docstring&apos;&apos;&apos;</span><br><span class="line">    if param1 &gt; param2: # interesting</span><br><span class="line">        print &apos;Greater&apos;</span><br><span class="line">    return (param2 - param1 + 1) or None</span><br><span class="line">class SomeClass:</span><br><span class="line">    pass</span><br><span class="line">&gt;&gt;&gt; message = &apos;&apos;&apos;interpreter</span><br><span class="line">... prompt&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>

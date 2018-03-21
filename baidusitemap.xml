@@ -4,6 +4,50 @@
 
     
   <url>
+    <loc>https://mds1455975151.github.io/archives/f6777761.html</loc>
+    <lastmod>2018-03-21T07:25:28.439Z</lastmod>
+    <data>
+        <display>
+        <title>个人工具合集</title>
+        <pubTime>2017-12-18T06:14:41.000Z</pubTime>
+        
+        <tag>个人工具</tag>
+         
+        <tag>工作效率</tag>
+         
+         
+           
+             
+              <breadCrumb title="其他" url="https://mds1455975151.github.io/categories/%E5%85%B6%E4%BB%96/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://mds1455975151.github.io/archives/c62a0f6f.html</loc>
+    <lastmod>2018-03-20T08:38:18.484Z</lastmod>
+    <data>
+        <display>
+        <title>游戏上线checklist</title>
+        <pubTime>2018-03-20T07:48:33.000Z</pubTime>
+        
+        <tag>checklist</tag>
+         
+        <tag>游戏上线</tag>
+         
+         
+           
+             
+              <breadCrumb title="游戏" url="https://mds1455975151.github.io/categories/%E6%B8%B8%E6%88%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://mds1455975151.github.io/archives/f6fea201.html</loc>
     <lastmod>2018-03-20T08:29:56.364Z</lastmod>
     <data>
@@ -37,43 +81,6 @@
            
              
               <breadCrumb title="Linux运维" url="https://mds1455975151.github.io/categories/Linux%E8%BF%90%E7%BB%B4/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://mds1455975151.github.io/archives/c62a0f6f.html</loc>
-    <lastmod>2018-03-20T07:48:40.077Z</lastmod>
-    <data>
-        <display>
-        <title>游戏上线checklist</title>
-        <pubTime>2018-03-20T07:48:33.000Z</pubTime>
-        
-         
-           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://mds1455975151.github.io/archives/f6777761.html</loc>
-    <lastmod>2018-03-19T08:22:08.426Z</lastmod>
-    <data>
-        <display>
-        <title>个人工具合集</title>
-        <pubTime>2017-12-18T06:14:41.000Z</pubTime>
-        
-        <tag>个人工具</tag>
-         
-        <tag>工作效率</tag>
-         
-         
-           
-             
-              <breadCrumb title="其他" url="https://mds1455975151.github.io/categories/%E5%85%B6%E4%BB%96/"/>
           
         </display>
     </data>
@@ -1259,11 +1266,11 @@
         
         <tag>Docker</tag>
          
-        <tag>GitLab</tag>
-         
         <tag>Gitlab-CI</tag>
          
         <tag>GitLab-Runner</tag>
+         
+        <tag>GitLab</tag>
          
         <tag>持续集成</tag>
          

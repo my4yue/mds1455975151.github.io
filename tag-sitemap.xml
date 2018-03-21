@@ -758,13 +758,6 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/tags/GitLab/</loc>
-        <lastmod>2018-02-23T08:42:39.397Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/tags/Gitlab-CI/</loc>
         <lastmod>2018-02-23T08:42:39.397Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -773,6 +766,13 @@
 
     <url>
         <loc>https://mds1455975151.github.io/tags/GitLab-Runner/</loc>
+        <lastmod>2018-02-23T08:42:39.397Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/GitLab/</loc>
         <lastmod>2018-02-23T08:42:39.397Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -1381,20 +1381,6 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/tags/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7/</loc>
-        <lastmod>2018-03-19T08:22:08.426Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://mds1455975151.github.io/tags/%E5%B7%A5%E4%BD%9C%E6%95%88%E7%8E%87/</loc>
-        <lastmod>2018-03-19T08:22:08.426Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/tags/ssh-agent/</loc>
         <lastmod>2018-03-20T08:18:44.914Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1404,6 +1390,34 @@
     <url>
         <loc>https://mds1455975151.github.io/tags/CentOS/</loc>
         <lastmod>2018-03-20T08:29:56.364Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/checklist/</loc>
+        <lastmod>2018-03-20T08:38:18.484Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E6%B8%B8%E6%88%8F%E4%B8%8A%E7%BA%BF/</loc>
+        <lastmod>2018-03-20T08:38:18.484Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E4%B8%AA%E4%BA%BA%E5%B7%A5%E5%85%B7/</loc>
+        <lastmod>2018-03-21T07:25:28.439Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E5%B7%A5%E4%BD%9C%E6%95%88%E7%8E%87/</loc>
+        <lastmod>2018-03-21T07:25:28.439Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
