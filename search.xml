@@ -3,6 +3,43 @@
   
     
     <entry>
+      <title><![CDATA[游戏设计问题]]></title>
+      <url>/archives/1b7b85e7.html</url>
+      <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>游戏设计问题</p>
+</blockquote>
+<a id="more"></a>
+<ul>
+<li>弱网优化<br>技术<br>策划：增加获取利益的成本</li>
+</ul>
+<p>======================================================<br>希望各位朋友支持一下</p>
+<ul>
+<li>领取我的<a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=xpdsz87p&amp;utm_source=xpdsz87p" target="_blank" rel="noopener">阿里云幸运券</a>,谢谢.</li>
+<li>使用<a href="https://cloud.tencent.com/redirect.php?redirect=1005&amp;cps_key=5a162632de40024cd01aabff4d3f1370" target="_blank" rel="noopener">腾讯云资源</a></li>
+<li>自己的网站承接广告<a href="http://www.sudianlm.com/track/c/?rid=2056" target="_blank" rel="noopener">速点广告联盟</a></li>
+<li>广告位招商QQ:1455975151</li>
+<li>喜欢购物的朋友可以看看，<a href="http://www.1zhe.com/yq/1066027" target="_blank" rel="noopener">一折特卖</a><!--注册一折特卖，免费领集分宝，集分宝可以当钱花，免费购物不是梦，注册马上送你10集分宝。-->
+</li>
+</ul>
+<p><strong>本文作者</strong>：dongsheng<br><strong>本文地址</strong>： <a href="https://mds1455975151.github.io/archives/1b7b85e7.html">https://mds1455975151.github.io/archives/1b7b85e7.html</a> <br><strong>版权声明</strong>：转载请注明出处！</p>
+]]></content>
+      
+        <categories>
+            
+            <category> 游戏 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 游戏设计问题 </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[cloud-init了解笔记]]></title>
       <url>/archives/cb9bbd14.html</url>
       <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>&gt;</p>
@@ -3740,7 +3777,7 @@
 <td>深圳南山区腾讯大厦</td>
 </tr>
 <tr>
-<td>奇虎350科技有限公司</td>
+<td>奇虎360科技有限公司</td>
 <td>2000人以上</td>
 <td>上市公司</td>
 <td>北京朝阳区酒仙桥路6号院（电子城•国际电子总部）</td>
@@ -3924,6 +3961,17 @@
 <td>100-499人</td>
 <td>网络游戏</td>
 <td>北京市海淀区海淀中街15号远中悦来大厦203</td>
+</tr>
+<tr>
+<td>北京中清龙图网络技术有限公司</td>
+<td>500-2000人</td>
+<td>网络游戏</td>
+<td>北京市朝阳区北苑路甲13号院1号楼北辰泰岳大厦12层</td>
+</tr>
+<tr>
+<td>北京澄游网络科技有限公司</td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -7081,7 +7129,7 @@
 <p><a href="http://bruce-sha.github.io" target="_blank" rel="noopener">不如</a></p>
 <h2 id="自动链接"><a href="#自动链接" class="headerlink" title="自动链接"></a>自动链接</h2><p>尖括号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;http://ibruce.info&gt;</span><br><span class="line">&lt;bu.ru@qq.com&gt;</span><br></pre></td></tr></table></figure></p>
 <p>效果如下：<br><a href="http://ibruce.info" target="_blank" rel="noopener">http://ibruce.info</a></p>
-<a href="&#x6d;&#x61;&#105;&#x6c;&#x74;&#111;&#x3a;&#x62;&#x75;&#x2e;&#114;&#117;&#64;&#x71;&#x71;&#x2e;&#x63;&#111;&#x6d;">&#x62;&#x75;&#x2e;&#114;&#117;&#64;&#x71;&#x71;&#x2e;&#x63;&#111;&#x6d;</a>
+<a href="&#x6d;&#97;&#105;&#x6c;&#116;&#111;&#x3a;&#x62;&#117;&#46;&#x72;&#x75;&#x40;&#x71;&#113;&#46;&#99;&#x6f;&#x6d;">&#x62;&#117;&#46;&#x72;&#x75;&#x40;&#x71;&#113;&#46;&#99;&#x6f;&#x6d;</a>
 
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="行内代码"><a href="#行内代码" class="headerlink" title="行内代码"></a>行内代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">``` python</span><br><span class="line">@requires_authorization</span><br><span class="line">def somefunc(param1=&apos;&apos;, param2=0):</span><br><span class="line">    &apos;&apos;&apos;A docstring&apos;&apos;&apos;</span><br><span class="line">    if param1 &gt; param2: # interesting</span><br><span class="line">        print &apos;Greater&apos;</span><br><span class="line">    return (param2 - param1 + 1) or None</span><br><span class="line">class SomeClass:</span><br><span class="line">    pass</span><br><span class="line">&gt;&gt;&gt; message = &apos;&apos;&apos;interpreter</span><br><span class="line">... prompt&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">可代码高亮</span><br><span class="line">``` python</span><br><span class="line">@requires_authorization</span><br><span class="line">def somefunc(param1=&apos;&apos;, param2=0):</span><br><span class="line">    &apos;&apos;&apos;A docstring&apos;&apos;&apos;</span><br><span class="line">    if param1 &gt; param2: # interesting</span><br><span class="line">        print &apos;Greater&apos;</span><br><span class="line">    return (param2 - param1 + 1) or None</span><br><span class="line">class SomeClass:</span><br><span class="line">    pass</span><br><span class="line">&gt;&gt;&gt; message = &apos;&apos;&apos;interpreter</span><br><span class="line">... prompt&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
