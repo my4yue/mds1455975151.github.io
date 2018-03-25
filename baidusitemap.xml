@@ -4,6 +4,52 @@
 
     
   <url>
+    <loc>https://mds1455975151.github.io/archives/1478470c.html</loc>
+    <lastmod>2018-03-25T13:39:42.460Z</lastmod>
+    <data>
+        <display>
+        <title>购房</title>
+        <pubTime>2018-03-25T13:28:34.000Z</pubTime>
+        
+        <tag>购房</tag>
+         
+        <tag>征信证明</tag>
+         
+        <tag>银行流水</tag>
+         
+        <tag>收入证明</tag>
+         
+         
+           
+             
+              <breadCrumb title="生活" url="https://mds1455975151.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://mds1455975151.github.io/archives/75a677a6.html</loc>
+    <lastmod>2018-03-25T13:28:03.911Z</lastmod>
+    <data>
+        <display>
+        <title>电影2018</title>
+        <pubTime>2018-01-27T12:01:24.000Z</pubTime>
+        
+        <tag>电影</tag>
+         
+         
+           
+             
+              <breadCrumb title="生活记录" url="https://mds1455975151.github.io/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://mds1455975151.github.io/archives/1b7b85e7.html</loc>
     <lastmod>2018-03-22T08:11:31.859Z</lastmod>
     <data>
@@ -214,26 +260,6 @@
         
          
            
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://mds1455975151.github.io/archives/75a677a6.html</loc>
-    <lastmod>2018-03-13T13:16:18.018Z</lastmod>
-    <data>
-        <display>
-        <title>电影2018</title>
-        <pubTime>2018-01-27T12:01:24.000Z</pubTime>
-        
-        <tag>电影</tag>
-         
-         
-           
-             
-              <breadCrumb title="生活记录" url="https://mds1455975151.github.io/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
-          
         </display>
     </data>
     </url>
@@ -624,9 +650,9 @@
         <title>Jenkins之持续集成概念</title>
         <pubTime>2017-12-16T08:09:46.000Z</pubTime>
         
-        <tag>持续集成</tag>
-         
         <tag>Jenkins</tag>
+         
+        <tag>持续集成</tag>
          
          
            
@@ -2220,9 +2246,9 @@
         <title>SaltStack+Docker构建高可用与自动发现服务</title>
         <pubTime>2018-01-13T09:07:04.000Z</pubTime>
         
-        <tag>SaltStack</tag>
-         
         <tag>Docker</tag>
+         
+        <tag>SaltStack</tag>
          
         <tag>自动发现</tag>
          
