@@ -4,8 +4,28 @@
 
     
   <url>
+    <loc>https://mds1455975151.github.io/archives/ed84650a.html</loc>
+    <lastmod>2018-03-28T03:53:55.053Z</lastmod>
+    <data>
+        <display>
+        <title>Redis之快速部署测试环境</title>
+        <pubTime>2018-03-28T03:40:14.000Z</pubTime>
+        
+        <tag>Redis</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux运维" url="https://mds1455975151.github.io/categories/Linux%E8%BF%90%E7%BB%B4/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://mds1455975151.github.io/archives/f72695e7.html</loc>
-    <lastmod>2018-03-28T03:31:35.314Z</lastmod>
+    <lastmod>2018-03-28T03:45:31.809Z</lastmod>
     <data>
         <display>
         <title>MySQL之快速部署测试环境</title>
@@ -2173,11 +2193,11 @@
         <title>基于Gogs+Drone搭建的私有CI/CD平台</title>
         <pubTime>2018-01-06T12:38:49.000Z</pubTime>
         
+        <tag>MySQL</tag>
+         
         <tag>Gogs</tag>
          
         <tag>Drone</tag>
-         
-        <tag>MySQL</tag>
          
         <tag>私有CI/CD平台</tag>
          
