@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://mds1455975151.github.io/archives/75a677a6.html</loc>
+    <lastmod>2018-04-01T12:54:31.221Z</lastmod>
+    <data>
+        <display>
+        <title>电影2018</title>
+        <pubTime>2018-01-27T12:01:24.000Z</pubTime>
+        
+        <tag>电影</tag>
+         
+         
+           
+             
+              <breadCrumb title="生活记录" url="https://mds1455975151.github.io/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://mds1455975151.github.io/archives/f72695e7.html</loc>
     <lastmod>2018-03-30T09:32:29.018Z</lastmod>
     <data>
@@ -105,26 +125,6 @@
            
              
               <breadCrumb title="生活" url="https://mds1455975151.github.io/categories/%E7%94%9F%E6%B4%BB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://mds1455975151.github.io/archives/75a677a6.html</loc>
-    <lastmod>2018-03-25T13:28:03.911Z</lastmod>
-    <data>
-        <display>
-        <title>电影2018</title>
-        <pubTime>2018-01-27T12:01:24.000Z</pubTime>
-        
-        <tag>电影</tag>
-         
-         
-           
-             
-              <breadCrumb title="生活记录" url="https://mds1455975151.github.io/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
           
         </display>
     </data>
@@ -836,9 +836,9 @@
         <title>使用GitHub+Hexo+Next搭建静态博客</title>
         <pubTime>2017-12-06T07:39:21.000Z</pubTime>
         
-        <tag>Hexo</tag>
-         
         <tag>GitHub</tag>
+         
+        <tag>Hexo</tag>
          
         <tag>NexT</tag>
          
@@ -2531,11 +2531,11 @@
         <title>Blog to list</title>
         <pubTime>2017-12-09T12:22:02.000Z</pubTime>
         
+        <tag>Hexo</tag>
+         
         <tag>to list</tag>
          
         <tag>分享</tag>
-         
-        <tag>Hexo</tag>
          
          
            
