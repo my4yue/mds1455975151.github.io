@@ -1,1 +1,1414 @@
-<!-- build time:Sun Apr 01 2018 21:25:56 GMT+0800 (中国标准时间) --><!doctype html><html class="theme-next mist use-motion" lang="zh-Hans"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1"><script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script><link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet"><style>.pace .pace-progress{background:#1E92FB;height:3px}.pace .pace-progress-inner{box-shadow:0 0 10px #1E92FB,0 0 5px #1E92FB}.pace .pace-activity{border-top-color:#1E92FB;border-left-color:#1E92FB}</style><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"><link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css"><link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css"><link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css"><meta name="keywords" content="MySQL,Gogs,Drone,私有CI/CD平台,"><link rel="alternate" href="/atom.xml" title="DongSheng's Blog" type="application/atom+xml"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0"><meta name="description" content="打造基于Docker的私有CI/CD平台"><meta name="keywords" content="MySQL,Gogs,Drone,私有CI&#x2F;CD平台"><meta property="og:type" content="article"><meta property="og:title" content="基于Gogs+Drone搭建的私有CI&#x2F;CD平台"><meta property="og:url" content="https://mds1455975151.github.io/archives/1a623683.html"><meta property="og:site_name" content="DongSheng&#39;s Blog"><meta property="og:description" content="打造基于Docker的私有CI/CD平台"><meta property="og:locale" content="zh-Hans"><meta property="og:image" content="https://mds1455975151.github.io/archives/1a623683/06.png"><meta property="og:image" content="https://mds1455975151.github.io/archives/1a623683/07.png"><meta property="og:image" content="https://mds1455975151.github.io/archives/1a623683/zhuce.png"><meta property="og:image" content="https://mds1455975151.github.io/archives/1a623683/01.png"><meta property="og:image" content="https://mds1455975151.github.io/archives/1a623683/08.png"><meta property="og:image" content="https://mds1455975151.github.io/archives/1a623683/03.png"><meta property="og:image" content="https://mds1455975151.github.io/archives/1a623683/04.png"><meta property="og:image" content="https://mds1455975151.github.io/archives/1a623683/10.png"><meta property="og:image" content="https://mds1455975151.github.io/archives/1a623683/05.png"><meta property="og:image" content="https://mds1455975151.github.io/archives/1a623683/12.png"><meta property="og:image" content="https://mds1455975151.github.io/archives/1a623683/13.png"><meta property="og:updated_time" content="2018-02-21T04:26:21.255Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="基于Gogs+Drone搭建的私有CI&#x2F;CD平台"><meta name="twitter:description" content="打造基于Docker的私有CI/CD平台"><meta name="twitter:image" content="https://mds1455975151.github.io/archives/1a623683/06.png"><script type="text/javascript" id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Mist",sidebar:{position:"right",display:"post",offset:12,offset_float:0,b2t:!1,scrollpercent:!1},fancybox:!0,motion:!0,duoshuo:{userId:"0",author:"博主"},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><link rel="canonical" href="https://mds1455975151.github.io/archives/1a623683.html"><title>基于Gogs+Drone搭建的私有CI/CD平台 | DongSheng's Blog</title><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-8670258387043414",enable_page_level_ads:!0})</script></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans"><div style="display:none"><script src="//s95.cnzz.com/z_stat.php?id=1271299436&web_id=1271299436" language="JavaScript"></script></div><div class="container one-collumn sidebar-position-right page-post-detail"><div class="headband"></div><a href="https://github.com/mds1455975151/mds1455975151.github.io"><img style="position:absolute;top:0;right:0;border:0" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">DongSheng's Blog</span> <span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle">记录点滴，不断突破</p></div><div class="site-nav-toggle"><button><span class="btn-bar"></span> <span class="btn-bar"></span> <span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>分类</a></li><li class="menu-item menu-item-about"><a href="/about" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>关于</a></li><li class="menu-item menu-item-archives"><a href="/archives" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>归档</a></li><li class="menu-item menu-item-tags"><a href="/tags" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>标签</a></li><li class="menu-item menu-item-works"><a href="/works" rel="section"><i class="menu-item-icon fa fa-fw fa-folder"></i><br>作品</a></li><li class="menu-item menu-item-sitemap"><a href="/sitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-sitemap"></i><br>站点地图</a></li><li class="menu-item menu-item-baidusitemap"><a href="/baidusitemap.xml" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i><br>百度站点地图</a></li><li class="menu-item menu-item-ask-for-links"><a href="/ask-for-links" rel="section"><i class="menu-item-icon fa fa-fw fa-coffee"></i><br>申请友链</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>搜索</a></li></ul><div class="site-search"><div class="popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i> </span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"><input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><script>(adsbygoogle=window.adsbygoogle||[]).push({google_ad_client:"ca-pub-8670258387043414",enable_page_level_ads:!0})</script><script>var _hmt=_hmt||[];!function(){var e=document.createElement("script");e.src="https://hm.baidu.com/hm.js?c07b7d36eacd98b4b4dd92fc182723f4";var t=document.getElementsByTagName("script")[0];t.parentNode.insertBefore(e,t)}()</script></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><link itemprop="mainEntityOfPage" href="https://mds1455975151.github.io/archives/1a623683.html"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="DongSheng"><meta itemprop="description" content=""><meta itemprop="image" content="/images/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="DongSheng's Blog"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">基于Gogs+Drone搭建的私有CI/CD平台</h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">发表于</span> <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-06T20:38:49+08:00">2018-01-06 </time></span><span class="post-category"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-folder-o"></i> </span><span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/CI-CD/" itemprop="url" rel="index"><span itemprop="name">CI/CD</span> </a></span></span><span class="post-comments-count"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-comment-o"></i> </span><a href="/archives/1a623683.html#comments" itemprop="discussionUrl"><span class="post-comments-count disqus-comment-count" data-disqus-identifier="archives/1a623683.html" itemprop="commentCount"></span> </a></span><span id="/archives/1a623683.html" class="leancloud_visitors" data-flag-title="基于Gogs+Drone搭建的私有CI/CD平台"><span class="post-meta-divider">|</span> <span class="post-meta-item-icon"><i class="fa fa-eye"></i> </span><span class="post-meta-item-text">阅读次数 </span><span class="leancloud-visitors-count"></span> </span><span class="post-time">&nbsp; | &nbsp; <span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">字数统计:</span> <span class="post-count">2,576(字)</span> </span><span class="post-time">&nbsp; | &nbsp; <span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i> </span><span class="post-meta-item-text">阅读时长:</span> <span class="post-count">14(分)</span></span><div class="post-description">打造基于Docker的私有CI/CD平台</div></div></header><div class="post-body" itemprop="articleBody"><script src="\assets\js\APlayer.min.js"></script><blockquote><p>本文介绍如何打造基于Docker的私有CI/CD平台</p></blockquote><a id="more"></a><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>目前体验过或者使用过的自动化构建工具有Jenkins，Travis-ci，Gitlab-CI，最近又发现了Drone。它是一款使用Go开发的开源的CI自动构建平台，能够单独部署，支持常见的Git仓库，例如Github,Gitlab, Bitbucket以及Gogs等。<br>本文带大家使用Gogs+Drone打造基于Docker的私有CI/CD平台，本文有不足或者认识不到位的地方欢迎大家批评指正。</p><h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /etc/redhat-release</span></span><br><span class="line">CentOS Linux release 7.2.1511 (Core)</span><br><span class="line"><span class="comment"># uname -r</span></span><br><span class="line">3.10.0-327.el7.x86_64</span><br><span class="line"><span class="comment"># uname -m</span></span><br><span class="line">x86_64</span><br><span class="line"><span class="comment"># docker version</span></span><br><span class="line">Client:</span><br><span class="line"> Version:      17.06.2-ce</span><br><span class="line"> API version:  1.30</span><br><span class="line"> Go version:   go1.8.3</span><br><span class="line"> Git commit:   cec0b72</span><br><span class="line"> Built:        Tue Sep  5 19:59:06 2017</span><br><span class="line"> OS/Arch:      linux/amd64</span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Version:      17.06.2-ce</span><br><span class="line"> API version:  1.30 (minimum version 1.12)</span><br><span class="line"> Go version:   go1.8.3</span><br><span class="line"> Git commit:   cec0b72</span><br><span class="line"> Built:        Tue Sep  5 20:00:25 2017</span><br><span class="line"> OS/Arch:      linux/amd64</span><br><span class="line"> Experimental: <span class="literal">false</span></span><br></pre></td></tr></table></figure><h1 id="部署Docker"><a href="#部署Docker" class="headerlink" title="部署Docker"></a>部署Docker</h1><h2 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cd /etc/yum.repos.d/ &amp;&amp; rm -f *.repo</span></span><br><span class="line"><span class="comment"># wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo</span></span><br><span class="line"><span class="comment"># wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</span></span><br><span class="line"><span class="comment"># yum remove -y docker docker-common docker-selinux docker-engine</span></span><br><span class="line"><span class="comment"># yum install -y yum-utils device-mapper-persistent-data lvm2</span></span><br><span class="line"><span class="comment"># yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span></span><br><span class="line"><span class="comment"># yum-config-manager --enable docker-ce-edge</span></span><br><span class="line"><span class="comment"># yum list docker-ce --showduplicates | sort -r |grep stable</span></span><br><span class="line"><span class="comment"># yum install -y docker-ce-17.06.2.ce</span></span><br><span class="line"><span class="comment"># systemctl start docker</span></span><br><span class="line"><span class="comment"># systemctl enable docker</span></span><br><span class="line"><span class="comment"># mkdir -p /etc/docker</span></span><br><span class="line"><span class="comment"># tee /etc/docker/daemon.json &lt;&lt;-'EOF'</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"registry-mirrors"</span>: [<span class="string">"https://k9lgui7f.mirror.aliyuncs.com"</span>]                <span class="comment"># 为了后期方便添加阿里云的加速镜像站</span></span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line"><span class="comment"># systemctl daemon-reload</span></span><br><span class="line"><span class="comment"># systemctl restart docker</span></span><br></pre></td></tr></table></figure><h2 id="测试Docker服务正常"><a href="#测试Docker服务正常" class="headerlink" title="测试Docker服务正常"></a>测试Docker服务正常</h2><p>例行跑个hello world测试下Docker服务是否正常<br></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker run hello-world</span></span><br><span class="line">Unable to find image <span class="string">'hello-world:latest'</span> locally</span><br><span class="line">latest: Pulling from library/hello-world</span><br><span class="line">ca4f61b1923c: Pull complete</span><br><span class="line">Digest: sha256:ca0eeb6fb05351dfc8759c20733c91def84cb8007aa89a5bf606bc8b315b9fc7</span><br><span class="line">Status: Downloaded newer image <span class="keyword">for</span> hello-world:latest</span><br><span class="line"></span><br><span class="line">Hello from Docker!</span><br><span class="line">This message shows that your installation appears to be working correctly.</span><br><span class="line"></span><br><span class="line">To generate this message, Docker took the following steps:</span><br><span class="line"> 1. The Docker client contacted the Docker daemon.</span><br><span class="line"> 2. The Docker daemon pulled the <span class="string">"hello-world"</span> image from the Docker Hub.</span><br><span class="line">    (amd64)</span><br><span class="line"> 3. The Docker daemon created a new container from that image <span class="built_in">which</span> runs the</span><br><span class="line">    executable that produces the output you are currently reading.</span><br><span class="line"> 4. The Docker daemon streamed that output to the Docker client, <span class="built_in">which</span> sent it</span><br><span class="line">    to your terminal.</span><br><span class="line"></span><br><span class="line">To try something more ambitious, you can run an Ubuntu container with:</span><br><span class="line"> $ docker run -it ubuntu bash</span><br><span class="line"></span><br><span class="line">Share images, automate workflows, and more with a free Docker ID:</span><br><span class="line"> https://cloud.docker.com/</span><br><span class="line"></span><br><span class="line">For more examples and ideas, visit:</span><br><span class="line"> https://docs.docker.com/engine/userguide/</span><br></pre></td></tr></table></figure><p></p><h2 id="安装docker-compose"><a href="#安装docker-compose" class="headerlink" title="安装docker-compose"></a>安装docker-compose</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum install -y docker-compose</span></span><br></pre></td></tr></table></figure><h1 id="部署Gogs"><a href="#部署Gogs" class="headerlink" title="部署Gogs"></a>部署Gogs</h1><h2 id="Gogs简介"><a href="#Gogs简介" class="headerlink" title="Gogs简介"></a>Gogs简介</h2><p><a href="https://gogs.io/" target="_blank" rel="noopener">Gogs</a>，一款极易搭建的自助Git服务。<br>优势如下：</p><ul><li>易安装：除了可以根据操作系统平台下载二进制运行，还可以通过Docker或Vagrant，以及包管理安装。</li><li>跨平台：任何Go语言支持的平台都可以运行Gogs，包括Windows、Mac、Linux以及ARM。</li><li>轻量级：一个廉价的树莓派的配置足以满足 Gogs 的最低系统硬件要求。有些用户甚至还将 Gogs 运行在 NAS 设备上。</li></ul><h2 id="安装MySQL"><a href="#安装MySQL" class="headerlink" title="安装MySQL"></a>安装MySQL</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker run --name gogs-mysql --restart=always -v /opt/mysql/mysqlVolume:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 -d mysql:5.7.19</span></span><br><span class="line">Unable to find image <span class="string">'mysql:5.7.19'</span> locally</span><br><span class="line">5.7.19: Pulling from library/mysql</span><br><span class="line">85b1f47fba49: Pull complete</span><br><span class="line">27dc53f13a11: Pull complete</span><br><span class="line">095c8ae4182d: Pull complete</span><br><span class="line">0972f6b9a7de: Pull complete</span><br><span class="line">1b199048e1da: Pull complete</span><br><span class="line">159de3cf101e: Pull complete</span><br><span class="line">963d934c2fcd: Pull complete</span><br><span class="line">f4b66a97a0d0: Pull complete</span><br><span class="line">f34057997f40: Pull complete</span><br><span class="line">ca1db9a06aa4: Pull complete</span><br><span class="line">0f913cb2cc0c: Pull complete</span><br><span class="line">Digest: sha256:bfb22e93ee87c6aab6c1c9a4e7cdc68e9cb9b64920f28fa289f9ffae9fe8e173</span><br><span class="line">Status: Downloaded newer image <span class="keyword">for</span> mysql:5.7.19</span><br><span class="line">406c74b329f91e6eab27a8e338a8d06ca41a877701348d5f1972127356c07c16</span><br><span class="line"><span class="comment"># docker images</span></span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">mysql               5.7.19              3e3878acd190        2 months ago        412MB</span><br><span class="line"><span class="comment"># docker ps</span></span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                                            NAMES</span><br><span class="line">6984a3ea514c        mysql:5.7.19        <span class="string">"docker-entrypoint..."</span>   5 seconds ago       Up 4 seconds        0.0.0.0:3306-&gt;3306/tcp                           gogs-mysql</span><br><span class="line"><span class="comment"># yum install -y mysql</span></span><br><span class="line"><span class="comment"># mysql -uroot -p123456 -h 127.0.0.1</span></span><br><span class="line">Welcome to the MariaDB monitor.  Commands end with ; or \g.</span><br><span class="line">Your MySQL connection id is 3</span><br><span class="line">Server version: 5.7.19 MySQL Community Server (GPL)</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.</span><br><span class="line"></span><br><span class="line">Type <span class="string">'help;'</span> or <span class="string">'\h'</span> <span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">'\c'</span> to clear the current input statement.</span><br><span class="line"></span><br><span class="line">MySQL [(none)]&gt; select version();</span><br><span class="line">+-----------+</span><br><span class="line">| version() |</span><br><span class="line">+-----------+</span><br><span class="line">| 5.7.19    |</span><br><span class="line">+-----------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">MySQL [(none)]&gt; \q</span><br><span class="line">Bye</span><br></pre></td></tr></table></figure><h2 id="创建Gogs及drone数据库"><a href="#创建Gogs及drone数据库" class="headerlink" title="创建Gogs及drone数据库"></a>创建Gogs及drone数据库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mysql -uroot -p123456 -h 127.0.0.1</span></span><br><span class="line">Welcome to the MariaDB monitor.  Commands end with ; or \g.</span><br><span class="line">Your MySQL connection id is 3</span><br><span class="line">Server version: 5.7.19 MySQL Community Server (GPL)</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.</span><br><span class="line"></span><br><span class="line">Type <span class="string">'help;'</span> or <span class="string">'\h'</span> <span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">'\c'</span> to clear the current input statement.</span><br><span class="line"></span><br><span class="line">MySQL [(none)]&gt; CREATE DATABASE IF NOT EXISTS gogs CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">MySQL [(none)]&gt; create database drone;</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">MySQL [(none)]&gt; \q</span><br><span class="line">Bye</span><br></pre></td></tr></table></figure><h2 id="安装Gogs"><a href="#安装Gogs" class="headerlink" title="安装Gogs"></a>安装Gogs</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker pull gogs/gogs</span></span><br><span class="line"><span class="comment"># mkdir -p /var/gogs</span></span><br><span class="line"><span class="comment"># docker run --name=gogs --restart=always --link gogs-mysql:db -p 10022:22 -p 10080:3000 -v /var/gogs:/data gogs/gogs</span></span><br><span class="line">usermod: no changes</span><br><span class="line">Jan  6 13:01:29 syslogd started: BusyBox v1.25.1</span><br><span class="line">Jan  6 13:01:30 sshd[30]: Server listening on :: port 22.</span><br><span class="line">Jan  6 13:01:30 sshd[30]: Server listening on 0.0.0.0 port 22.</span><br><span class="line">2018/01/06 13:01:30 [ WARN] Custom config <span class="string">'/data/gogs/conf/app.ini'</span> not found, ignore this <span class="keyword">if</span> you<span class="string">'re running first time</span></span><br><span class="line"><span class="string">2018/01/06 13:01:30 [TRACE] Custom path: /data/gogs</span></span><br><span class="line"><span class="string">2018/01/06 13:01:30 [TRACE] Log path: /app/gogs/log</span></span><br><span class="line"><span class="string">2018/01/06 13:01:30 [TRACE] Build Time: 2017-11-22 08:19:49 UTC</span></span><br><span class="line"><span class="string">2018/01/06 13:01:30 [TRACE] Build Git Hash:</span></span><br><span class="line"><span class="string">2018/01/06 13:01:30 [TRACE] Log Mode: Console (Trace)</span></span><br><span class="line"><span class="string">2018/01/06 13:01:30 [ INFO] Gogs 0.11.34.1122</span></span><br><span class="line"><span class="string">2018/01/06 13:01:30 [ INFO] Cache Service Enabled</span></span><br><span class="line"><span class="string">2018/01/06 13:01:30 [ INFO] Session Service Enabled</span></span><br><span class="line"><span class="string">2018/01/06 13:01:30 [ INFO] SQLite3 Supported</span></span><br><span class="line"><span class="string">2018/01/06 13:01:30 [ INFO] Run Mode: Development</span></span><br><span class="line"><span class="string">2018/01/06 13:01:30 [ INFO] Listen: http://0.0.0.0:3000</span></span><br></pre></td></tr></table></figure><p>打开页面继续配置Gogs<br><a href="http://192.168.200.109:10080/install" target="_blank" rel="noopener">http://192.168.200.109:10080/install</a><br>配置数据库<br><img src="/archives/1a623683/06.png" alt=""><br>应用基本配置<br><img src="/archives/1a623683/07.png" alt=""><br>修正：应用URL填写<a href="http://192.168.200.109:10080" target="_blank" rel="noopener">http://192.168.200.109:10080</a><br>注册一个账号<br><img src="/archives/1a623683/zhuce.png" alt=""><br>账号：madongsheng<br>密码：123456<br>登录：<a href="http://192.168.200.109:10080" target="_blank" rel="noopener">http://192.168.200.109:10080</a><br><img src="/archives/1a623683/01.png" alt=""><br>创建一个测试仓库<br><img src="/archives/1a623683/08.png" alt=""></p><h1 id="部署Drone-server"><a href="#部署Drone-server" class="headerlink" title="部署Drone server"></a>部署Drone server</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker run -d \</span></span><br><span class="line">	   -e DRONE_HOST=192.168.200.109 \</span><br><span class="line">     -e DRONE_GOGS=<span class="literal">true</span> \</span><br><span class="line">     -e DRONE_GOGS_URL=http://192.168.200.109:10080 \</span><br><span class="line">     -e DRONE_OPEN=<span class="literal">true</span> \</span><br><span class="line">     -e DRONE_SECRET=123456 \</span><br><span class="line">     -v /tmp/drone:/var/lib/drone \</span><br><span class="line">     -p 9090:8000 \</span><br><span class="line">     --restart=always \</span><br><span class="line">     --name=drone \</span><br><span class="line">     drone/drone</span><br><span class="line">Unable to find image <span class="string">'drone/drone:latest'</span> locally</span><br><span class="line">latest: Pulling from drone/drone</span><br><span class="line">297640bfa2ef: Pull complete</span><br><span class="line">c7bc7c1b3f31: Pull complete</span><br><span class="line">Digest: sha256:ed0125a78737586cb59995fae65b1d89661676783f3141d9a7818fca3866769f</span><br><span class="line">Status: Downloaded newer image <span class="keyword">for</span> drone/drone:latest</span><br><span class="line">0fc16e8e46f4d04196436c1946f25b611e15af5e61676a5d9b3e661ff39afa7f</span><br><span class="line"><span class="comment"># docker images</span></span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">drone/drone         latest              45891aade610        2 weeks ago         30.4MB</span><br><span class="line">gogs/gogs           latest              6ab1773c26bc        6 weeks ago         139MB</span><br><span class="line">mysql               5.7.19              3e3878acd190        2 months ago        412MB</span><br><span class="line"><span class="comment"># docker ps</span></span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                                               NAMES</span><br><span class="line">0fc16e8e46f4        drone/drone         <span class="string">"/bin/drone-server"</span>      20 seconds ago      Up 20 seconds       80/tcp, 443/tcp, 9000/tcp, 0.0.0.0:9090-&gt;8000/tcp   drone</span><br></pre></td></tr></table></figure><p>参数说明：<br>添加DRONE_DATABASE_DRIVER与DRONE_DATABASE_DATASOURCE参数说明使用MySQL存储相关数据，默认使用sqllite</p><p>登录drone控制面板<br><a href="http://192.168.200.109:9090/login/form" target="_blank" rel="noopener">http://192.168.200.109:9090/login/form</a><br><img src="/archives/1a623683/03.png" alt=""><br>使用Gogs账号密码登录 例如：账号madongsheng 密码123456<br><img src="/archives/1a623683/04.png" alt=""><br>如何激活仓库<br><img src="/archives/1a623683/10.png" alt=""><br>注释：登录后会列出所有有权限的repos信息，如果没有可以点击右上角菜单找到synchronize进行同步仓库信息。</p><h1 id="部署Drone-agent"><a href="#部署Drone-agent" class="headerlink" title="部署Drone agent"></a>部署Drone agent</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker run -d \</span></span><br><span class="line">	 -e DRONE_HOST=192.168.200.109 \</span><br><span class="line">     -e DRONE_SERVER=ws://192.168.200.109:9090/ws/broker \</span><br><span class="line">     -e DRONE_SECRET=123456 \</span><br><span class="line">     -e DRONE_DATABASE_DRIVER=mysql \</span><br><span class="line">	 -e DRONE_DATABASE_DATASOURCE=root:123456@tcp\(192.168.200.109:3306\)/drone?parseTime=<span class="literal">true</span> \</span><br><span class="line">	 -e DRONE_GOGS=<span class="literal">true</span> \</span><br><span class="line">     -e DRONE_GOGS_URL=http://192.168.200.109:10080 \</span><br><span class="line">	 -e DRONE_GOGS_GIT_USERNAME=madongsheng \</span><br><span class="line">	 -e DRONE_GOGS_GIT_PASSWORD=123456 \</span><br><span class="line">     -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">     --name=drone-agent \</span><br><span class="line">     --link gogs:gogs \</span><br><span class="line">     drone/drone agent</span><br><span class="line">db57facd3db3554f70a6f5f1e95c437d7d32fa8718d45d657913a87727a4bf51</span><br><span class="line"><span class="comment"># docker ps</span></span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                                               NAMES</span><br><span class="line">219448fc1c5c        drone/drone         <span class="string">"/bin/drone-server..."</span>   4 seconds ago       Up 3 seconds        80/tcp, 443/tcp, 8000/tcp, 9000/tcp                 drone-agent</span><br></pre></td></tr></table></figure><h1 id="应用案例"><a href="#应用案例" class="headerlink" title="应用案例"></a>应用案例</h1><h2 id="自动化构建案例"><a href="#自动化构建案例" class="headerlink" title="自动化构建案例"></a>自动化构建案例</h2><p>在库里添加构建配置文件<br></p><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim .drone.yml</span></span><br><span class="line"><span class="attr">pipeline:</span></span><br><span class="line"><span class="attr">  build:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="attr">centos:6.9</span></span><br><span class="line"><span class="attr">    commands:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">yum</span> <span class="string">install</span> <span class="bullet">-y</span> <span class="string">gcc</span> <span class="string">gcc-c++</span> <span class="string">automake</span> <span class="string">autoconf</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">echo</span> <span class="string">"hello world!!!"</span></span><br><span class="line"><span class="comment"># git clone http://192.168.200.108:10080/madongsheng/test01.git</span></span><br><span class="line"><span class="comment"># cd test01/</span></span><br><span class="line"><span class="comment"># git add .</span></span><br><span class="line"><span class="comment"># git commit -m 'add .drone.yml'</span></span><br><span class="line"><span class="comment"># git push origin</span></span><br></pre></td></tr></table></figure><p></p><p>提前将相关镜像pull到本地，加快测试速度<br></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker pull golang</span></span><br><span class="line"><span class="comment"># docker pull node</span></span><br><span class="line"><span class="comment"># docker pull centos:6.9</span></span><br><span class="line"><span class="comment"># docker pull plugins/git</span></span><br></pre></td></tr></table></figure><p></p><p>自动触发创建构建任务<br><img src="/archives/1a623683/05.png" alt=""><br><img src="/archives/1a623683/12.png" alt=""></p><h2 id="配置Drone用户注册"><a href="#配置Drone用户注册" class="headerlink" title="配置Drone用户注册"></a>配置Drone用户注册</h2><p>开放注册<br></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+     DRONE_OPEN= <span class="literal">true</span></span><br></pre></td></tr></table></figure><p></p><p>限制注册<br></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+     DRONE_OPEN: <span class="literal">true</span></span><br><span class="line">+     DRONE_ORGS: dogpatch,dolores</span><br></pre></td></tr></table></figure><p></p><p>关闭注册<br></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+     - DRONE_OPEN=<span class="literal">false</span></span><br><span class="line">+     - DRONE_ADMIN=janedoe,johnsmith</span><br></pre></td></tr></table></figure><p></p><h2 id="显示状态图标"><a href="#显示状态图标" class="headerlink" title="显示状态图标"></a>显示状态图标</h2><p><a href="http://docs.drone.io/zh/badges/" target="_blank" rel="noopener">官网资料</a><br>显示效果，如下：<br><img src="/archives/1a623683/13.png" alt=""></p><h1 id="命令行管理Drone"><a href="#命令行管理Drone" class="headerlink" title="命令行管理Drone"></a>命令行管理Drone</h1><p>管理主机安装命令行软件包<br></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># curl -L https://github.com/drone/drone-cli/releases/download/v0.8.0/drone_linux_amd64.tar.gz | tar zx</span></span><br><span class="line"><span class="comment"># install -t /usr/local/bin/ drone</span></span><br></pre></td></tr></table></figure><p></p><p>设置token<br></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># export DRONE_SERVER=http://192.168.200.109:9090</span></span><br><span class="line"><span class="comment"># export DRONE_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZXh0IjoibWFkb25nc2hlbmciLCJ0eXBlIjoidXNlciJ9.iGJkLKdYz9HbQIxWORSKe1gyyuKUU85c0MdyU498Ekg</span></span><br></pre></td></tr></table></figure><p></p><p>测试<br></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># drone info</span></span><br><span class="line">User: madongsheng</span><br><span class="line">Email: 1455975151@qq.com</span><br></pre></td></tr></table></figure><p></p><p>主要功能</p><ul><li>用户管理</li><li>仓库管理</li><li>构建管理</li><li>REGISTRY管理</li><li>其他管理</li></ul><h1 id="API使用"><a href="#API使用" class="headerlink" title="API使用"></a>API使用</h1><ul><li><p>当前登录用户</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /api/user</span><br></pre></td></tr></table></figure></li><li><p>当前登录用户的活动信息流</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /api/user/feed</span><br></pre></td></tr></table></figure></li><li><p>当前登录用户的仓库列表</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /api/user/repos</span><br></pre></td></tr></table></figure></li></ul><h1 id="如何实现agent扩展"><a href="#如何实现agent扩展" class="headerlink" title="如何实现agent扩展"></a>如何实现agent扩展</h1><p>没有看到官网有类似说明文章，想到可以使用docker-compose进行快速伸缩<br></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker-compose scale drone-agent=5</span></span><br></pre></td></tr></table></figure><p></p><p>扩展前后可以明显看到并发任务量的增加</p><h1 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h1><p><a href="http://plugins.drone.io/" target="_blank" rel="noopener">官网插件地址</a><br>可以根据个人项目需求选择合适的插件进行配置。</p><h1 id="附件"><a href="#附件" class="headerlink" title="附件"></a>附件</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat docker-compose.yml</span></span><br><span class="line">version: <span class="string">'2'</span></span><br><span class="line">services:</span><br><span class="line">  mysql-gogs:</span><br><span class="line">    image: <span class="string">'mysql:5.7.17'</span></span><br><span class="line">    restart: always</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="string">'3306:3306'</span></span><br><span class="line">    volumes:</span><br><span class="line">      - /opt/docker/mysql/mysqlVolume:/var/lib/mysql</span><br><span class="line">    environment:</span><br><span class="line">      - MYSQL_ROOT_PASSWORD=123456</span><br><span class="line"></span><br><span class="line">  gogs:</span><br><span class="line">    image: <span class="string">'gogs/gogs'</span></span><br><span class="line">    restart: always</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="string">'10022:22'</span></span><br><span class="line">      - <span class="string">'10080:3000'</span></span><br><span class="line">    volumes:</span><br><span class="line">      - /opt/docker/gogs/data:/data</span><br><span class="line">    links:</span><br><span class="line">      - mysql-gogs:db</span><br><span class="line"></span><br><span class="line">  drone-server:</span><br><span class="line">    image: drone/drone:0.8</span><br><span class="line"></span><br><span class="line">    ports:</span><br><span class="line">      - <span class="string">'80:8000'</span></span><br><span class="line">      - <span class="string">'9000'</span></span><br><span class="line">    volumes:</span><br><span class="line">      - /tmp/drone:/var/lib/drone/</span><br><span class="line">    restart: always</span><br><span class="line">    environment:</span><br><span class="line">      - DRONE_HOST=drone-server</span><br><span class="line">      - DRONE_GOGS=<span class="literal">true</span></span><br><span class="line">      - DRONE_GOGS_URL=http://192.168.200.108:10080</span><br><span class="line">      - DRONE_GOGS_GIT_USERNAME=madongsheng</span><br><span class="line">      - DRONE_GOGS_GIT_PASSWORD=123456</span><br><span class="line">      - DRONE_OPEN=<span class="literal">true</span></span><br><span class="line">      - DRONE_SECRET=123456</span><br><span class="line"></span><br><span class="line">  drone-agent:</span><br><span class="line">    image: drone/agent:0.8</span><br><span class="line"></span><br><span class="line">    <span class="built_in">command</span>: agent</span><br><span class="line">    restart: always</span><br><span class="line">    depends_on:</span><br><span class="line">      - drone-server</span><br><span class="line">    volumes:</span><br><span class="line">      - /var/run/docker.sock:/var/run/docker.sock</span><br><span class="line">    environment:</span><br><span class="line">      - DRONE_SERVER=drone-server:9000</span><br><span class="line">      - DRONE_SECRET=123456</span><br></pre></td></tr></table></figure><h1 id="待续"><a href="#待续" class="headerlink" title="待续"></a>待续</h1><p><a href="https://segmentfault.com/a/1190000012066735" target="_blank" rel="noopener">https://segmentfault.com/a/1190000012066735</a><br><a href="https://segmentfault.com/a/1190000012459296" target="_blank" rel="noopener">https://segmentfault.com/a/1190000012459296</a></p><h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://github.com/drone/drone" target="_blank" rel="noopener">Drone Github地址</a><br><a href="https://www.jianshu.com/p/15506f46f75a" target="_blank" rel="noopener">体验基于gogs+Drone搭建的CI/CD平台</a></p><p>======================================================<br>希望各位朋友支持一下</p><ul><li>领取我的<a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=xpdsz87p&amp;utm_source=xpdsz87p" target="_blank" rel="noopener">阿里云幸运券</a>,谢谢.</li><li>使用<a href="https://cloud.tencent.com/redirect.php?redirect=1005&amp;cps_key=5a162632de40024cd01aabff4d3f1370" target="_blank" rel="noopener">腾讯云资源</a></li><li>自己的网站承接广告<a href="http://www.sudianlm.com/track/c/?rid=2056" target="_blank" rel="noopener">速点广告联盟</a></li><li>广告位招商QQ:1455975151</li><li>喜欢购物的朋友可以看看，<a href="http://www.1zhe.com/yq/1066027" target="_blank" rel="noopener">一折特卖</a></li></ul><p><strong>本文作者</strong>：dongsheng<br><strong>本文地址</strong>： <a href="https://mds1455975151.github.io/archives/1a623683.html">https://mds1455975151.github.io/archives/1a623683.html</a><br><strong>版权声明</strong>：转载请注明出处！</p></div><div></div><div><div style="padding:10px 0;margin:20px auto;width:90%;text-align:center"><div>坚持技术分享，您的支持将鼓励我继续创作！</div><button id="rewardButton" disable="enable" onclick='var e=document.getElementById("QR");"none"===e.style.display?e.style.display="block":e.style.display="none"'><span>赏</span></button><div id="QR" style="display:none"><div id="wechat" style="display:inline-block"><img id="wechat_qr" src="/images/wechatpay.jpg" alt="DongSheng WeChat Pay"><p>微信打赏</p></div><div id="alipay" style="display:inline-block"><img id="alipay_qr" src="/images/alipay.jpg" alt="DongSheng Alipay"><p>支付宝打赏</p></div></div></div></div><footer class="post-footer"><div class="post-tags"><a href="/tags/MySQL/" rel="tag"><i class="fa fa-tag"></i> MySQL</a> <a href="/tags/Gogs/" rel="tag"><i class="fa fa-tag"></i> Gogs</a> <a href="/tags/Drone/" rel="tag"><i class="fa fa-tag"></i> Drone</a> <a href="/tags/私有CI-CD平台/" rel="tag"><i class="fa fa-tag"></i> 私有CI/CD平台</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/archives/2589ba06.html" rel="next" title="Nginx知识梳理-部署"><i class="fa fa-chevron-left"></i> Nginx知识梳理-部署</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"><a href="/archives/b687dd8f.html" rel="prev" title="GitHub项目徽章的添加和设置">GitHub项目徽章的添加和设置 <i class="fa fa-chevron-right"></i></a></div></div></footer></article><div class="post-spread"><div class="addthis_inline_share_toolbox"><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=2151375" async></script></div></div></div></div><div class="jiathis_style"><a class="jiathis_button_tsina"></a> <a class="jiathis_button_tqq"></a> <a class="jiathis_button_weixin"></a> <a class="jiathis_button_cqq"></a> <a class="jiathis_button_douban"></a> <a class="jiathis_button_renren"></a> <a class="jiathis_button_qzone"></a> <a class="jiathis_button_kaixin001"></a> <a class="jiathis_button_copy"></a> <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a> <a class="jiathis_counter_style"></a></div><script type="text/javascript">var jiathis_config={hideMore:!1}</script><script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script><div class="ds-share flat" data-thread-key="archives/1a623683.html" data-title="基于Gogs+Drone搭建的私有CI/CD平台" data-content="" data-url="https://mds1455975151.github.io/archives/1a623683.html"><div class="ds-share-inline"><div class="ds-share-icons-more"></div></div></div><div class="comments" id="comments"><div id="disqus_thread"><noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript></div></div><div style="display:none"><script src="//s95.cnzz.com/z_stat.php?id=1271299436&web_id=1271299436" language="JavaScript"></script></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span> <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span> <span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">文章目录</li><li class="sidebar-nav-overview" data-target="site-overview">站点概览</li></ul><section class="site-overview sidebar-panel"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"><img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="DongSheng"><p class="site-author-name" itemprop="name">DongSheng</p><p class="site-description motion-element" itemprop="description">技术、产品、管理、思维格局</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"><a href="/archives"><span class="site-state-item-count">156</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"><a href="/categories"><span class="site-state-item-count">17</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"><a href="/tags"><span class="site-state-item-count">211</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/mds1455975151" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i> GitHub </a></span><span class="links-of-author-item"><a href="https://weibo.com/u/2098986717" target="_blank" title="Weibo"><i class="fa fa-fw fa-weibo"></i> Weibo </a></span><span class="links-of-author-item"><a href="https://www.douban.com/people/mds13693645328/" target="_blank" title="DouBan"><i class="fa fa-fw fa-globe"></i> DouBan </a></span><span class="links-of-author-item"><a href="https://www.zhihu.com/people/nba-14" target="_blank" title="ZhiHu"><i class="fa fa-fw fa-globe"></i> ZhiHu </a></span><span class="links-of-author-item"><a href="mailto:madscdpc@gmail.com" target="_blank" title="Email"><i class="fa fa-fw fa-envelope"></i> Email</a></span></div><div class="links-of-blogroll motion-element links-of-blogroll-block"><div class="links-of-blogroll-title"><i class="fa fa-fw fa-globe"></i> 友情链接</div><ul class="links-of-blogroll-list"><li class="links-of-blogroll-item"><a href="http://zerosre.com/" title="龙哥Zero" target="_blank">龙哥Zero</a></li><li class="links-of-blogroll-item"><a href="http://www.liangxiansen.cn/" title="LiangXianSen" target="_blank">LiangXianSen</a></li><li class="links-of-blogroll-item"><a href="http://www.cnblogs.com/biglittleant/" title="大小蚂蚁" target="_blank">大小蚂蚁</a></li><li class="links-of-blogroll-item"><a href="http://www.bokeren.cc/" title="linux运维" target="_blank">linux运维</a></li><li class="links-of-blogroll-item"><a href="https://www.bobcoder.cc/" title="Bob`S BLOG" target="_blank">Bob`S BLOG</a></li><li class="links-of-blogroll-item"><a href="http://www.fdevops.com/" title="兰玉磊的技术博客" target="_blank">兰玉磊的技术博客</a></li><li class="links-of-blogroll-item"><a href="http://www.yfshare.vip/" title="Jack Wang" target="_blank">Jack Wang</a></li></ul></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#环境说明"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x73AF;&#x5883;&#x8BF4;&#x660E;" class="headerlink" title="&#x73AF;&#x5883;&#x8BF4;&#x660E;"></a>&#x73AF;&#x5883;&#x8BF4;&#x660E;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#部署Docker"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x90E8;&#x7F72;Docker" class="headerlink" title="&#x90E8;&#x7F72;Docker"></a>&#x90E8;&#x7F72;Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Docker"><span class="nav-number">3.1.</span> <span class="nav-text"><a href="#&#x5B89;&#x88C5;Docker" class="headerlink" title="&#x5B89;&#x88C5;Docker"></a>&#x5B89;&#x88C5;Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试Docker服务正常"><span class="nav-number">3.2.</span> <span class="nav-text"><a href="#&#x6D4B;&#x8BD5;Docker&#x670D;&#x52A1;&#x6B63;&#x5E38;" class="headerlink" title="&#x6D4B;&#x8BD5;Docker&#x670D;&#x52A1;&#x6B63;&#x5E38;"></a>&#x6D4B;&#x8BD5;Docker&#x670D;&#x52A1;&#x6B63;&#x5E38;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装docker-compose"><span class="nav-number">3.3.</span> <span class="nav-text"><a href="#&#x5B89;&#x88C5;docker-compose" class="headerlink" title="&#x5B89;&#x88C5;docker-compose"></a>&#x5B89;&#x88C5;docker-compose</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#部署Gogs"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x90E8;&#x7F72;Gogs" class="headerlink" title="&#x90E8;&#x7F72;Gogs"></a>&#x90E8;&#x7F72;Gogs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Gogs简介"><span class="nav-number">4.1.</span> <span class="nav-text"><a href="#Gogs&#x7B80;&#x4ECB;" class="headerlink" title="Gogs&#x7B80;&#x4ECB;"></a>Gogs&#x7B80;&#x4ECB;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装MySQL"><span class="nav-number">4.2.</span> <span class="nav-text"><a href="#&#x5B89;&#x88C5;MySQL" class="headerlink" title="&#x5B89;&#x88C5;MySQL"></a>&#x5B89;&#x88C5;MySQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Gogs及drone数据库"><span class="nav-number">4.3.</span> <span class="nav-text"><a href="#&#x521B;&#x5EFA;Gogs&#x53CA;drone&#x6570;&#x636E;&#x5E93;" class="headerlink" title="&#x521B;&#x5EFA;Gogs&#x53CA;drone&#x6570;&#x636E;&#x5E93;"></a>&#x521B;&#x5EFA;Gogs&#x53CA;drone&#x6570;&#x636E;&#x5E93;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Gogs"><span class="nav-number">4.4.</span> <span class="nav-text"><a href="#&#x5B89;&#x88C5;Gogs" class="headerlink" title="&#x5B89;&#x88C5;Gogs"></a>&#x5B89;&#x88C5;Gogs</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#部署Drone-server"><span class="nav-number">5.</span> <span class="nav-text"><a href="#&#x90E8;&#x7F72;Drone-server" class="headerlink" title="&#x90E8;&#x7F72;Drone server"></a>&#x90E8;&#x7F72;Drone server</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#部署Drone-agent"><span class="nav-number">6.</span> <span class="nav-text"><a href="#&#x90E8;&#x7F72;Drone-agent" class="headerlink" title="&#x90E8;&#x7F72;Drone agent"></a>&#x90E8;&#x7F72;Drone agent</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用案例"><span class="nav-number">7.</span> <span class="nav-text"><a href="#&#x5E94;&#x7528;&#x6848;&#x4F8B;" class="headerlink" title="&#x5E94;&#x7528;&#x6848;&#x4F8B;"></a>&#x5E94;&#x7528;&#x6848;&#x4F8B;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自动化构建案例"><span class="nav-number">7.1.</span> <span class="nav-text"><a href="#&#x81EA;&#x52A8;&#x5316;&#x6784;&#x5EFA;&#x6848;&#x4F8B;" class="headerlink" title="&#x81EA;&#x52A8;&#x5316;&#x6784;&#x5EFA;&#x6848;&#x4F8B;"></a>&#x81EA;&#x52A8;&#x5316;&#x6784;&#x5EFA;&#x6848;&#x4F8B;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置Drone用户注册"><span class="nav-number">7.2.</span> <span class="nav-text"><a href="#&#x914D;&#x7F6E;Drone&#x7528;&#x6237;&#x6CE8;&#x518C;" class="headerlink" title="&#x914D;&#x7F6E;Drone&#x7528;&#x6237;&#x6CE8;&#x518C;"></a>&#x914D;&#x7F6E;Drone&#x7528;&#x6237;&#x6CE8;&#x518C;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显示状态图标"><span class="nav-number">7.3.</span> <span class="nav-text"><a href="#&#x663E;&#x793A;&#x72B6;&#x6001;&#x56FE;&#x6807;" class="headerlink" title="&#x663E;&#x793A;&#x72B6;&#x6001;&#x56FE;&#x6807;"></a>&#x663E;&#x793A;&#x72B6;&#x6001;&#x56FE;&#x6807;</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#命令行管理Drone"><span class="nav-number">8.</span> <span class="nav-text"><a href="#&#x547D;&#x4EE4;&#x884C;&#x7BA1;&#x7406;Drone" class="headerlink" title="&#x547D;&#x4EE4;&#x884C;&#x7BA1;&#x7406;Drone"></a>&#x547D;&#x4EE4;&#x884C;&#x7BA1;&#x7406;Drone</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#API使用"><span class="nav-number">9.</span> <span class="nav-text"><a href="#API&#x4F7F;&#x7528;" class="headerlink" title="API&#x4F7F;&#x7528;"></a>API&#x4F7F;&#x7528;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何实现agent扩展"><span class="nav-number">10.</span> <span class="nav-text"><a href="#&#x5982;&#x4F55;&#x5B9E;&#x73B0;agent&#x6269;&#x5C55;" class="headerlink" title="&#x5982;&#x4F55;&#x5B9E;&#x73B0;agent&#x6269;&#x5C55;"></a>&#x5982;&#x4F55;&#x5B9E;&#x73B0;agent&#x6269;&#x5C55;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插件"><span class="nav-number">11.</span> <span class="nav-text"><a href="#&#x63D2;&#x4EF6;" class="headerlink" title="&#x63D2;&#x4EF6;"></a>&#x63D2;&#x4EF6;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#附件"><span class="nav-number">12.</span> <span class="nav-text"><a href="#&#x9644;&#x4EF6;" class="headerlink" title="&#x9644;&#x4EF6;"></a>&#x9644;&#x4EF6;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#待续"><span class="nav-number">13.</span> <span class="nav-text"><a href="#&#x5F85;&#x7EED;" class="headerlink" title="&#x5F85;&#x7EED;"></a>&#x5F85;&#x7EED;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">14.</span> <span class="nav-text"><a href="#&#x53C2;&#x8003;&#x8D44;&#x6599;" class="headerlink" title="&#x53C2;&#x8003;&#x8D44;&#x6599;"></a>&#x53C2;&#x8003;&#x8D44;&#x6599;</span></a></li></ol></div></div></section></div></aside></div></main><footer id="footer" class="footer"><div class="footer-inner"><script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script><div class="copyright">&copy; 2017 - <span itemprop="copyrightYear">2018</span> <span class="with-love"><i class="fa fa-heart"></i> </span><span class="author" itemprop="copyrightHolder">DongSheng</span></div><div class="powered-by">由 <a class="theme-link" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动</div><div class="theme-info">主题 - <a class="theme-link" rel="external nofollow" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist </a><span id="busuanzi_container_site_pv" class="theme-info">&nbsp;&nbsp;|&nbsp;&nbsp;本站总访问量<span id="busuanzi_value_site_pv"></span>次 </span><span id="busuanzi_container_site_uv" class="theme-info">&nbsp;&nbsp;|&nbsp;&nbsp;本站访客数<span id="busuanzi_value_site_uv"></span>人次</span></div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i></div></div><script type="text/javascript">"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script><script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script><script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script><script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script><script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script><script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script><script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script><script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script><script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script><script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script><script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script><script type="text/javascript">function run_disqus_script(s){var e=document.createElement("script");e.type="text/javascript",e.async=!0,e.src="//"+disqus_shortname+".disqus.com/"+s,(document.getElementsByTagName("head")[0]||document.getElementsByTagName("body")[0]).appendChild(e)}var disqus_shortname="mdslq",disqus_identifier="archives/1a623683.html",disqus_title="基于Gogs+Drone搭建的私有CI/CD平台";run_disqus_script("count.js");var disqus_config=function(){this.page.url=disqus_url,this.page.identifier=disqus_identifier,this.page.title=disqus_title};run_disqus_script("embed.js")</script><script type="text/javascript">function proceedsearch(){$("body").append('<div class="local-search-pop-overlay">').css("overflow","hidden"),$(".popup").toggle()}var isfetched=!1,search_path="search.xml";0==search_path.length&&(search_path="search.xml");var path="/"+search_path,searchFunc=function(e,t,a){"use strict";$.ajax({url:e,dataType:"xml",async:!0,success:function(e){isfetched=!0,$(".popup").detach().appendTo(".header-inner");var r=$("entry",e).map(function(){return{title:$("title",this).text(),content:$("content",this).text(),url:$("url",this).text()}}).get(),c=document.getElementById(t),s=document.getElementById(a);c.addEventListener("input",function(){var e=0,t='<ul class="search-result-list">',a=this.value.trim().toLowerCase().split(/[\s\-]+/);s.innerHTML="",this.value.trim().length>1&&r.forEach(function(r){var c=!1,s=r.title.trim().toLowerCase(),n=r.content.trim().replace(/<[^>]+>/g,"").toLowerCase(),o=decodeURIComponent(r.url),i=-1,l=-1,p=-1;if(""!=s&&a.forEach(function(e,t){i=s.indexOf(e),l=n.indexOf(e),(i>=0||l>=0)&&(c=!0,0==t&&(p=l))}),c){e+=1,t+="<li><a href='"+o+"' class='search-result-title'>"+s+"</a>";var h=r.content.trim().replace(/<[^>]+>/g,"");if(p>=0){var u=p-20,d=p+80;u<0&&(u=0),0==u&&(d=50),d>h.length&&(d=h.length);var f=h.substring(u,d);a.forEach(function(e){var t=new RegExp(e,"gi");f=f.replace(t,'<b class="search-keyword">'+e+"</b>")}),t+='<p class="search-result">'+f+"...</p>"}t+="</li>"}}),t+="</ul>",0==e&&(t='<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'),""==a&&(t='<div id="no-result"><i class="fa fa-search fa-5x" /></div>'),s.innerHTML=t}),proceedsearch()}})};$(".popup-trigger").click(function(e){e.stopPropagation(),0==isfetched?searchFunc(path,"local-search-input","local-search-result"):proceedsearch()}),$(".popup-btn-close").click(function(e){$(".popup").hide(),$(".local-search-pop-overlay").remove(),$("body").css("overflow","")}),$(".popup").click(function(e){e.stopPropagation()})</script><script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script><script>AV.initialize("zkRHIN9YTUmv5PenxYHomhod-gzGzoHsz","gGNCtLGo1MP3aLhMysPSI4lJ")</script><script>function showTime(e){var t=new AV.Query(e),n=[],o=$(".leancloud_visitors");o.each(function(){n.push($(this).attr("id").trim())}),t.containedIn("url",n),t.find().done(function(e){var t=".leancloud-visitors-count";if(0===e.length)return void o.find(t).text(0);for(var i=0;i<e.length;i++){var r=e[i],s=r.get("url"),l=r.get("time"),c=document.getElementById(s);$(c).find(t).text(l)}for(var i=0;i<n.length;i++){var s=n[i],c=document.getElementById(s),u=$(c).find(t);""==u.text()&&u.text(0)}}).fail(function(e,t){console.log("Error: "+t.code+" "+t.message)})}function addCount(e){var t=$(".leancloud_visitors"),n=t.attr("id").trim(),o=t.attr("data-flag-title").trim(),i=new AV.Query(e);i.equalTo("url",n),i.find({success:function(t){if(t.length>0){var i=t[0];i.fetchWhenSave(!0),i.increment("time"),i.save(null,{success:function(e){var t=$(document.getElementById(n));t.find(".leancloud-visitors-count").text(e.get("time"))},error:function(e,t){console.log("Failed to save Visitor num, with error message: "+t.message)}})}else{var r=new e,s=new AV.ACL;s.setPublicReadAccess(!0),s.setPublicWriteAccess(!0),r.setACL(s),r.set("title",o),r.set("url",n),r.set("time",1),r.save(null,{success:function(e){var t=$(document.getElementById(n));t.find(".leancloud-visitors-count").text(e.get("time"))},error:function(e,t){console.log("Failed to create")}})}},error:function(e){console.log("Error:"+e.code+" "+e.message)}})}$(function(){var e=AV.Object.extend("Counter");1==$(".leancloud_visitors").length?addCount(e):$(".post-title-link").length>1&&showTime(e)})</script><div id="hexo-helper-live2d"><canvas id="live2dcanvas" width="150" height="300"></canvas></div><style>#live2dcanvas{position:fixed;width:150px;height:300px;opacity:.7;right:0;z-index:999;pointer-events:none;bottom:-20px}</style><script type="text/javascript" src="/live2d/device.min.js"></script><script type="text/javascript">const loadScript=function(e,t){var n=document.createElement("script");n.type="text/javascript","undefined"!=typeof t&&(n.readyState?n.onreadystatechange=function(){"loaded"!=n.readyState&&"complete"!=n.readyState||(n.onreadystatechange=null,t())}:n.onload=function(){t()}),n.src=e,document.body.appendChild(n)};!function(){"undefined"!=typeof device&&device.mobile()?(document.getElementById("live2dcanvas").style.width="75px",document.getElementById("live2dcanvas").style.height="150px"):"undefined"==typeof device&&console.error("Cannot find current-device script."),loadScript("/live2d/script.js",function(){loadlive2d("live2dcanvas","/live2d/assets/z16.model.json",.5)})}()</script></body></html><!-- rebuild by neat -->
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+<link href="//cdn.bootcss.com/pace/1.0.2/themes/pink/pace-theme-flash.css" rel="stylesheet">
+
+<style>
+    .pace .pace-progress {
+        background: #1E92FB; /*进度条颜色*/
+        height: 3px;
+    }
+    .pace .pace-progress-inner {
+         box-shadow: 0 0 10px #1E92FB, 0 0 5px     #1E92FB; /*阴影颜色*/
+    }
+    .pace .pace-activity {
+        border-top-color: #1E92FB;    /*上边框颜色*/
+        border-left-color: #1E92FB;    /*左边框颜色*/
+    }
+</style>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="MySQL,Gogs,Drone,私有CI/CD平台," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="DongSheng's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="打造基于Docker的私有CI/CD平台">
+<meta name="keywords" content="MySQL,Gogs,Drone,私有CI&#x2F;CD平台">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于Gogs+Drone搭建的私有CI&#x2F;CD平台">
+<meta property="og:url" content="https://mds1455975151.github.io/archives/1a623683.html">
+<meta property="og:site_name" content="DongSheng&#39;s Blog">
+<meta property="og:description" content="打造基于Docker的私有CI/CD平台">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://mds1455975151.github.io/archives/1a623683/06.png">
+<meta property="og:image" content="https://mds1455975151.github.io/archives/1a623683/07.png">
+<meta property="og:image" content="https://mds1455975151.github.io/archives/1a623683/zhuce.png">
+<meta property="og:image" content="https://mds1455975151.github.io/archives/1a623683/01.png">
+<meta property="og:image" content="https://mds1455975151.github.io/archives/1a623683/08.png">
+<meta property="og:image" content="https://mds1455975151.github.io/archives/1a623683/03.png">
+<meta property="og:image" content="https://mds1455975151.github.io/archives/1a623683/04.png">
+<meta property="og:image" content="https://mds1455975151.github.io/archives/1a623683/10.png">
+<meta property="og:image" content="https://mds1455975151.github.io/archives/1a623683/05.png">
+<meta property="og:image" content="https://mds1455975151.github.io/archives/1a623683/12.png">
+<meta property="og:image" content="https://mds1455975151.github.io/archives/1a623683/13.png">
+<meta property="og:updated_time" content="2018-02-21T04:26:21.255Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于Gogs+Drone搭建的私有CI&#x2F;CD平台">
+<meta name="twitter:description" content="打造基于Docker的私有CI/CD平台">
+<meta name="twitter:image" content="https://mds1455975151.github.io/archives/1a623683/06.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"right","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://mds1455975151.github.io/archives/1a623683.html"/>
+
+
+
+
+
+  <title> 基于Gogs+Drone搭建的私有CI/CD平台 | DongSheng's Blog </title>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-8670258387043414",
+          enable_page_level_ads: true
+     });
+</script>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1271299436&web_id=1271299436" language="JavaScript"></script>
+  </div>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
+    <div class="headband"></div>
+    <a href="https://github.com/mds1455975151/mds1455975151.github.io"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">DongSheng's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">记录点滴，不断突破</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-works">
+          <a href="/works" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-folder"></i> <br />
+            
+            作品
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-baidusitemap">
+          <a href="/baidusitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br />
+            
+            百度站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-ask-for-links">
+          <a href="/ask-for-links" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-coffee"></i> <br />
+            
+            申请友链
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-8670258387043414",
+    enable_page_level_ads: true
+  });
+</script>
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?c07b7d36eacd98b4b4dd92fc182723f4";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://mds1455975151.github.io/archives/1a623683.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DongSheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DongSheng's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                基于Gogs+Drone搭建的私有CI/CD平台
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-06T20:38:49+08:00">
+                2018-01-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/CI-CD/" itemprop="url" rel="index">
+                    <span itemprop="name">CI/CD</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/archives/1a623683.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="archives/1a623683.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/archives/1a623683.html" class="leancloud_visitors" data-flag-title="基于Gogs+Drone搭建的私有CI/CD平台">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+         <span class="post-time">
+	   &nbsp; | &nbsp;
+           <span class="post-meta-item-icon">
+             <i class="fa fa-calendar-o"></i>
+           </span>
+           <span class="post-meta-item-text">字数统计:</span>
+           <span class="post-count">2,576(字)</span>
+
+         </span>
+
+      <span class="post-time">
+	   &nbsp; | &nbsp;
+           <span class="post-meta-item-icon">
+             <i class="fa fa-calendar-o"></i>
+           </span>
+           <span class="post-meta-item-text">阅读时长:</span>
+           <span class="post-count">14(分)</span>
+
+         </span>
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  打造基于Docker的私有CI/CD平台
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>本文介绍如何打造基于Docker的私有CI/CD平台</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>目前体验过或者使用过的自动化构建工具有Jenkins，Travis-ci，Gitlab-CI，最近又发现了Drone。它是一款使用Go开发的开源的CI自动构建平台，能够单独部署，支持常见的Git仓库，例如Github,Gitlab, Bitbucket以及Gogs等。<br>本文带大家使用Gogs+Drone打造基于Docker的私有CI/CD平台，本文有不足或者认识不到位的地方欢迎大家批评指正。</p>
+<h1 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat /etc/redhat-release</span></span><br><span class="line">CentOS Linux release 7.2.1511 (Core)</span><br><span class="line"><span class="comment"># uname -r</span></span><br><span class="line">3.10.0-327.el7.x86_64</span><br><span class="line"><span class="comment"># uname -m</span></span><br><span class="line">x86_64</span><br><span class="line"><span class="comment"># docker version</span></span><br><span class="line">Client:</span><br><span class="line"> Version:      17.06.2-ce</span><br><span class="line"> API version:  1.30</span><br><span class="line"> Go version:   go1.8.3</span><br><span class="line"> Git commit:   cec0b72</span><br><span class="line"> Built:        Tue Sep  5 19:59:06 2017</span><br><span class="line"> OS/Arch:      linux/amd64</span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Version:      17.06.2-ce</span><br><span class="line"> API version:  1.30 (minimum version 1.12)</span><br><span class="line"> Go version:   go1.8.3</span><br><span class="line"> Git commit:   cec0b72</span><br><span class="line"> Built:        Tue Sep  5 20:00:25 2017</span><br><span class="line"> OS/Arch:      linux/amd64</span><br><span class="line"> Experimental: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<h1 id="部署Docker"><a href="#部署Docker" class="headerlink" title="部署Docker"></a>部署Docker</h1><h2 id="安装Docker"><a href="#安装Docker" class="headerlink" title="安装Docker"></a>安装Docker</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cd /etc/yum.repos.d/ &amp;&amp; rm -f *.repo</span></span><br><span class="line"><span class="comment"># wget -O /etc/yum.repos.d/epel.repo http://mirrors.aliyun.com/repo/epel-7.repo</span></span><br><span class="line"><span class="comment"># wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</span></span><br><span class="line"><span class="comment"># yum remove -y docker docker-common docker-selinux docker-engine</span></span><br><span class="line"><span class="comment"># yum install -y yum-utils device-mapper-persistent-data lvm2</span></span><br><span class="line"><span class="comment"># yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo</span></span><br><span class="line"><span class="comment"># yum-config-manager --enable docker-ce-edge</span></span><br><span class="line"><span class="comment"># yum list docker-ce --showduplicates | sort -r |grep stable</span></span><br><span class="line"><span class="comment"># yum install -y docker-ce-17.06.2.ce</span></span><br><span class="line"><span class="comment"># systemctl start docker</span></span><br><span class="line"><span class="comment"># systemctl enable docker</span></span><br><span class="line"><span class="comment"># mkdir -p /etc/docker</span></span><br><span class="line"><span class="comment"># tee /etc/docker/daemon.json &lt;&lt;-'EOF'</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">"registry-mirrors"</span>: [<span class="string">"https://k9lgui7f.mirror.aliyuncs.com"</span>]                <span class="comment"># 为了后期方便添加阿里云的加速镜像站</span></span><br><span class="line">&#125;</span><br><span class="line">EOF</span><br><span class="line"><span class="comment"># systemctl daemon-reload</span></span><br><span class="line"><span class="comment"># systemctl restart docker</span></span><br></pre></td></tr></table></figure>
+<h2 id="测试Docker服务正常"><a href="#测试Docker服务正常" class="headerlink" title="测试Docker服务正常"></a>测试Docker服务正常</h2><p>例行跑个hello world测试下Docker服务是否正常<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker run hello-world</span></span><br><span class="line">Unable to find image <span class="string">'hello-world:latest'</span> locally</span><br><span class="line">latest: Pulling from library/hello-world</span><br><span class="line">ca4f61b1923c: Pull complete</span><br><span class="line">Digest: sha256:ca0eeb6fb05351dfc8759c20733c91def84cb8007aa89a5bf606bc8b315b9fc7</span><br><span class="line">Status: Downloaded newer image <span class="keyword">for</span> hello-world:latest</span><br><span class="line"></span><br><span class="line">Hello from Docker!</span><br><span class="line">This message shows that your installation appears to be working correctly.</span><br><span class="line"></span><br><span class="line">To generate this message, Docker took the following steps:</span><br><span class="line"> 1. The Docker client contacted the Docker daemon.</span><br><span class="line"> 2. The Docker daemon pulled the <span class="string">"hello-world"</span> image from the Docker Hub.</span><br><span class="line">    (amd64)</span><br><span class="line"> 3. The Docker daemon created a new container from that image <span class="built_in">which</span> runs the</span><br><span class="line">    executable that produces the output you are currently reading.</span><br><span class="line"> 4. The Docker daemon streamed that output to the Docker client, <span class="built_in">which</span> sent it</span><br><span class="line">    to your terminal.</span><br><span class="line"></span><br><span class="line">To try something more ambitious, you can run an Ubuntu container with:</span><br><span class="line"> $ docker run -it ubuntu bash</span><br><span class="line"></span><br><span class="line">Share images, automate workflows, and more with a free Docker ID:</span><br><span class="line"> https://cloud.docker.com/</span><br><span class="line"></span><br><span class="line">For more examples and ideas, visit:</span><br><span class="line"> https://docs.docker.com/engine/userguide/</span><br></pre></td></tr></table></figure></p>
+<h2 id="安装docker-compose"><a href="#安装docker-compose" class="headerlink" title="安装docker-compose"></a>安装docker-compose</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum install -y docker-compose</span></span><br></pre></td></tr></table></figure>
+<h1 id="部署Gogs"><a href="#部署Gogs" class="headerlink" title="部署Gogs"></a>部署Gogs</h1><h2 id="Gogs简介"><a href="#Gogs简介" class="headerlink" title="Gogs简介"></a>Gogs简介</h2><p><a href="https://gogs.io/" target="_blank" rel="noopener">Gogs</a>，一款极易搭建的自助Git服务。<br>优势如下：</p>
+<ul>
+<li>易安装：除了可以根据操作系统平台下载二进制运行，还可以通过Docker或Vagrant，以及包管理安装。</li>
+<li>跨平台：任何Go语言支持的平台都可以运行Gogs，包括Windows、Mac、Linux以及ARM。</li>
+<li>轻量级：一个廉价的树莓派的配置足以满足 Gogs 的最低系统硬件要求。有些用户甚至还将 Gogs 运行在 NAS 设备上。</li>
+</ul>
+<h2 id="安装MySQL"><a href="#安装MySQL" class="headerlink" title="安装MySQL"></a>安装MySQL</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker run --name gogs-mysql --restart=always -v /opt/mysql/mysqlVolume:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -p 3306:3306 -d mysql:5.7.19</span></span><br><span class="line">Unable to find image <span class="string">'mysql:5.7.19'</span> locally</span><br><span class="line">5.7.19: Pulling from library/mysql</span><br><span class="line">85b1f47fba49: Pull complete</span><br><span class="line">27dc53f13a11: Pull complete</span><br><span class="line">095c8ae4182d: Pull complete</span><br><span class="line">0972f6b9a7de: Pull complete</span><br><span class="line">1b199048e1da: Pull complete</span><br><span class="line">159de3cf101e: Pull complete</span><br><span class="line">963d934c2fcd: Pull complete</span><br><span class="line">f4b66a97a0d0: Pull complete</span><br><span class="line">f34057997f40: Pull complete</span><br><span class="line">ca1db9a06aa4: Pull complete</span><br><span class="line">0f913cb2cc0c: Pull complete</span><br><span class="line">Digest: sha256:bfb22e93ee87c6aab6c1c9a4e7cdc68e9cb9b64920f28fa289f9ffae9fe8e173</span><br><span class="line">Status: Downloaded newer image <span class="keyword">for</span> mysql:5.7.19</span><br><span class="line">406c74b329f91e6eab27a8e338a8d06ca41a877701348d5f1972127356c07c16</span><br><span class="line"><span class="comment"># docker images</span></span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">mysql               5.7.19              3e3878acd190        2 months ago        412MB</span><br><span class="line"><span class="comment"># docker ps</span></span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                                            NAMES</span><br><span class="line">6984a3ea514c        mysql:5.7.19        <span class="string">"docker-entrypoint..."</span>   5 seconds ago       Up 4 seconds        0.0.0.0:3306-&gt;3306/tcp                           gogs-mysql</span><br><span class="line"><span class="comment"># yum install -y mysql</span></span><br><span class="line"><span class="comment"># mysql -uroot -p123456 -h 127.0.0.1</span></span><br><span class="line">Welcome to the MariaDB monitor.  Commands end with ; or \g.</span><br><span class="line">Your MySQL connection id is 3</span><br><span class="line">Server version: 5.7.19 MySQL Community Server (GPL)</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.</span><br><span class="line"></span><br><span class="line">Type <span class="string">'help;'</span> or <span class="string">'\h'</span> <span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">'\c'</span> to clear the current input statement.</span><br><span class="line"></span><br><span class="line">MySQL [(none)]&gt; select version();</span><br><span class="line">+-----------+</span><br><span class="line">| version() |</span><br><span class="line">+-----------+</span><br><span class="line">| 5.7.19    |</span><br><span class="line">+-----------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">MySQL [(none)]&gt; \q</span><br><span class="line">Bye</span><br></pre></td></tr></table></figure>
+<h2 id="创建Gogs及drone数据库"><a href="#创建Gogs及drone数据库" class="headerlink" title="创建Gogs及drone数据库"></a>创建Gogs及drone数据库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mysql -uroot -p123456 -h 127.0.0.1</span></span><br><span class="line">Welcome to the MariaDB monitor.  Commands end with ; or \g.</span><br><span class="line">Your MySQL connection id is 3</span><br><span class="line">Server version: 5.7.19 MySQL Community Server (GPL)</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2017, Oracle, MariaDB Corporation Ab and others.</span><br><span class="line"></span><br><span class="line">Type <span class="string">'help;'</span> or <span class="string">'\h'</span> <span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">'\c'</span> to clear the current input statement.</span><br><span class="line"></span><br><span class="line">MySQL [(none)]&gt; CREATE DATABASE IF NOT EXISTS gogs CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">MySQL [(none)]&gt; create database drone;</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line"></span><br><span class="line">MySQL [(none)]&gt; \q</span><br><span class="line">Bye</span><br></pre></td></tr></table></figure>
+<h2 id="安装Gogs"><a href="#安装Gogs" class="headerlink" title="安装Gogs"></a>安装Gogs</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker pull gogs/gogs</span></span><br><span class="line"><span class="comment"># mkdir -p /var/gogs</span></span><br><span class="line"><span class="comment"># docker run --name=gogs --restart=always --link gogs-mysql:db -p 10022:22 -p 10080:3000 -v /var/gogs:/data gogs/gogs</span></span><br><span class="line">usermod: no changes</span><br><span class="line">Jan  6 13:01:29 syslogd started: BusyBox v1.25.1</span><br><span class="line">Jan  6 13:01:30 sshd[30]: Server listening on :: port 22.</span><br><span class="line">Jan  6 13:01:30 sshd[30]: Server listening on 0.0.0.0 port 22.</span><br><span class="line">2018/01/06 13:01:30 [ WARN] Custom config <span class="string">'/data/gogs/conf/app.ini'</span> not found, ignore this <span class="keyword">if</span> you<span class="string">'re running first time</span></span><br><span class="line"><span class="string">2018/01/06 13:01:30 [TRACE] Custom path: /data/gogs</span></span><br><span class="line"><span class="string">2018/01/06 13:01:30 [TRACE] Log path: /app/gogs/log</span></span><br><span class="line"><span class="string">2018/01/06 13:01:30 [TRACE] Build Time: 2017-11-22 08:19:49 UTC</span></span><br><span class="line"><span class="string">2018/01/06 13:01:30 [TRACE] Build Git Hash:</span></span><br><span class="line"><span class="string">2018/01/06 13:01:30 [TRACE] Log Mode: Console (Trace)</span></span><br><span class="line"><span class="string">2018/01/06 13:01:30 [ INFO] Gogs 0.11.34.1122</span></span><br><span class="line"><span class="string">2018/01/06 13:01:30 [ INFO] Cache Service Enabled</span></span><br><span class="line"><span class="string">2018/01/06 13:01:30 [ INFO] Session Service Enabled</span></span><br><span class="line"><span class="string">2018/01/06 13:01:30 [ INFO] SQLite3 Supported</span></span><br><span class="line"><span class="string">2018/01/06 13:01:30 [ INFO] Run Mode: Development</span></span><br><span class="line"><span class="string">2018/01/06 13:01:30 [ INFO] Listen: http://0.0.0.0:3000</span></span><br></pre></td></tr></table></figure>
+<p>打开页面继续配置Gogs<br><a href="http://192.168.200.109:10080/install" target="_blank" rel="noopener">http://192.168.200.109:10080/install</a><br>配置数据库<br><img src="/archives/1a623683/06.png" alt=""><br>应用基本配置<br><img src="/archives/1a623683/07.png" alt=""><br>修正：应用URL填写<a href="http://192.168.200.109:10080" target="_blank" rel="noopener">http://192.168.200.109:10080</a><br>注册一个账号<br><img src="/archives/1a623683/zhuce.png" alt=""><br>账号：madongsheng<br>密码：123456<br>登录：<a href="http://192.168.200.109:10080" target="_blank" rel="noopener">http://192.168.200.109:10080</a><br><img src="/archives/1a623683/01.png" alt=""><br>创建一个测试仓库<br><img src="/archives/1a623683/08.png" alt=""></p>
+<h1 id="部署Drone-server"><a href="#部署Drone-server" class="headerlink" title="部署Drone server"></a>部署Drone server</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker run -d \</span></span><br><span class="line">	   -e DRONE_HOST=192.168.200.109 \</span><br><span class="line">     -e DRONE_GOGS=<span class="literal">true</span> \</span><br><span class="line">     -e DRONE_GOGS_URL=http://192.168.200.109:10080 \</span><br><span class="line">     -e DRONE_OPEN=<span class="literal">true</span> \</span><br><span class="line">     -e DRONE_SECRET=123456 \</span><br><span class="line">     -v /tmp/drone:/var/lib/drone \</span><br><span class="line">     -p 9090:8000 \</span><br><span class="line">     --restart=always \</span><br><span class="line">     --name=drone \</span><br><span class="line">     drone/drone</span><br><span class="line">Unable to find image <span class="string">'drone/drone:latest'</span> locally</span><br><span class="line">latest: Pulling from drone/drone</span><br><span class="line">297640bfa2ef: Pull complete</span><br><span class="line">c7bc7c1b3f31: Pull complete</span><br><span class="line">Digest: sha256:ed0125a78737586cb59995fae65b1d89661676783f3141d9a7818fca3866769f</span><br><span class="line">Status: Downloaded newer image <span class="keyword">for</span> drone/drone:latest</span><br><span class="line">0fc16e8e46f4d04196436c1946f25b611e15af5e61676a5d9b3e661ff39afa7f</span><br><span class="line"><span class="comment"># docker images</span></span><br><span class="line">REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE</span><br><span class="line">drone/drone         latest              45891aade610        2 weeks ago         30.4MB</span><br><span class="line">gogs/gogs           latest              6ab1773c26bc        6 weeks ago         139MB</span><br><span class="line">mysql               5.7.19              3e3878acd190        2 months ago        412MB</span><br><span class="line"><span class="comment"># docker ps</span></span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                                               NAMES</span><br><span class="line">0fc16e8e46f4        drone/drone         <span class="string">"/bin/drone-server"</span>      20 seconds ago      Up 20 seconds       80/tcp, 443/tcp, 9000/tcp, 0.0.0.0:9090-&gt;8000/tcp   drone</span><br></pre></td></tr></table></figure>
+<p>参数说明：<br>添加DRONE_DATABASE_DRIVER与DRONE_DATABASE_DATASOURCE参数说明使用MySQL存储相关数据，默认使用sqllite</p>
+<p>登录drone控制面板<br><a href="http://192.168.200.109:9090/login/form" target="_blank" rel="noopener">http://192.168.200.109:9090/login/form</a><br><img src="/archives/1a623683/03.png" alt=""><br>使用Gogs账号密码登录 例如：账号madongsheng 密码123456<br><img src="/archives/1a623683/04.png" alt=""><br>如何激活仓库<br><img src="/archives/1a623683/10.png" alt=""><br>注释：登录后会列出所有有权限的repos信息，如果没有可以点击右上角菜单找到synchronize进行同步仓库信息。</p>
+<h1 id="部署Drone-agent"><a href="#部署Drone-agent" class="headerlink" title="部署Drone agent"></a>部署Drone agent</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker run -d \</span></span><br><span class="line">	 -e DRONE_HOST=192.168.200.109 \</span><br><span class="line">     -e DRONE_SERVER=ws://192.168.200.109:9090/ws/broker \</span><br><span class="line">     -e DRONE_SECRET=123456 \</span><br><span class="line">     -e DRONE_DATABASE_DRIVER=mysql \</span><br><span class="line">	 -e DRONE_DATABASE_DATASOURCE=root:123456@tcp\(192.168.200.109:3306\)/drone?parseTime=<span class="literal">true</span> \</span><br><span class="line">	 -e DRONE_GOGS=<span class="literal">true</span> \</span><br><span class="line">     -e DRONE_GOGS_URL=http://192.168.200.109:10080 \</span><br><span class="line">	 -e DRONE_GOGS_GIT_USERNAME=madongsheng \</span><br><span class="line">	 -e DRONE_GOGS_GIT_PASSWORD=123456 \</span><br><span class="line">     -v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">     --name=drone-agent \</span><br><span class="line">     --link gogs:gogs \</span><br><span class="line">     drone/drone agent</span><br><span class="line">db57facd3db3554f70a6f5f1e95c437d7d32fa8718d45d657913a87727a4bf51</span><br><span class="line"><span class="comment"># docker ps</span></span><br><span class="line">CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                                               NAMES</span><br><span class="line">219448fc1c5c        drone/drone         <span class="string">"/bin/drone-server..."</span>   4 seconds ago       Up 3 seconds        80/tcp, 443/tcp, 8000/tcp, 9000/tcp                 drone-agent</span><br></pre></td></tr></table></figure>
+<h1 id="应用案例"><a href="#应用案例" class="headerlink" title="应用案例"></a>应用案例</h1><h2 id="自动化构建案例"><a href="#自动化构建案例" class="headerlink" title="自动化构建案例"></a>自动化构建案例</h2><p>在库里添加构建配置文件<br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># vim .drone.yml</span></span><br><span class="line"><span class="attr">pipeline:</span></span><br><span class="line"><span class="attr">  build:</span></span><br><span class="line"><span class="attr">    image:</span> <span class="attr">centos:6.9</span></span><br><span class="line"><span class="attr">    commands:</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">yum</span> <span class="string">install</span> <span class="bullet">-y</span> <span class="string">gcc</span> <span class="string">gcc-c++</span> <span class="string">automake</span> <span class="string">autoconf</span></span><br><span class="line"><span class="bullet">      -</span> <span class="string">echo</span> <span class="string">"hello world!!!"</span></span><br><span class="line"><span class="comment"># git clone http://192.168.200.108:10080/madongsheng/test01.git</span></span><br><span class="line"><span class="comment"># cd test01/</span></span><br><span class="line"><span class="comment"># git add .</span></span><br><span class="line"><span class="comment"># git commit -m 'add .drone.yml'</span></span><br><span class="line"><span class="comment"># git push origin</span></span><br></pre></td></tr></table></figure></p>
+<p>提前将相关镜像pull到本地，加快测试速度<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker pull golang</span></span><br><span class="line"><span class="comment"># docker pull node</span></span><br><span class="line"><span class="comment"># docker pull centos:6.9</span></span><br><span class="line"><span class="comment"># docker pull plugins/git</span></span><br></pre></td></tr></table></figure></p>
+<p>自动触发创建构建任务<br><img src="/archives/1a623683/05.png" alt=""><br><img src="/archives/1a623683/12.png" alt=""></p>
+<h2 id="配置Drone用户注册"><a href="#配置Drone用户注册" class="headerlink" title="配置Drone用户注册"></a>配置Drone用户注册</h2><p>开放注册<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+     DRONE_OPEN= <span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
+<p>限制注册<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+     DRONE_OPEN: <span class="literal">true</span></span><br><span class="line">+     DRONE_ORGS: dogpatch,dolores</span><br></pre></td></tr></table></figure></p>
+<p>关闭注册<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">+     - DRONE_OPEN=<span class="literal">false</span></span><br><span class="line">+     - DRONE_ADMIN=janedoe,johnsmith</span><br></pre></td></tr></table></figure></p>
+<h2 id="显示状态图标"><a href="#显示状态图标" class="headerlink" title="显示状态图标"></a>显示状态图标</h2><p><a href="http://docs.drone.io/zh/badges/" target="_blank" rel="noopener">官网资料</a><br>显示效果，如下：<br><img src="/archives/1a623683/13.png" alt=""></p>
+<h1 id="命令行管理Drone"><a href="#命令行管理Drone" class="headerlink" title="命令行管理Drone"></a>命令行管理Drone</h1><p>管理主机安装命令行软件包<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># curl -L https://github.com/drone/drone-cli/releases/download/v0.8.0/drone_linux_amd64.tar.gz | tar zx</span></span><br><span class="line"><span class="comment"># install -t /usr/local/bin/ drone</span></span><br></pre></td></tr></table></figure></p>
+<p>设置token<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># export DRONE_SERVER=http://192.168.200.109:9090</span></span><br><span class="line"><span class="comment"># export DRONE_TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0ZXh0IjoibWFkb25nc2hlbmciLCJ0eXBlIjoidXNlciJ9.iGJkLKdYz9HbQIxWORSKe1gyyuKUU85c0MdyU498Ekg</span></span><br></pre></td></tr></table></figure></p>
+<p>测试<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># drone info</span></span><br><span class="line">User: madongsheng</span><br><span class="line">Email: 1455975151@qq.com</span><br></pre></td></tr></table></figure></p>
+<p>主要功能</p>
+<ul>
+<li>用户管理</li>
+<li>仓库管理</li>
+<li>构建管理</li>
+<li>REGISTRY管理</li>
+<li>其他管理</li>
+</ul>
+<h1 id="API使用"><a href="#API使用" class="headerlink" title="API使用"></a>API使用</h1><ul>
+<li><p>当前登录用户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /api/user</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当前登录用户的活动信息流</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /api/user/feed</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>当前登录用户的仓库列表</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GET /api/user/repos</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h1 id="如何实现agent扩展"><a href="#如何实现agent扩展" class="headerlink" title="如何实现agent扩展"></a>如何实现agent扩展</h1><p>没有看到官网有类似说明文章，想到可以使用docker-compose进行快速伸缩<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker-compose scale drone-agent=5</span></span><br></pre></td></tr></table></figure></p>
+<p>扩展前后可以明显看到并发任务量的增加</p>
+<h1 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h1><p><a href="http://plugins.drone.io/" target="_blank" rel="noopener">官网插件地址</a><br>可以根据个人项目需求选择合适的插件进行配置。</p>
+<h1 id="附件"><a href="#附件" class="headerlink" title="附件"></a>附件</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cat docker-compose.yml</span></span><br><span class="line">version: <span class="string">'2'</span></span><br><span class="line">services:</span><br><span class="line">  mysql-gogs:</span><br><span class="line">    image: <span class="string">'mysql:5.7.17'</span></span><br><span class="line">    restart: always</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="string">'3306:3306'</span></span><br><span class="line">    volumes:</span><br><span class="line">      - /opt/docker/mysql/mysqlVolume:/var/lib/mysql</span><br><span class="line">    environment:</span><br><span class="line">      - MYSQL_ROOT_PASSWORD=123456</span><br><span class="line"></span><br><span class="line">  gogs:</span><br><span class="line">    image: <span class="string">'gogs/gogs'</span></span><br><span class="line">    restart: always</span><br><span class="line">    ports:</span><br><span class="line">      - <span class="string">'10022:22'</span></span><br><span class="line">      - <span class="string">'10080:3000'</span></span><br><span class="line">    volumes:</span><br><span class="line">      - /opt/docker/gogs/data:/data</span><br><span class="line">    links:</span><br><span class="line">      - mysql-gogs:db</span><br><span class="line"></span><br><span class="line">  drone-server:</span><br><span class="line">    image: drone/drone:0.8</span><br><span class="line"></span><br><span class="line">    ports:</span><br><span class="line">      - <span class="string">'80:8000'</span></span><br><span class="line">      - <span class="string">'9000'</span></span><br><span class="line">    volumes:</span><br><span class="line">      - /tmp/drone:/var/lib/drone/</span><br><span class="line">    restart: always</span><br><span class="line">    environment:</span><br><span class="line">      - DRONE_HOST=drone-server</span><br><span class="line">      - DRONE_GOGS=<span class="literal">true</span></span><br><span class="line">      - DRONE_GOGS_URL=http://192.168.200.108:10080</span><br><span class="line">      - DRONE_GOGS_GIT_USERNAME=madongsheng</span><br><span class="line">      - DRONE_GOGS_GIT_PASSWORD=123456</span><br><span class="line">      - DRONE_OPEN=<span class="literal">true</span></span><br><span class="line">      - DRONE_SECRET=123456</span><br><span class="line"></span><br><span class="line">  drone-agent:</span><br><span class="line">    image: drone/agent:0.8</span><br><span class="line"></span><br><span class="line">    <span class="built_in">command</span>: agent</span><br><span class="line">    restart: always</span><br><span class="line">    depends_on:</span><br><span class="line">      - drone-server</span><br><span class="line">    volumes:</span><br><span class="line">      - /var/run/docker.sock:/var/run/docker.sock</span><br><span class="line">    environment:</span><br><span class="line">      - DRONE_SERVER=drone-server:9000</span><br><span class="line">      - DRONE_SECRET=123456</span><br></pre></td></tr></table></figure>
+<h1 id="待续"><a href="#待续" class="headerlink" title="待续"></a>待续</h1><p><a href="https://segmentfault.com/a/1190000012066735" target="_blank" rel="noopener">https://segmentfault.com/a/1190000012066735</a><br><a href="https://segmentfault.com/a/1190000012459296" target="_blank" rel="noopener">https://segmentfault.com/a/1190000012459296</a></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://github.com/drone/drone" target="_blank" rel="noopener">Drone Github地址</a><br><a href="https://www.jianshu.com/p/15506f46f75a" target="_blank" rel="noopener">体验基于gogs+Drone搭建的CI/CD平台</a></p>
+<p>======================================================<br>希望各位朋友支持一下</p>
+<ul>
+<li>领取我的<a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=xpdsz87p&amp;utm_source=xpdsz87p" target="_blank" rel="noopener">阿里云幸运券</a>,谢谢.</li>
+<li>使用<a href="https://cloud.tencent.com/redirect.php?redirect=1005&amp;cps_key=5a162632de40024cd01aabff4d3f1370" target="_blank" rel="noopener">腾讯云资源</a></li>
+<li>自己的网站承接广告<a href="http://www.sudianlm.com/track/c/?rid=2056" target="_blank" rel="noopener">速点广告联盟</a></li>
+<li>广告位招商QQ:1455975151</li>
+<li>喜欢购物的朋友可以看看，<a href="http://www.1zhe.com/yq/1066027" target="_blank" rel="noopener">一折特卖</a><!--注册一折特卖，免费领集分宝，集分宝可以当钱花，免费购物不是梦，注册马上送你10集分宝。-->
+</li>
+</ul>
+<p><strong>本文作者</strong>：dongsheng<br><strong>本文地址</strong>： <a href="https://mds1455975151.github.io/archives/1a623683.html">https://mds1455975151.github.io/archives/1a623683.html</a> <br><strong>版权声明</strong>：转载请注明出处！</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wechatpay.jpg" alt="DongSheng WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+        <div id="alipay" style="display: inline-block">
+          <img id="alipay_qr" src="/images/alipay.jpg" alt="DongSheng Alipay"/>
+          <p>支付宝打赏</p>
+        </div>
+      
+    </div>
+  </div>
+
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MySQL/" rel="tag"><i class="fa fa-tag"></i> MySQL</a>
+          
+            <a href="/tags/Gogs/" rel="tag"><i class="fa fa-tag"></i> Gogs</a>
+          
+            <a href="/tags/Drone/" rel="tag"><i class="fa fa-tag"></i> Drone</a>
+          
+            <a href="/tags/私有CI-CD平台/" rel="tag"><i class="fa fa-tag"></i> 私有CI/CD平台</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/archives/2589ba06.html" rel="next" title="Nginx知识梳理-部署">
+                <i class="fa fa-chevron-left"></i> Nginx知识梳理-部署
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/archives/b687dd8f.html" rel="prev" title="GitHub项目徽章的添加和设置">
+                GitHub项目徽章的添加和设置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <!-- Go to www.addthis.com/dashboard to customize your tools -->
+<div class="addthis_inline_share_toolbox">
+  <script type = "text/javascript" src = "//s7.addthis.com/js/300/addthis_widget.js#pubid=2151375" async = "async" ></script>
+</div>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
+
+          <div class="ds-share flat" data-thread-key="archives/1a623683.html"
+     data-title="基于Gogs+Drone搭建的私有CI/CD平台"
+     data-content=""
+     data-url="https://mds1455975151.github.io/archives/1a623683.html">
+  <div class="ds-share-inline">
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+
+          
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+          
+
+  <div style="display: none;">
+    <script src="//s95.cnzz.com/z_stat.php?id=1271299436&web_id=1271299436" language="JavaScript"></script>
+  </div>
+
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="DongSheng" />
+          <p class="site-author-name" itemprop="name">DongSheng</p>
+           
+              <p class="site-description motion-element" itemprop="description">技术、产品、管理、思维格局</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">156</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">211</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/mds1455975151" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://weibo.com/u/2098986717" target="_blank" title="Weibo">
+                  
+                    <i class="fa fa-fw fa-weibo"></i>
+                  
+                  Weibo
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.douban.com/people/mds13693645328/" target="_blank" title="DouBan">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  DouBan
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/nba-14" target="_blank" title="ZhiHu">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  ZhiHu
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="mailto:madscdpc@gmail.com" target="_blank" title="Email">
+                  
+                    <i class="fa fa-fw fa-envelope"></i>
+                  
+                  Email
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-block">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              友情链接
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://zerosre.com/" title="龙哥Zero" target="_blank">龙哥Zero</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.liangxiansen.cn/" title="LiangXianSen" target="_blank">LiangXianSen</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/biglittleant/" title="大小蚂蚁" target="_blank">大小蚂蚁</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.bokeren.cc/" title="linux运维" target="_blank">linux运维</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://www.bobcoder.cc/" title="Bob`S BLOG" target="_blank">Bob`S BLOG</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.fdevops.com/" title="兰玉磊的技术博客" target="_blank">兰玉磊的技术博客</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.yfshare.vip/" title="Jack Wang" target="_blank">Jack Wang</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text"><a href="#&#x524D;&#x8A00;" class="headerlink" title="&#x524D;&#x8A00;"></a>&#x524D;&#x8A00;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#环境说明"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x73AF;&#x5883;&#x8BF4;&#x660E;" class="headerlink" title="&#x73AF;&#x5883;&#x8BF4;&#x660E;"></a>&#x73AF;&#x5883;&#x8BF4;&#x660E;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#部署Docker"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x90E8;&#x7F72;Docker" class="headerlink" title="&#x90E8;&#x7F72;Docker"></a>&#x90E8;&#x7F72;Docker</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Docker"><span class="nav-number">3.1.</span> <span class="nav-text"><a href="#&#x5B89;&#x88C5;Docker" class="headerlink" title="&#x5B89;&#x88C5;Docker"></a>&#x5B89;&#x88C5;Docker</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#测试Docker服务正常"><span class="nav-number">3.2.</span> <span class="nav-text"><a href="#&#x6D4B;&#x8BD5;Docker&#x670D;&#x52A1;&#x6B63;&#x5E38;" class="headerlink" title="&#x6D4B;&#x8BD5;Docker&#x670D;&#x52A1;&#x6B63;&#x5E38;"></a>&#x6D4B;&#x8BD5;Docker&#x670D;&#x52A1;&#x6B63;&#x5E38;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装docker-compose"><span class="nav-number">3.3.</span> <span class="nav-text"><a href="#&#x5B89;&#x88C5;docker-compose" class="headerlink" title="&#x5B89;&#x88C5;docker-compose"></a>&#x5B89;&#x88C5;docker-compose</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#部署Gogs"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x90E8;&#x7F72;Gogs" class="headerlink" title="&#x90E8;&#x7F72;Gogs"></a>&#x90E8;&#x7F72;Gogs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Gogs简介"><span class="nav-number">4.1.</span> <span class="nav-text"><a href="#Gogs&#x7B80;&#x4ECB;" class="headerlink" title="Gogs&#x7B80;&#x4ECB;"></a>Gogs&#x7B80;&#x4ECB;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装MySQL"><span class="nav-number">4.2.</span> <span class="nav-text"><a href="#&#x5B89;&#x88C5;MySQL" class="headerlink" title="&#x5B89;&#x88C5;MySQL"></a>&#x5B89;&#x88C5;MySQL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#创建Gogs及drone数据库"><span class="nav-number">4.3.</span> <span class="nav-text"><a href="#&#x521B;&#x5EFA;Gogs&#x53CA;drone&#x6570;&#x636E;&#x5E93;" class="headerlink" title="&#x521B;&#x5EFA;Gogs&#x53CA;drone&#x6570;&#x636E;&#x5E93;"></a>&#x521B;&#x5EFA;Gogs&#x53CA;drone&#x6570;&#x636E;&#x5E93;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Gogs"><span class="nav-number">4.4.</span> <span class="nav-text"><a href="#&#x5B89;&#x88C5;Gogs" class="headerlink" title="&#x5B89;&#x88C5;Gogs"></a>&#x5B89;&#x88C5;Gogs</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#部署Drone-server"><span class="nav-number">5.</span> <span class="nav-text"><a href="#&#x90E8;&#x7F72;Drone-server" class="headerlink" title="&#x90E8;&#x7F72;Drone server"></a>&#x90E8;&#x7F72;Drone server</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#部署Drone-agent"><span class="nav-number">6.</span> <span class="nav-text"><a href="#&#x90E8;&#x7F72;Drone-agent" class="headerlink" title="&#x90E8;&#x7F72;Drone agent"></a>&#x90E8;&#x7F72;Drone agent</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#应用案例"><span class="nav-number">7.</span> <span class="nav-text"><a href="#&#x5E94;&#x7528;&#x6848;&#x4F8B;" class="headerlink" title="&#x5E94;&#x7528;&#x6848;&#x4F8B;"></a>&#x5E94;&#x7528;&#x6848;&#x4F8B;</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#自动化构建案例"><span class="nav-number">7.1.</span> <span class="nav-text"><a href="#&#x81EA;&#x52A8;&#x5316;&#x6784;&#x5EFA;&#x6848;&#x4F8B;" class="headerlink" title="&#x81EA;&#x52A8;&#x5316;&#x6784;&#x5EFA;&#x6848;&#x4F8B;"></a>&#x81EA;&#x52A8;&#x5316;&#x6784;&#x5EFA;&#x6848;&#x4F8B;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置Drone用户注册"><span class="nav-number">7.2.</span> <span class="nav-text"><a href="#&#x914D;&#x7F6E;Drone&#x7528;&#x6237;&#x6CE8;&#x518C;" class="headerlink" title="&#x914D;&#x7F6E;Drone&#x7528;&#x6237;&#x6CE8;&#x518C;"></a>&#x914D;&#x7F6E;Drone&#x7528;&#x6237;&#x6CE8;&#x518C;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#显示状态图标"><span class="nav-number">7.3.</span> <span class="nav-text"><a href="#&#x663E;&#x793A;&#x72B6;&#x6001;&#x56FE;&#x6807;" class="headerlink" title="&#x663E;&#x793A;&#x72B6;&#x6001;&#x56FE;&#x6807;"></a>&#x663E;&#x793A;&#x72B6;&#x6001;&#x56FE;&#x6807;</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#命令行管理Drone"><span class="nav-number">8.</span> <span class="nav-text"><a href="#&#x547D;&#x4EE4;&#x884C;&#x7BA1;&#x7406;Drone" class="headerlink" title="&#x547D;&#x4EE4;&#x884C;&#x7BA1;&#x7406;Drone"></a>&#x547D;&#x4EE4;&#x884C;&#x7BA1;&#x7406;Drone</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#API使用"><span class="nav-number">9.</span> <span class="nav-text"><a href="#API&#x4F7F;&#x7528;" class="headerlink" title="API&#x4F7F;&#x7528;"></a>API&#x4F7F;&#x7528;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何实现agent扩展"><span class="nav-number">10.</span> <span class="nav-text"><a href="#&#x5982;&#x4F55;&#x5B9E;&#x73B0;agent&#x6269;&#x5C55;" class="headerlink" title="&#x5982;&#x4F55;&#x5B9E;&#x73B0;agent&#x6269;&#x5C55;"></a>&#x5982;&#x4F55;&#x5B9E;&#x73B0;agent&#x6269;&#x5C55;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#插件"><span class="nav-number">11.</span> <span class="nav-text"><a href="#&#x63D2;&#x4EF6;" class="headerlink" title="&#x63D2;&#x4EF6;"></a>&#x63D2;&#x4EF6;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#附件"><span class="nav-number">12.</span> <span class="nav-text"><a href="#&#x9644;&#x4EF6;" class="headerlink" title="&#x9644;&#x4EF6;"></a>&#x9644;&#x4EF6;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#待续"><span class="nav-number">13.</span> <span class="nav-text"><a href="#&#x5F85;&#x7EED;" class="headerlink" title="&#x5F85;&#x7EED;"></a>&#x5F85;&#x7EED;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料"><span class="nav-number">14.</span> <span class="nav-text"><a href="#&#x53C2;&#x8003;&#x8D44;&#x6599;" class="headerlink" title="&#x53C2;&#x8003;&#x8D44;&#x6599;"></a>&#x53C2;&#x8003;&#x8D44;&#x6599;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">DongSheng</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" rel="external nofollow" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" rel="external nofollow" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+  <span id="busuanzi_container_site_pv" class="theme-info">
+&nbsp;&nbsp;|&nbsp;&nbsp;本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv" class="theme-info">
+&nbsp;&nbsp;|&nbsp;&nbsp;本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+    <script type="text/javascript">
+      var disqus_shortname = 'mdslq';
+      var disqus_identifier = 'archives/1a623683.html';
+
+      var disqus_title = "基于Gogs+Drone搭建的私有CI/CD平台";
+
+
+      function run_disqus_script(disqus_script) {
+        var dsq = document.createElement('script');
+        dsq.type = 'text/javascript';
+        dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/' + disqus_script;
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      }
+
+      run_disqus_script('count.js');
+
+      
+        var disqus_config = function () {
+            this.page.url = disqus_url;
+            this.page.identifier = disqus_identifier;
+            this.page.title = disqus_title;
+        };
+        run_disqus_script('embed.js');
+      
+
+    </script>
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("zkRHIN9YTUmv5PenxYHomhod-gzGzoHsz", "gGNCtLGo1MP3aLhMysPSI4lJ");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+
+  
+  
+<div id="hexo-helper-live2d">
+  <canvas id="live2dcanvas" width="150" height="300"></canvas>
+</div>
+<style>
+  #live2dcanvas{
+    position: fixed;
+    width: 150px;
+    height: 300px;
+    opacity:0.7;
+    right: 0px;
+    z-index: 999;
+    pointer-events: none;
+    bottom: -20px;
+  }
+</style>
+<script type="text/javascript" src="/live2d/device.min.js"></script>
+<script type="text/javascript">
+const loadScript = function loadScript(c,b){var a=document.createElement("script");a.type="text/javascript";"undefined"!=typeof b&&(a.readyState?a.onreadystatechange=function(){if("loaded"==a.readyState||"complete"==a.readyState)a.onreadystatechange=null,b()}:a.onload=function(){b()});a.src=c;document.body.appendChild(a)};
+(function(){
+  if((typeof(device) != 'undefined') && (device.mobile())){
+    document.getElementById("live2dcanvas").style.width = '75px';
+    document.getElementById("live2dcanvas").style.height = '150px';
+  }else
+    if (typeof(device) === 'undefined') console.error('Cannot find current-device script.');
+  loadScript("/live2d/script.js", function(){loadlive2d("live2dcanvas", "/live2d/assets/z16.model.json", 0.5);});
+})();
+</script>
+
+</body>
+</html>
