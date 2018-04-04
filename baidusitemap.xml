@@ -5,7 +5,7 @@
     
   <url>
     <loc>https://mds1455975151.github.io/archives/634a8ea0.html</loc>
-    <lastmod>2018-04-04T06:41:21.058Z</lastmod>
+    <lastmod>2018-04-04T06:44:06.886Z</lastmod>
     <data>
         <display>
         <title>Open-Falcon短信告警实现思路</title>
@@ -1493,11 +1493,11 @@
         
         <tag>Docker</tag>
          
+        <tag>GitLab</tag>
+         
         <tag>Gitlab-CI</tag>
          
         <tag>GitLab-Runner</tag>
-         
-        <tag>GitLab</tag>
          
         <tag>持续集成</tag>
          
