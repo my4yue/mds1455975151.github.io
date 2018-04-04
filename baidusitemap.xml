@@ -5,7 +5,7 @@
     
   <url>
     <loc>https://mds1455975151.github.io/archives/634a8ea0.html</loc>
-    <lastmod>2018-04-04T06:35:07.899Z</lastmod>
+    <lastmod>2018-04-04T06:41:21.058Z</lastmod>
     <data>
         <display>
         <title>Open-Falcon短信告警实现思路</title>
@@ -27,14 +27,21 @@
     
   <url>
     <loc>https://mds1455975151.github.io/archives/b0e63f7f.html</loc>
-    <lastmod>2018-04-04T01:18:40.837Z</lastmod>
+    <lastmod>2018-04-04T06:39:16.260Z</lastmod>
     <data>
         <display>
         <title>游戏资源存储的云解决方案</title>
         <pubTime>2018-04-04T01:18:33.000Z</pubTime>
         
+        <tag>云解决方案</tag>
+         
+        <tag>游戏资源存储</tag>
+         
          
            
+             
+              <breadCrumb title="游戏" url="https://mds1455975151.github.io/categories/%E6%B8%B8%E6%88%8F/"/>
+          
         </display>
     </data>
     </url>
@@ -1486,11 +1493,11 @@
         
         <tag>Docker</tag>
          
-        <tag>GitLab</tag>
-         
         <tag>Gitlab-CI</tag>
          
         <tag>GitLab-Runner</tag>
+         
+        <tag>GitLab</tag>
          
         <tag>持续集成</tag>
          

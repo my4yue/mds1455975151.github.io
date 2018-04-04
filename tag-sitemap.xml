@@ -737,13 +737,6 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/tags/GitLab/</loc>
-        <lastmod>2018-02-23T08:42:39.397Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/tags/Gitlab-CI/</loc>
         <lastmod>2018-02-23T08:42:39.397Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -752,6 +745,13 @@
 
     <url>
         <loc>https://mds1455975151.github.io/tags/GitLab-Runner/</loc>
+        <lastmod>2018-02-23T08:42:39.397Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/GitLab/</loc>
         <lastmod>2018-02-23T08:42:39.397Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -1479,15 +1479,29 @@
     </url>
 
     <url>
+        <loc>https://mds1455975151.github.io/tags/%E4%BA%91%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</loc>
+        <lastmod>2018-04-04T06:39:16.260Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E6%B8%B8%E6%88%8F%E8%B5%84%E6%BA%90%E5%AD%98%E5%82%A8/</loc>
+        <lastmod>2018-04-04T06:39:16.260Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://mds1455975151.github.io/tags/Open-Falcon/</loc>
-        <lastmod>2018-04-04T06:35:07.899Z</lastmod>
+        <lastmod>2018-04-04T06:41:21.058Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://mds1455975151.github.io/tags/%E8%85%BE%E8%AE%AF%E4%BA%91SMS/</loc>
-        <lastmod>2018-04-04T06:35:07.899Z</lastmod>
+        <lastmod>2018-04-04T06:41:21.058Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
