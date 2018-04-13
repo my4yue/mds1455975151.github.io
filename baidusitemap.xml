@@ -4,8 +4,65 @@
 
     
   <url>
+    <loc>https://mds1455975151.github.io/archives/5595fe34.html</loc>
+    <lastmod>2018-04-13T04:58:38.525Z</lastmod>
+    <data>
+        <display>
+        <title>云数据库本地访问方法总结</title>
+        <pubTime>2018-04-13T04:43:44.000Z</pubTime>
+        
+        <tag>云数据库</tag>
+         
+        <tag>本地访问</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux运维" url="https://mds1455975151.github.io/categories/Linux%E8%BF%90%E7%BB%B4/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://mds1455975151.github.io/archives/d6585fb.html</loc>
+    <lastmod>2018-04-11T11:18:12.770Z</lastmod>
+    <data>
+        <display>
+        <title>利用Navicat for MySQL生成MySQL差异sql规范</title>
+        <pubTime>2018-04-11T11:18:03.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://mds1455975151.github.io/archives/d911b12b.html</loc>
+    <lastmod>2018-04-11T11:16:52.716Z</lastmod>
+    <data>
+        <display>
+        <title>Zsh</title>
+        <pubTime>2018-04-11T01:45:58.000Z</pubTime>
+        
+        <tag>Zsh</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux运维" url="https://mds1455975151.github.io/categories/Linux%E8%BF%90%E7%BB%B4/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://mds1455975151.github.io/archives/75152a89.html</loc>
-    <lastmod>2018-04-04T09:04:17.277Z</lastmod>
+    <lastmod>2018-04-04T09:15:20.761Z</lastmod>
     <data>
         <display>
         <title>Open-Falcon数据库表结构</title>
