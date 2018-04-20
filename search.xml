@@ -3,6 +3,57 @@
   
     
     <entry>
+      <title><![CDATA[Jenkins之实现自动构建Go项目]]></title>
+      <url>/archives/24256e32.html</url>
+      <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>Jenkins之实现自动构建Go项目</p>
+</blockquote>
+<a id="more"></a>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>项目需求：实现认证服务的自动构建，项目使用Go语言实现</p>
+<h1 id="实践操作"><a href="#实践操作" class="headerlink" title="实践操作"></a>实践操作</h1><h2 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h2><p>[Manage Jenkins] -&gt; [Manage Plugins] -&gt; [Available] -&gt; [Go Plugin]<br><img src="/archives/24256e32/01.png" alt=""></p>
+<blockquote>
+<p>安装完成重启下jenkins</p>
+</blockquote>
+<h2 id="安装及配置Go环境"><a href="#安装及配置Go环境" class="headerlink" title="安装及配置Go环境"></a>安装及配置Go环境</h2><p><strong>安装Go环境</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># tar -zxvf /data0/src/go1.10.linux-amd64.tar.gz -C /usr/local</span></span><br><span class="line">cat &gt;&gt;/etc/profile&lt;&lt;EOF</span><br><span class="line"></span><br><span class="line"><span class="comment"># Go bin PATH setup</span></span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/usr/<span class="built_in">local</span>/go/bin</span><br><span class="line"><span class="built_in">export</span> GOPATH=<span class="string">"/data0/workspace/go"</span></span><br><span class="line">EOF</span><br><span class="line"><span class="comment"># mkdir -p /data0/workspace/go</span></span><br><span class="line"><span class="comment"># source  /etc/profile</span></span><br><span class="line"><span class="comment"># go env</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>配置Go环境</strong><br>全局工具管理–&gt;Go<br><img src="/archives/24256e32/02.png" alt=""></p>
+<h2 id="添加构建项目"><a href="#添加构建项目" class="headerlink" title="添加构建项目"></a>添加构建项目</h2><p><strong>添加源码</strong><br><img src="/archives/24256e32/03.png" alt=""><br>默认情况下代码会checkout到$WORKSPACE/xxxx目录下，但是这样不符合Go项目的目录结构，需要将代码移动到正确的$GOPATH路径下</p>
+<blockquote>
+<p>$WORKSPACE/../src/github.com/xxxx/xxxx-auth</p>
+</blockquote>
+<p><strong>设置Go tools</strong><br><img src="/archives/24256e32/04.png" alt=""></p>
+<p><strong>设置GOPATH</strong><br><img src="/archives/24256e32/05.png" alt=""><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Create GOPATH</span></span><br><span class="line"><span class="built_in">export</span> GOPATH=<span class="variable">$WORKSPACE</span>/..</span><br><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$GOPATH</span>:<span class="variable">$PATH</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Print Go version</span></span><br><span class="line">go version</span><br><span class="line"></span><br><span class="line"><span class="comment"># Run make to perform the build</span></span><br><span class="line">git_branch=`<span class="built_in">echo</span> <span class="variable">$&#123;GIT_BRANCH&#125;</span> |awk -F <span class="string">'/'</span> <span class="string">'&#123;print $2&#125;'</span>`</span><br><span class="line">git_commit=<span class="variable">$&#123;GIT_COMMIT:0:8&#125;</span></span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$GOPATH</span>/src/github.com/xxxx/xxxx-auth &amp;&amp; go build</span><br><span class="line"><span class="built_in">cd</span> <span class="variable">$GOPATH</span>/src/github.com/xxxx/xxxx-auth &amp;&amp; tar -zcf <span class="variable">$WORKSPACE</span>/xxxx-auth-<span class="variable">$&#123;git_branch&#125;</span>-<span class="variable">$&#123;git_commit&#125;</span>-<span class="variable">$&#123;date_time&#125;</span>.tar.gz xxxx-auth configs scripts logs templates</span><br><span class="line"></span><br><span class="line">GIT_USER=`<span class="built_in">cd</span> <span class="variable">$GOPATH</span>/src/github.com/xxxx/xxxx-auth &amp;&amp; git <span class="built_in">log</span> --pretty=format:<span class="string">'%an'</span> -1`</span><br><span class="line">GIT_EMAIL=`<span class="built_in">cd</span> <span class="variable">$GOPATH</span>/src/github.com/xxxx/xxxx-auth &amp;&amp; git <span class="built_in">log</span> --pretty=format:<span class="string">'%ae'</span> -1`</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$GIT_USER</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$GIT_EMAIL</span></span><br><span class="line"><span class="keyword">if</span> [ -f profile.txt ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    rm -f profile.txt</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"GIT_USER=<span class="variable">$GIT_USER</span>"</span>&gt;profile.txt</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"GIT_EMAIL=<span class="variable">$GIT_EMAIL</span>"</span>&gt;&gt;profile.txt</span><br></pre></td></tr></table></figure></p>
+<h2 id="检查并验证构建结果"><a href="#检查并验证构建结果" class="headerlink" title="检查并验证构建结果"></a>检查并验证构建结果</h2><p><img src="/archives/24256e32/06.png" alt=""></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="http://zpjiang.me/2017/08/09/Setup-Jenkins-for-Go-Projects/" target="_blank" rel="noopener">http://zpjiang.me/2017/08/09/Setup-Jenkins-for-Go-Projects/</a></p>
+<p>======================================================<br>希望各位朋友支持一下</p>
+<ul>
+<li>领取我的<a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=xpdsz87p&amp;utm_source=xpdsz87p" target="_blank" rel="noopener">阿里云幸运券</a>,谢谢.</li>
+<li>使用<a href="https://cloud.tencent.com/redirect.php?redirect=1005&amp;cps_key=5a162632de40024cd01aabff4d3f1370" target="_blank" rel="noopener">腾讯云资源</a></li>
+<li>自己的网站承接广告<a href="http://www.sudianlm.com/track/c/?rid=2056" target="_blank" rel="noopener">速点广告联盟</a></li>
+<li>广告位招商QQ:1455975151</li>
+<li>喜欢购物的朋友可以看看，<a href="http://www.1zhe.com/yq/1066027" target="_blank" rel="noopener">一折特卖</a><!--注册一折特卖，免费领集分宝，集分宝可以当钱花，免费购物不是梦，注册马上送你10集分宝。-->
+</li>
+</ul>
+<p><strong>本文作者</strong>：dongsheng<br><strong>本文地址</strong>： <a href="https://mds1455975151.github.io/archives/24256e32.html">https://mds1455975151.github.io/archives/24256e32.html</a> <br><strong>版权声明</strong>：转载请注明出处！</p>
+]]></content>
+      
+        <categories>
+            
+            <category> jenkins </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Jenkins </tag>
+            
+            <tag> Go </tag>
+            
+        </tags>
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[Go之go get与git clone区别]]></title>
       <url>/archives/c008c886.html</url>
       <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>&gt;</p>
@@ -7708,7 +7759,7 @@
 <p><a href="http://bruce-sha.github.io" target="_blank" rel="noopener">不如</a></p>
 <h2 id="自动链接"><a href="#自动链接" class="headerlink" title="自动链接"></a>自动链接</h2><p>尖括号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;http://ibruce.info&gt;</span><br><span class="line">&lt;bu.ru@qq.com&gt;</span><br></pre></td></tr></table></figure></p>
 <p>效果如下：<br><a href="http://ibruce.info" target="_blank" rel="noopener">http://ibruce.info</a></p>
-<a href="&#109;&#97;&#x69;&#108;&#x74;&#x6f;&#x3a;&#x62;&#117;&#46;&#114;&#x75;&#64;&#x71;&#x71;&#46;&#99;&#111;&#x6d;">&#x62;&#117;&#46;&#114;&#x75;&#64;&#x71;&#x71;&#46;&#99;&#111;&#x6d;</a>
+<a href="&#x6d;&#97;&#x69;&#108;&#116;&#111;&#58;&#x62;&#117;&#x2e;&#114;&#117;&#x40;&#x71;&#x71;&#x2e;&#99;&#111;&#x6d;">&#x62;&#117;&#x2e;&#114;&#117;&#x40;&#x71;&#x71;&#x2e;&#99;&#111;&#x6d;</a>
 
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="行内代码"><a href="#行内代码" class="headerlink" title="行内代码"></a>行内代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">``` python</span><br><span class="line">@requires_authorization</span><br><span class="line">def somefunc(param1=&apos;&apos;, param2=0):</span><br><span class="line">    &apos;&apos;&apos;A docstring&apos;&apos;&apos;</span><br><span class="line">    if param1 &gt; param2: # interesting</span><br><span class="line">        print &apos;Greater&apos;</span><br><span class="line">    return (param2 - param1 + 1) or None</span><br><span class="line">class SomeClass:</span><br><span class="line">    pass</span><br><span class="line">&gt;&gt;&gt; message = &apos;&apos;&apos;interpreter</span><br><span class="line">... prompt&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">可代码高亮</span><br><span class="line">``` python</span><br><span class="line">@requires_authorization</span><br><span class="line">def somefunc(param1=&apos;&apos;, param2=0):</span><br><span class="line">    &apos;&apos;&apos;A docstring&apos;&apos;&apos;</span><br><span class="line">    if param1 &gt; param2: # interesting</span><br><span class="line">        print &apos;Greater&apos;</span><br><span class="line">    return (param2 - param1 + 1) or None</span><br><span class="line">class SomeClass:</span><br><span class="line">    pass</span><br><span class="line">&gt;&gt;&gt; message = &apos;&apos;&apos;interpreter</span><br><span class="line">... prompt&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
