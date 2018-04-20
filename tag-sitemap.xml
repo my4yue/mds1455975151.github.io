@@ -534,13 +534,6 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/tags/git/</loc>
-        <lastmod>2018-02-23T08:28:00.453Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/tags/svn/</loc>
         <lastmod>2018-02-23T08:28:00.453Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -802,13 +795,6 @@
     <url>
         <loc>https://mds1455975151.github.io/tags/%E4%B9%B1%E7%A0%81%E6%96%87%E4%BB%B6/</loc>
         <lastmod>2018-02-23T08:43:51.280Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://mds1455975151.github.io/tags/Linux/</loc>
-        <lastmod>2018-02-23T08:43:56.158Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
@@ -1544,6 +1530,20 @@
     <url>
         <loc>https://mds1455975151.github.io/tags/Confluence/</loc>
         <lastmod>2018-04-19T07:51:15.139Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/Linux/</loc>
+        <lastmod>2018-04-20T02:17:00.530Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/git/</loc>
+        <lastmod>2018-04-20T02:17:00.530Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
