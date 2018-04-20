@@ -5,7 +5,7 @@
     
   <url>
     <loc>https://mds1455975151.github.io/archives/bdb4d807.html</loc>
-    <lastmod>2018-04-20T02:36:07.544Z</lastmod>
+    <lastmod>2018-04-20T02:41:54.402Z</lastmod>
     <data>
         <display>
         <title>Linux之服务器修改SSH默认端口后git访问设置</title>
@@ -27,7 +27,7 @@
     
   <url>
     <loc>https://mds1455975151.github.io/archives/c008c886.html</loc>
-    <lastmod>2018-04-20T02:24:51.973Z</lastmod>
+    <lastmod>2018-04-20T02:36:40.911Z</lastmod>
     <data>
         <display>
         <title>Go之go get与git clone区别</title>
@@ -1650,11 +1650,11 @@
         
         <tag>Docker</tag>
          
+        <tag>GitLab</tag>
+         
         <tag>Gitlab-CI</tag>
          
         <tag>GitLab-Runner</tag>
-         
-        <tag>GitLab</tag>
          
         <tag>持续集成</tag>
          
@@ -2280,9 +2280,9 @@
          
         <tag>jenkins</tag>
          
-        <tag>Maven</tag>
-         
         <tag>Nexus</tag>
+         
+        <tag>Maven</tag>
          
          
            
