@@ -1318,13 +1318,6 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/tags/CentOS/</loc>
-        <lastmod>2018-03-20T08:29:56.364Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/tags/checklist/</loc>
         <lastmod>2018-03-20T08:38:18.484Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1514,20 +1507,6 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/tags/OpenLDAP/</loc>
-        <lastmod>2018-04-19T07:51:15.139Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://mds1455975151.github.io/tags/Confluence/</loc>
-        <lastmod>2018-04-19T07:51:15.139Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/tags/Linux/</loc>
         <lastmod>2018-04-20T02:41:54.402Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1551,6 +1530,48 @@
     <url>
         <loc>https://mds1455975151.github.io/tags/Go/</loc>
         <lastmod>2018-04-20T06:55:06.265Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/OpenLDAP/</loc>
+        <lastmod>2018-04-21T09:47:14.509Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/Confluence/</loc>
+        <lastmod>2018-04-21T09:47:14.509Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86/</loc>
+        <lastmod>2018-04-22T05:44:28.619Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/Graylog/</loc>
+        <lastmod>2018-04-22T05:44:28.619Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/CentOS/</loc>
+        <lastmod>2018-04-22T10:20:16.191Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E7%A6%81%E7%94%A8IPV6/</loc>
+        <lastmod>2018-04-22T10:20:16.191Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
