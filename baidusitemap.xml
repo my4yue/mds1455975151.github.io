@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>https://mds1455975151.github.io/archives/adeb23f8.html</loc>
+    <lastmod>2018-04-23T08:24:24.195Z</lastmod>
+    <data>
+        <display>
+        <title>国外域名如何转入国内</title>
+        <pubTime>2018-04-23T08:12:44.000Z</pubTime>
+        
+        <tag>godaddy</tag>
+         
+        <tag>域名备案</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux运维" url="https://mds1455975151.github.io/categories/Linux%E8%BF%90%E7%BB%B4/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://mds1455975151.github.io/archives/96133d02.html</loc>
     <lastmod>2018-04-23T05:50:19.504Z</lastmod>
     <data>
@@ -77,9 +99,9 @@
         <title>OpenLDAP之Confluence接入设置</title>
         <pubTime>2018-04-19T07:48:45.000Z</pubTime>
         
-        <tag>OpenLDAP</tag>
-         
         <tag>Confluence</tag>
+         
+        <tag>OpenLDAP</tag>
          
          
            
@@ -2595,9 +2617,9 @@
         <title>SaltStack+Docker构建高可用与自动发现服务</title>
         <pubTime>2018-01-13T09:07:04.000Z</pubTime>
         
-        <tag>Docker</tag>
-         
         <tag>SaltStack</tag>
+         
+        <tag>Docker</tag>
          
         <tag>自动发现</tag>
          
