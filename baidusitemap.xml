@@ -4,8 +4,30 @@
 
     
   <url>
+    <loc>https://mds1455975151.github.io/archives/96133d02.html</loc>
+    <lastmod>2018-04-23T05:50:19.504Z</lastmod>
+    <data>
+        <display>
+        <title>Confluence部署实践</title>
+        <pubTime>2018-04-23T01:51:43.000Z</pubTime>
+        
+        <tag>Confluence</tag>
+         
+        <tag>wiki</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux运维" url="https://mds1455975151.github.io/categories/Linux%E8%BF%90%E7%BB%B4/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://mds1455975151.github.io/archives/197f9391.html</loc>
-    <lastmod>2018-04-22T10:24:33.638Z</lastmod>
+    <lastmod>2018-04-23T01:49:32.363Z</lastmod>
     <data>
         <display>
         <title>Graylog+Elasticsearch+MongoDB+Nginx+Rsyslog日志集中收集解决方案</title>
@@ -27,7 +49,7 @@
     
   <url>
     <loc>https://mds1455975151.github.io/archives/7da246ab.html</loc>
-    <lastmod>2018-04-22T10:20:16.191Z</lastmod>
+    <lastmod>2018-04-22T11:20:41.921Z</lastmod>
     <data>
         <display>
         <title>CentOS禁用ipv6</title>
@@ -2573,9 +2595,9 @@
         <title>SaltStack+Docker构建高可用与自动发现服务</title>
         <pubTime>2018-01-13T09:07:04.000Z</pubTime>
         
-        <tag>SaltStack</tag>
-         
         <tag>Docker</tag>
+         
+        <tag>SaltStack</tag>
          
         <tag>自动发现</tag>
          

@@ -1542,36 +1542,43 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/tags/Confluence/</loc>
-        <lastmod>2018-04-21T09:47:14.509Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/tags/CentOS/</loc>
-        <lastmod>2018-04-22T10:20:16.191Z</lastmod>
+        <lastmod>2018-04-22T11:20:41.921Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://mds1455975151.github.io/tags/%E7%A6%81%E7%94%A8IPV6/</loc>
-        <lastmod>2018-04-22T10:20:16.191Z</lastmod>
+        <lastmod>2018-04-22T11:20:41.921Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://mds1455975151.github.io/tags/%E6%97%A5%E5%BF%97%E6%94%B6%E9%9B%86/</loc>
-        <lastmod>2018-04-22T10:24:33.638Z</lastmod>
+        <lastmod>2018-04-23T01:49:32.363Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://mds1455975151.github.io/tags/Graylog/</loc>
-        <lastmod>2018-04-22T10:24:33.638Z</lastmod>
+        <lastmod>2018-04-23T01:49:32.363Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/Confluence/</loc>
+        <lastmod>2018-04-23T05:50:19.504Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/wiki/</loc>
+        <lastmod>2018-04-23T05:50:19.504Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
