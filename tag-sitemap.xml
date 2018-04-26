@@ -1563,13 +1563,6 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/tags/Confluence/</loc>
-        <lastmod>2018-04-23T05:50:19.504Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/tags/wiki/</loc>
         <lastmod>2018-04-23T05:50:19.504Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1593,6 +1586,13 @@
     <url>
         <loc>https://mds1455975151.github.io/tags/%E6%B8%B8%E6%88%8F%E5%85%AC%E5%8F%B8/</loc>
         <lastmod>2018-04-23T10:27:49.921Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/Confluence/</loc>
+        <lastmod>2018-04-26T05:57:44.645Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
