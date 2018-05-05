@@ -9,7 +9,11 @@
 <p>CentOS安装显示器黑屏解决</p>
 </blockquote>
 <a id="more"></a>
-<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><h1 id="实践操作"><a href="#实践操作" class="headerlink" title="实践操作"></a>实践操作</h1><h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>======================================================<br>希望各位朋友支持一下</p>
+<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>办公室有一台闲置台式机，重做系统安装CentOS做测试机器，安装过程显示器黑屏。</p>
+<h1 id="实践操作"><a href="#实践操作" class="headerlink" title="实践操作"></a>实践操作</h1><h2 id="环境说明"><a href="#环境说明" class="headerlink" title="环境说明"></a>环境说明</h2><p>显示器型号：Dell E2214Hv<br>报错信息如下：<br><img src="/archives/a542927a/01.jpg" alt=""></p>
+<h2 id="问题分析及解决办法"><a href="#问题分析及解决办法" class="headerlink" title="问题分析及解决办法"></a>问题分析及解决办法</h2><p><a href="https://www.centos.org/forums/viewtopic.php?t=23977" target="_blank" rel="noopener">https://www.centos.org/forums/viewtopic.php?t=23977</a><br>在安装界面使用tab键进行选择，添加如下参数，调整输出信号分辨率<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">linux resolution=1440X900</span><br></pre></td></tr></table></figure></p>
+<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://www.centos.org/forums/viewtopic.php?t=23977" target="_blank" rel="noopener">https://www.centos.org/forums/viewtopic.php?t=23977</a></p>
+<p>======================================================<br>希望各位朋友支持一下</p>
 <ul>
 <li>领取我的<a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=xpdsz87p&amp;utm_source=xpdsz87p" target="_blank" rel="noopener">阿里云幸运券</a>,谢谢.</li>
 <li>使用<a href="https://cloud.tencent.com/redirect.php?redirect=1005&amp;cps_key=5a162632de40024cd01aabff4d3f1370" target="_blank" rel="noopener">腾讯云资源</a></li>
@@ -2945,7 +2949,7 @@
 <h2 id="窥镜"><a href="#窥镜" class="headerlink" title="窥镜"></a><strong>窥镜</strong></h2><h2 id="西游记之女儿国"><a href="#西游记之女儿国" class="headerlink" title="西游记之女儿国"></a><strong>西游记之女儿国</strong></h2><h2 id="马戏之王"><a href="#马戏之王" class="headerlink" title="马戏之王"></a><strong>马戏之王</strong></h2><h2 id="祖宗十九代"><a href="#祖宗十九代" class="headerlink" title="祖宗十九代"></a><strong>祖宗十九代</strong></h2><h1 id="电视剧"><a href="#电视剧" class="headerlink" title="电视剧"></a>电视剧</h1><p><strong>小丈夫</strong></p>
 <h1 id="美剧"><a href="#美剧" class="headerlink" title="美剧"></a>美剧</h1><p><strong>行尸走肉</strong><br><strong>西部世界</strong><br><strong>神盾局特工</strong><br><strong>无耻之徒</strong><br><strong>血族</strong><br><strong>穹顶之下</strong><br><strong>超人前传</strong><br><strong>权利的游戏</strong><br><strong>蛇蝎女佣</strong><br><strong>黑吃黑</strong><br><strong>东区女巫</strong></p>
 <hr>
-<h1 id="综艺节目"><a href="#综艺节目" class="headerlink" title="综艺节目"></a>综艺节目</h1><p><strong>圆桌派</strong></p>
+<h1 id="综艺节目"><a href="#综艺节目" class="headerlink" title="综艺节目"></a>综艺节目</h1><p><strong>圆桌派</strong><br><strong>无节制消费的元凶</strong></p>
 <h1 id="动漫"><a href="#动漫" class="headerlink" title="动漫"></a>动漫</h1><p><strong>斗罗大陆</strong><br><strong>斗破苍穹1、2</strong></p>
 <p>======================================================<br>希望各位朋友支持一下</p>
 <ul>
@@ -3278,9 +3282,9 @@
         
         <tags>
             
-            <tag> SaltStack </tag>
-            
             <tag> Docker </tag>
+            
+            <tag> SaltStack </tag>
             
             <tag> 自动发现 </tag>
             
@@ -3361,11 +3365,11 @@
             
             <tag> Docker </tag>
             
+            <tag> GitLab </tag>
+            
             <tag> Gitlab-CI </tag>
             
             <tag> GitLab-Runner </tag>
-            
-            <tag> GitLab </tag>
             
             <tag> 持续集成 </tag>
             
@@ -5139,9 +5143,9 @@
             
             <tag> jenkins </tag>
             
-            <tag> Nexus </tag>
-            
             <tag> Maven </tag>
+            
+            <tag> Nexus </tag>
             
         </tags>
         
@@ -8077,7 +8081,7 @@
 <p><a href="http://bruce-sha.github.io" target="_blank" rel="noopener">不如</a></p>
 <h2 id="自动链接"><a href="#自动链接" class="headerlink" title="自动链接"></a>自动链接</h2><p>尖括号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;http://ibruce.info&gt;</span><br><span class="line">&lt;bu.ru@qq.com&gt;</span><br></pre></td></tr></table></figure></p>
 <p>效果如下：<br><a href="http://ibruce.info" target="_blank" rel="noopener">http://ibruce.info</a></p>
-<a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#x62;&#117;&#x2e;&#114;&#x75;&#64;&#113;&#x71;&#x2e;&#x63;&#111;&#109;">&#x62;&#117;&#x2e;&#114;&#x75;&#64;&#113;&#x71;&#x2e;&#x63;&#111;&#109;</a>
+<a href="&#109;&#x61;&#x69;&#108;&#x74;&#x6f;&#x3a;&#98;&#x75;&#x2e;&#114;&#117;&#x40;&#x71;&#113;&#x2e;&#99;&#111;&#x6d;">&#98;&#x75;&#x2e;&#114;&#117;&#x40;&#x71;&#113;&#x2e;&#99;&#111;&#x6d;</a>
 
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="行内代码"><a href="#行内代码" class="headerlink" title="行内代码"></a>行内代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">``` python</span><br><span class="line">@requires_authorization</span><br><span class="line">def somefunc(param1=&apos;&apos;, param2=0):</span><br><span class="line">    &apos;&apos;&apos;A docstring&apos;&apos;&apos;</span><br><span class="line">    if param1 &gt; param2: # interesting</span><br><span class="line">        print &apos;Greater&apos;</span><br><span class="line">    return (param2 - param1 + 1) or None</span><br><span class="line">class SomeClass:</span><br><span class="line">    pass</span><br><span class="line">&gt;&gt;&gt; message = &apos;&apos;&apos;interpreter</span><br><span class="line">... prompt&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">可代码高亮</span><br><span class="line">``` python</span><br><span class="line">@requires_authorization</span><br><span class="line">def somefunc(param1=&apos;&apos;, param2=0):</span><br><span class="line">    &apos;&apos;&apos;A docstring&apos;&apos;&apos;</span><br><span class="line">    if param1 &gt; param2: # interesting</span><br><span class="line">        print &apos;Greater&apos;</span><br><span class="line">    return (param2 - param1 + 1) or None</span><br><span class="line">class SomeClass:</span><br><span class="line">    pass</span><br><span class="line">&gt;&gt;&gt; message = &apos;&apos;&apos;interpreter</span><br><span class="line">... prompt&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>

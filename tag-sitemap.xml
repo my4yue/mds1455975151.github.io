@@ -723,6 +723,13 @@
     </url>
 
     <url>
+        <loc>https://mds1455975151.github.io/tags/GitLab/</loc>
+        <lastmod>2018-02-23T08:42:39.397Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://mds1455975151.github.io/tags/Gitlab-CI/</loc>
         <lastmod>2018-02-23T08:42:39.397Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -731,13 +738,6 @@
 
     <url>
         <loc>https://mds1455975151.github.io/tags/GitLab-Runner/</loc>
-        <lastmod>2018-02-23T08:42:39.397Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://mds1455975151.github.io/tags/GitLab/</loc>
         <lastmod>2018-02-23T08:42:39.397Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -1409,13 +1409,6 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/tags/%E7%94%B5%E5%BD%B1/</loc>
-        <lastmod>2018-04-01T13:25:10.778Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/tags/Redis/</loc>
         <lastmod>2018-04-01T13:35:21.116Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1599,14 +1592,21 @@
 
     <url>
         <loc>https://mds1455975151.github.io/tags/CentOS/</loc>
-        <lastmod>2018-04-27T07:33:30.262Z</lastmod>
+        <lastmod>2018-04-27T08:27:06.345Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://mds1455975151.github.io/tags/%E9%BB%91%E5%B1%8F/</loc>
-        <lastmod>2018-04-27T07:33:30.262Z</lastmod>
+        <lastmod>2018-04-27T08:27:06.345Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E7%94%B5%E5%BD%B1/</loc>
+        <lastmod>2018-05-05T11:54:41.168Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
