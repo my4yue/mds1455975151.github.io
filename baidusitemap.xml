@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://mds1455975151.github.io/archives/fd027666.html</loc>
+    <lastmod>2018-05-25T09:00:23.788Z</lastmod>
+    <data>
+        <display>
+        <title>游戏公司</title>
+        <pubTime>2017-12-28T09:32:16.000Z</pubTime>
+        
+        <tag>游戏公司</tag>
+         
+         
+           
+             
+              <breadCrumb title="游戏" url="https://mds1455975151.github.io/categories/%E6%B8%B8%E6%88%8F/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://mds1455975151.github.io/archives/75a677a6.html</loc>
     <lastmod>2018-05-13T13:15:50.741Z</lastmod>
     <data>
@@ -81,26 +101,6 @@
            
              
               <breadCrumb title="Linux运维" url="https://mds1455975151.github.io/categories/Linux%E8%BF%90%E7%BB%B4/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://mds1455975151.github.io/archives/fd027666.html</loc>
-    <lastmod>2018-04-23T10:27:49.921Z</lastmod>
-    <data>
-        <display>
-        <title>游戏公司</title>
-        <pubTime>2017-12-28T09:32:16.000Z</pubTime>
-        
-        <tag>游戏公司</tag>
-         
-         
-           
-             
-              <breadCrumb title="游戏" url="https://mds1455975151.github.io/categories/%E6%B8%B8%E6%88%8F/"/>
           
         </display>
     </data>
@@ -2696,9 +2696,9 @@
         <title>SaltStack+Docker构建高可用与自动发现服务</title>
         <pubTime>2018-01-13T09:07:04.000Z</pubTime>
         
-        <tag>Docker</tag>
-         
         <tag>SaltStack</tag>
+         
+        <tag>Docker</tag>
          
         <tag>自动发现</tag>
          
