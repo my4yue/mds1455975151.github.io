@@ -5,7 +5,7 @@
     
   <url>
     <loc>https://mds1455975151.github.io/archives/fd027666.html</loc>
-    <lastmod>2018-05-25T09:00:23.788Z</lastmod>
+    <lastmod>2018-06-02T08:15:30.152Z</lastmod>
     <data>
         <display>
         <title>游戏公司</title>
@@ -2696,9 +2696,9 @@
         <title>SaltStack+Docker构建高可用与自动发现服务</title>
         <pubTime>2018-01-13T09:07:04.000Z</pubTime>
         
-        <tag>SaltStack</tag>
-         
         <tag>Docker</tag>
+         
+        <tag>SaltStack</tag>
          
         <tag>自动发现</tag>
          
