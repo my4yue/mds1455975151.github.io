@@ -5,7 +5,7 @@
     
   <url>
     <loc>https://mds1455975151.github.io/archives/75a677a6.html</loc>
-    <lastmod>2018-06-03T06:48:23.225Z</lastmod>
+    <lastmod>2018-06-09T11:36:22.239Z</lastmod>
     <data>
         <display>
         <title>电影2018</title>
@@ -2696,9 +2696,9 @@
         <title>SaltStack+Docker构建高可用与自动发现服务</title>
         <pubTime>2018-01-13T09:07:04.000Z</pubTime>
         
-        <tag>SaltStack</tag>
-         
         <tag>Docker</tag>
+         
+        <tag>SaltStack</tag>
          
         <tag>自动发现</tag>
          
