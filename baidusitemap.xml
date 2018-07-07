@@ -4,6 +4,82 @@
 
     
   <url>
+    <loc>https://mds1455975151.github.io/archives/de5dd2ef.html</loc>
+    <lastmod>2018-07-07T05:56:40.672Z</lastmod>
+    <data>
+        <display>
+        <title>Jenkins之配置多jobs执行</title>
+        <pubTime>2018-07-07T04:03:15.000Z</pubTime>
+        
+        <tag>jenkins</tag>
+         
+        <tag>多jobs</tag>
+         
+        <tag>并行</tag>
+         
+        <tag>串行</tag>
+         
+         
+           
+             
+              <breadCrumb title="jenkins" url="https://mds1455975151.github.io/categories/jenkins/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://mds1455975151.github.io/archives/8a44594a.html</loc>
+    <lastmod>2018-07-07T05:47:58.403Z</lastmod>
+    <data>
+        <display>
+        <title>Linux如何管理本地多个公私钥对</title>
+        <pubTime>2018-04-26T09:58:23.000Z</pubTime>
+        
+        <tag>Linux</tag>
+         
+        <tag>多个公私钥对</tag>
+         
+         
+           
+             
+              <breadCrumb title="Linux运维" url="https://mds1455975151.github.io/categories/Linux%E8%BF%90%E7%BB%B4/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://mds1455975151.github.io/archives/177a4e8b.html</loc>
+    <lastmod>2018-07-07T05:43:38.828Z</lastmod>
+    <data>
+        <display>
+        <title>Git之镜像仓库全攻略</title>
+        <pubTime>2018-07-07T04:01:41.000Z</pubTime>
+        
+        <tag>mirror</tag>
+         
+        <tag>镜像仓库</tag>
+         
+        <tag>webhook</tag>
+         
+        <tag>gitlab-mirrors</tag>
+         
+        <tag>gogs</tag>
+         
+         
+           
+             
+              <breadCrumb title="Git" url="https://mds1455975151.github.io/categories/Git/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://mds1455975151.github.io/archives/75a677a6.html</loc>
     <lastmod>2018-06-30T08:25:30.581Z</lastmod>
     <data>
@@ -54,28 +130,6 @@
         <tag>CentOS</tag>
          
         <tag>黑屏</tag>
-         
-         
-           
-             
-              <breadCrumb title="Linux运维" url="https://mds1455975151.github.io/categories/Linux%E8%BF%90%E7%BB%B4/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://mds1455975151.github.io/archives/8a44594a.html</loc>
-    <lastmod>2018-04-26T10:06:42.922Z</lastmod>
-    <data>
-        <display>
-        <title>Linux如何管理本地多个公私钥对</title>
-        <pubTime>2018-04-26T09:58:23.000Z</pubTime>
-        
-        <tag>Linux</tag>
-         
-        <tag>多个公私钥对</tag>
          
          
            
@@ -1839,11 +1893,11 @@
         
         <tag>Docker</tag>
          
-        <tag>GitLab</tag>
-         
         <tag>Gitlab-CI</tag>
          
         <tag>GitLab-Runner</tag>
+         
+        <tag>GitLab</tag>
          
         <tag>持续集成</tag>
          
