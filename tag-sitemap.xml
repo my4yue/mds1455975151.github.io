@@ -716,6 +716,13 @@
     </url>
 
     <url>
+        <loc>https://mds1455975151.github.io/tags/GitLab/</loc>
+        <lastmod>2018-02-23T08:42:39.397Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://mds1455975151.github.io/tags/Gitlab-CI/</loc>
         <lastmod>2018-02-23T08:42:39.397Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -724,13 +731,6 @@
 
     <url>
         <loc>https://mds1455975151.github.io/tags/GitLab-Runner/</loc>
-        <lastmod>2018-02-23T08:42:39.397Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://mds1455975151.github.io/tags/GitLab/</loc>
         <lastmod>2018-02-23T08:42:39.397Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -1591,41 +1591,6 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/tags/mirror/</loc>
-        <lastmod>2018-07-07T05:43:38.828Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://mds1455975151.github.io/tags/%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93/</loc>
-        <lastmod>2018-07-07T05:43:38.828Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://mds1455975151.github.io/tags/webhook/</loc>
-        <lastmod>2018-07-07T05:43:38.828Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://mds1455975151.github.io/tags/gitlab-mirrors/</loc>
-        <lastmod>2018-07-07T05:43:38.828Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://mds1455975151.github.io/tags/gogs/</loc>
-        <lastmod>2018-07-07T05:43:38.828Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/tags/Linux/</loc>
         <lastmod>2018-07-07T05:47:58.403Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1641,28 +1606,63 @@
 
     <url>
         <loc>https://mds1455975151.github.io/tags/jenkins/</loc>
-        <lastmod>2018-07-07T05:56:40.672Z</lastmod>
+        <lastmod>2018-07-07T05:57:49.967Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://mds1455975151.github.io/tags/%E5%A4%9Ajobs/</loc>
-        <lastmod>2018-07-07T05:56:40.672Z</lastmod>
+        <lastmod>2018-07-07T05:57:49.967Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://mds1455975151.github.io/tags/%E5%B9%B6%E8%A1%8C/</loc>
-        <lastmod>2018-07-07T05:56:40.672Z</lastmod>
+        <lastmod>2018-07-07T05:57:49.967Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://mds1455975151.github.io/tags/%E4%B8%B2%E8%A1%8C/</loc>
-        <lastmod>2018-07-07T05:56:40.672Z</lastmod>
+        <lastmod>2018-07-07T05:57:49.967Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/mirror/</loc>
+        <lastmod>2018-07-07T09:45:04.426Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E9%95%9C%E5%83%8F%E4%BB%93%E5%BA%93/</loc>
+        <lastmod>2018-07-07T09:45:04.426Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/webhook/</loc>
+        <lastmod>2018-07-07T09:45:04.426Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/gitlab-mirrors/</loc>
+        <lastmod>2018-07-07T09:45:04.426Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/gogs/</loc>
+        <lastmod>2018-07-07T09:45:04.426Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

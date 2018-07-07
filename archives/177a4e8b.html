@@ -113,10 +113,15 @@
 <meta property="og:site_name" content="DongSheng&#39;s Blog">
 <meta property="og:description" content="Git镜像仓库应用全攻略指南">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-07-07T05:43:38.828Z">
+<meta property="og:image" content="https://mds1455975151.github.io/archives/177a4e8b/01.png">
+<meta property="og:image" content="https://mds1455975151.github.io/archives/177a4e8b/02.png">
+<meta property="og:image" content="https://mds1455975151.github.io/archives/177a4e8b/03.png">
+<meta property="og:image" content="https://mds1455975151.github.io/archives/177a4e8b/04.png">
+<meta property="og:updated_time" content="2018-07-07T09:45:04.426Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git之镜像仓库全攻略">
 <meta name="twitter:description" content="Git镜像仓库应用全攻略指南">
+<meta name="twitter:image" content="https://mds1455975151.github.io/archives/177a4e8b/01.png">
 
 
 
@@ -495,7 +500,7 @@ var _hmt = _hmt || [];
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">482(字)</span>
+           <span class="post-count">526(字)</span>
 
          </span>
 
@@ -505,7 +510,7 @@ var _hmt = _hmt || [];
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">阅读时长:</span>
-           <span class="post-count">2(分)</span>
+           <span class="post-count">3(分)</span>
 
          </span>
 
@@ -540,7 +545,7 @@ var _hmt = _hmt || [];
 <li>GitHub负载均衡(类似MySQL的读写分离架构)</li>
 </ul>
 <h1 id="原生git-clone-–mirror实现"><a href="#原生git-clone-–mirror实现" class="headerlink" title="原生git clone –mirror实现"></a>原生git clone –mirror实现</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"># cd /opt/</span><br><span class="line"># git clone --mirror https://github.com/mds1455975151/ansible-role-pip.git</span><br><span class="line"># ls -al</span><br><span class="line">total 16</span><br><span class="line">drwxr-xr-x.  4 root root 4096 Jul  7 13:31 .</span><br><span class="line">dr-xr-xr-x. 20 root root 4096 Jul  7 13:33 ..</span><br><span class="line">drwxr-xr-x   7 root root 4096 Jul  7 13:31 ansible-role-pip.git</span><br><span class="line">drwxr-xr-x.  2 root root 4096 Mar 26  2015 rh</span><br><span class="line"># git clone 10.135.95.147:/opt/ansible-role-pip.git .</span><br><span class="line">Cloning into &apos;.&apos;...</span><br><span class="line">remote: Counting objects: 181, done.</span><br><span class="line">remote: Compressing objects: 100% (77/77), done.</span><br><span class="line">remote: Total 181 (delta 75), reused 181 (delta 75)</span><br><span class="line">Receiving objects: 100% (181/181), 18.78 KiB | 0 bytes/s, done.</span><br><span class="line">Resolving deltas: 100% (75/75), done.</span><br><span class="line">[root@VM_95_147_centos tmp]# ll</span><br><span class="line">total 36</span><br><span class="line">drwxr-xr-x 2 root root 4096 Jul  7 13:35 defaults</span><br><span class="line">drwxr-xr-x 2 root root 4096 Jul  7 13:35 handlers</span><br><span class="line">drwxr-xr-x 2 root root 4096 Jul  7 13:35 meta</span><br><span class="line">-rw-r--r-- 1 root root 1233 Jul  7 13:35 README.md</span><br><span class="line">-rw-r--r-- 1 root root   28 Jul  7 13:35 requirements.yml</span><br><span class="line">drwxr-xr-x 2 root root 4096 Jul  7 13:35 tasks</span><br><span class="line">drwxr-xr-x 2 root root 4096 Jul  7 13:35 templates</span><br><span class="line">drwxr-xr-x 2 root root 4096 Jul  7 13:35 tests</span><br><span class="line">drwxr-xr-x 2 root root 4096 Jul  7 13:35 vars</span><br></pre></td></tr></table></figure>
-<h1 id="利用gogs实现"><a href="#利用gogs实现" class="headerlink" title="利用gogs实现"></a>利用gogs实现</h1><p>查看迁移和镜像仓库设置</p>
+<h1 id="利用gogs实现"><a href="#利用gogs实现" class="headerlink" title="利用gogs实现"></a>利用gogs实现</h1><p>查看迁移和镜像仓库设置<br>1、添加迁移外部仓库<br><img src="/archives/177a4e8b/01.png" alt=""><br>2、配置克隆地址、授权信息、迁移类型等信息<br><img src="/archives/177a4e8b/02.png" alt=""><br>3、设置仓库同步频率<br><img src="/archives/177a4e8b/03.png" alt=""><br>4、配置并立即同步<br><img src="/archives/177a4e8b/04.png" alt=""></p>
 <h1 id="利用github-mirrors实现"><a href="#利用github-mirrors实现" class="headerlink" title="利用github-mirrors实现"></a>利用github-mirrors实现</h1><p><a href="https://docs.gitlab.com/ee/workflow/repository_mirroring.html" target="_blank" rel="noopener">https://docs.gitlab.com/ee/workflow/repository_mirroring.html</a></p>
 <h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p>======================================================<br>希望各位朋友支持一下</p>
 <ul>
@@ -551,7 +556,7 @@ var _hmt = _hmt || [];
 <li>喜欢购物的朋友可以看看，<a href="http://www.1zhe.com/yq/1066027" target="_blank" rel="noopener">一折特卖</a><!--注册一折特卖，免费领集分宝，集分宝可以当钱花，免费购物不是梦，注册马上送你10集分宝。-->
 </li>
 </ul>
-<p><strong>本文作者</strong>：dongsheng<br><strong>本文地址</strong>： <a href="https://mds1455975151.github.io/archives/undefined.html">https://mds1455975151.github.io/archives/undefined.html</a> <br><strong>版权声明</strong>：转载请注明出处！</p>
+<p><strong>本文作者</strong>：dongsheng<br><strong>本文地址</strong>： <a href="https://mds1455975151.github.io/archives/177a4e8b.html">https://mds1455975151.github.io/archives/177a4e8b.html</a> <br><strong>版权声明</strong>：转载请注明出处！</p>
 
       
     </div>
