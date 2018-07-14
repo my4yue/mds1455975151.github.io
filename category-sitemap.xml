@@ -77,13 +77,6 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/categories/%E5%85%B6%E4%BB%96/</loc>
-        <lastmod>2018-03-21T07:45:15.626Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/categories/%E7%94%9F%E6%B4%BB/</loc>
         <lastmod>2018-03-26T05:58:53.899Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -120,7 +113,14 @@
 
     <url>
         <loc>https://mds1455975151.github.io/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/</loc>
-        <lastmod>2018-07-08T11:58:33.044Z</lastmod>
+        <lastmod>2018-07-14T12:55:21.393Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/categories/%E5%85%B6%E4%BB%96/</loc>
+        <lastmod>2018-07-14T12:57:34.846Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
