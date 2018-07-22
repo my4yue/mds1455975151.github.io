@@ -716,13 +716,6 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/tags/GitLab/</loc>
-        <lastmod>2018-02-23T08:42:39.397Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/tags/Gitlab-CI/</loc>
         <lastmod>2018-02-23T08:42:39.397Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -731,6 +724,13 @@
 
     <url>
         <loc>https://mds1455975151.github.io/tags/GitLab-Runner/</loc>
+        <lastmod>2018-02-23T08:42:39.397Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/GitLab/</loc>
         <lastmod>2018-02-23T08:42:39.397Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -1634,35 +1634,35 @@
 
     <url>
         <loc>https://mds1455975151.github.io/tags/%E6%8A%80%E6%9C%AF/</loc>
-        <lastmod>2018-07-14T12:57:34.846Z</lastmod>
+        <lastmod>2018-07-15T01:04:03.576Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://mds1455975151.github.io/tags/%E6%80%9D%E7%BB%B4/</loc>
-        <lastmod>2018-07-14T12:57:34.846Z</lastmod>
+        <lastmod>2018-07-15T01:04:03.576Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://mds1455975151.github.io/tags/%E7%90%86%E8%B4%A2/</loc>
-        <lastmod>2018-07-14T12:57:34.846Z</lastmod>
+        <lastmod>2018-07-15T01:04:03.576Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://mds1455975151.github.io/tags/%E5%8F%98%E7%8E%B0/</loc>
-        <lastmod>2018-07-14T12:57:34.846Z</lastmod>
+        <lastmod>2018-07-15T01:04:03.576Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://mds1455975151.github.io/tags/%E7%94%B5%E5%BD%B1/</loc>
-        <lastmod>2018-07-14T13:12:35.513Z</lastmod>
+        <lastmod>2018-07-22T02:51:43.744Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

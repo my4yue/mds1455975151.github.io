@@ -5,7 +5,7 @@
     
   <url>
     <loc>https://mds1455975151.github.io/archives/75a677a6.html</loc>
-    <lastmod>2018-07-14T13:12:35.513Z</lastmod>
+    <lastmod>2018-07-22T02:51:43.744Z</lastmod>
     <data>
         <display>
         <title>电影2018</title>
@@ -25,7 +25,7 @@
     
   <url>
     <loc>https://mds1455975151.github.io/archives/f7ea3e07.html</loc>
-    <lastmod>2018-07-14T12:57:34.846Z</lastmod>
+    <lastmod>2018-07-15T01:04:03.576Z</lastmod>
     <data>
         <display>
         <title>技术变现思路(挣点零花钱)</title>
@@ -1893,11 +1893,11 @@
         
         <tag>Docker</tag>
          
-        <tag>GitLab</tag>
-         
         <tag>Gitlab-CI</tag>
          
         <tag>GitLab-Runner</tag>
+         
+        <tag>GitLab</tag>
          
         <tag>持续集成</tag>
          
@@ -2750,9 +2750,9 @@
         <title>SaltStack+Docker构建高可用与自动发现服务</title>
         <pubTime>2018-01-13T09:07:04.000Z</pubTime>
         
-        <tag>SaltStack</tag>
-         
         <tag>Docker</tag>
+         
+        <tag>SaltStack</tag>
          
         <tag>自动发现</tag>
          
