@@ -4,6 +4,30 @@
 
     
   <url>
+    <loc>https://mds1455975151.github.io/archives/c92739f9.html</loc>
+    <lastmod>2018-08-06T06:36:10.485Z</lastmod>
+    <data>
+        <display>
+        <title>基于Consul+upsync构建动态Nginx配置系统</title>
+        <pubTime>2018-08-06T03:29:49.000Z</pubTime>
+        
+        <tag>nginx</tag>
+         
+        <tag>upsync</tag>
+         
+        <tag>consul</tag>
+         
+         
+           
+             
+              <breadCrumb title="DevOps" url="https://mds1455975151.github.io/categories/DevOps/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://mds1455975151.github.io/archives/75a677a6.html</loc>
     <lastmod>2018-08-03T13:23:42.301Z</lastmod>
     <data>
@@ -2750,9 +2774,9 @@
         <title>SaltStack+Docker构建高可用与自动发现服务</title>
         <pubTime>2018-01-13T09:07:04.000Z</pubTime>
         
-        <tag>SaltStack</tag>
-         
         <tag>Docker</tag>
+         
+        <tag>SaltStack</tag>
          
         <tag>自动发现</tag>
          
