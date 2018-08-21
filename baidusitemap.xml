@@ -3,6 +3,7 @@
 
 
     
+    
   <url>
     <loc>https://mds1455975151.github.io/archives/c92739f9.html</loc>
     <lastmod>2018-08-06T06:42:06.677Z</lastmod>
@@ -2774,9 +2775,9 @@
         <title>SaltStack+Docker构建高可用与自动发现服务</title>
         <pubTime>2018-01-13T09:07:04.000Z</pubTime>
         
-        <tag>SaltStack</tag>
-         
         <tag>Docker</tag>
+         
+        <tag>SaltStack</tag>
          
         <tag>自动发现</tag>
          
@@ -2875,7 +2876,6 @@
     </data>
     </url>
 
-    
     
   <url>
     <loc>https://mds1455975151.github.io/archives/782e5917.html</loc>
