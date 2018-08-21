@@ -2775,9 +2775,9 @@
         <title>SaltStack+Docker构建高可用与自动发现服务</title>
         <pubTime>2018-01-13T09:07:04.000Z</pubTime>
         
-        <tag>Docker</tag>
-         
         <tag>SaltStack</tag>
+         
+        <tag>Docker</tag>
          
         <tag>自动发现</tag>
          
