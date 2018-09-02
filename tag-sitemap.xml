@@ -1654,13 +1654,6 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/tags/%E7%94%B5%E5%BD%B1/</loc>
-        <lastmod>2018-08-03T13:23:42.301Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/tags/nginx/</loc>
         <lastmod>2018-08-06T06:42:06.677Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1691,6 +1684,13 @@
     <url>
         <loc>https://mds1455975151.github.io/tags/H3C-ER3260G2/</loc>
         <lastmod>2018-08-27T10:13:00.791Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E7%94%B5%E5%BD%B1/</loc>
+        <lastmod>2018-09-02T05:17:35.162Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
