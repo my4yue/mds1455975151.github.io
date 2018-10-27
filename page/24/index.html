@@ -386,6 +386,222 @@ var _hmt = _hmt || [];
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://mds1455975151.github.io/archives/8085bd15.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="DongSheng">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="DongSheng's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/archives/8085bd15.html" itemprop="url">
+                  RabbitMQ进阶
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-04T16:04:37+08:00">
+                2018-01-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux运维/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux运维</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/archives/8085bd15.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="archives/8085bd15.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/archives/8085bd15.html" class="leancloud_visitors" data-flag-title="RabbitMQ进阶">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+         <span class="post-time">
+	   &nbsp; | &nbsp;
+           <span class="post-meta-item-icon">
+             <i class="fa fa-calendar-o"></i>
+           </span>
+           <span class="post-meta-item-text">字数统计:</span>
+           <span class="post-count">482(字)</span>
+
+         </span>
+
+      <span class="post-time">
+	   &nbsp; | &nbsp;
+           <span class="post-meta-item-icon">
+             <i class="fa fa-calendar-o"></i>
+           </span>
+           <span class="post-meta-item-text">阅读时长:</span>
+           <span class="post-count">2(分)</span>
+
+         </span>
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <script src="\assets\js\APlayer.min.js"> </script><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>RabbitMQ 目前有三种命令行工具：</p>
+<ul>
+<li>rabbitmqctl：一般用于管理员操作使用</li>
+<li>rabbitmq-plugins：插件管理</li>
+<li>rabbitmqadmin：通过HTTP API进行管理员操作</li>
+</ul>
+<p>不同工具在不同的场景下使用，例如：</p>
+<ul>
+<li>rabbitmqctl通常只有RabbitMQ管理员才能使用，因为它提供了对节点的完全控制，包括虚拟主机，用户和权限管理，对节点数据的破坏性操作等等。</li>
+<li>rabbitmqadmin建立在HTTP API之上，并使用不同的机制，只有HTTP API端口打开。</li>
+</ul>
+<h1 id="rabbitmqctl"><a href="#rabbitmqctl" class="headerlink" title="rabbitmqctl"></a>rabbitmqctl</h1><p>RabbitMQ附带的原始CLI工具。它支持广泛的业务，主要是管理（业务）性质。<br>主要功能如下：</p>
+<ul>
+<li>停止节点</li>
+<li>访问节点状态，有效配置，健康检查</li>
+<li>虚拟主机管理</li>
+<li>用户和权限管理</li>
+<li>政策管理</li>
+<li>列出队列，连接，渠道，交流，消费者</li>
+<li>集群成员管理<br><a href="http://www.rabbitmq.com/rabbitmqctl.8.html" target="_blank" rel="noopener">官网资料</a></li>
+</ul>
+<h1 id="rabbitmq-plugins"><a href="#rabbitmq-plugins" class="headerlink" title="rabbitmq-plugins"></a>rabbitmq-plugins</h1><p>rabbitmq-plugins是一个用于管理RabbitMQ代理插件的命令行工具。它允许启用，禁用和浏览插件。它必须由具有对RabbitMQ配置目录的写入权限的用户运行。<br><a href="http://www.rabbitmq.com/rabbitmq-plugins.8.html" target="_blank" rel="noopener">官网资料</a></p>
+<h1 id="rabbitmqadmin"><a href="#rabbitmqadmin" class="headerlink" title="rabbitmqadmin"></a>rabbitmqadmin</h1><p><a href="http://www.rabbitmq.com/management-cli.html" target="_blank" rel="noopener">官网资料</a></p>
+<p>======================================================<br>希望各位朋友支持一下</p>
+<ul>
+<li>领取我的<a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=xpdsz87p&amp;utm_source=xpdsz87p" target="_blank" rel="noopener">阿里云幸运券</a>,谢谢.</li>
+<li>使用<a href="https://cloud.tencent.com/redirect.php?redirect=1005&amp;cps_key=5a162632de40024cd01aabff4d3f1370" target="_blank" rel="noopener">腾讯云资源</a></li>
+<li>自己的网站承接广告<a href="http://www.sudianlm.com/track/c/?rid=2056" target="_blank" rel="noopener">速点广告联盟</a></li>
+<li>广告位招商QQ:1455975151</li>
+<li>【快来和我一起赚零花钱】 成为我的好友，入群就能每天抢红包!长按复制这条消息￥20096825￥后打开微鲤看看自动绑定，或直接输入我的邀请码 20096825 下载地址 地址 <a href="http://5dwz.cn/pIRcUJ" target="_blank" rel="noopener">http://5dwz.cn/pIRcUJ</a></li>
+<li>阿里云1888元云产品通用代金券<a href="https://promotion.aliyun.com/ntms/yunparter/invite.html?userCode=xpdsz87p" target="_blank" rel="noopener">点我</a></li>
+<li>阿里云最新活动<a href="https://promotion.aliyun.com/ntms/act/vmpt/aliyun-group/home.html?userCode=xpdsz87p" target="_blank" rel="noopener">全民云计算升级-拼团上云更优惠</a></li>
+<li>喜欢购物的朋友可以看看，<a href="http://www.1zhe.com/yq/1066027" target="_blank" rel="noopener">一折特卖</a><!--注册一折特卖，免费领集分宝，集分宝可以当钱花，免费购物不是梦，注册马上送你10集分宝。-->
+</li>
+</ul>
+<p><strong>本文作者</strong>：dongsheng<br><strong>本文地址</strong>： <a href="https://mds1455975151.github.io/archives/8085bd15.html">https://mds1455975151.github.io/archives/8085bd15.html</a> <br><strong>版权声明</strong>：转载请注明出处！</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="https://mds1455975151.github.io/archives/c251117f.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1117,191 +1333,6 @@ var _hmt = _hmt || [];
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="https://mds1455975151.github.io/archives/d406f18d.html">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="DongSheng">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="DongSheng's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/archives/d406f18d.html" itemprop="url">
-                  Jenkins之Nexus搭建Maven私有仓库
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-26T13:06:20+08:00">
-                2017-12-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/jenkins/" itemprop="url" rel="index">
-                    <span itemprop="name">jenkins</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/archives/d406f18d.html#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="archives/d406f18d.html" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-             <span id="/archives/d406f18d.html" class="leancloud_visitors" data-flag-title="Jenkins之Nexus搭建Maven私有仓库">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数 </span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-         <span class="post-time">
-	   &nbsp; | &nbsp;
-           <span class="post-meta-item-icon">
-             <i class="fa fa-calendar-o"></i>
-           </span>
-           <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">1,686(字)</span>
-
-         </span>
-
-      <span class="post-time">
-	   &nbsp; | &nbsp;
-           <span class="post-meta-item-icon">
-             <i class="fa fa-calendar-o"></i>
-           </span>
-           <span class="post-meta-item-text">阅读时长:</span>
-           <span class="post-count">8(分)</span>
-
-         </span>
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          如何在公司内部部署一个自己的Maven私有仓库呢？
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/archives/d406f18d.html">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1393,7 +1424,7 @@ var _hmt = _hmt || [];
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">184</span>
+                <span class="site-state-item-count">185</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1411,7 +1442,7 @@ var _hmt = _hmt || [];
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">254</span>
+                <span class="site-state-item-count">256</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

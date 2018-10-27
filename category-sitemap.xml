@@ -49,13 +49,6 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/categories/Hexo/</loc>
-        <lastmod>2018-10-24T05:15:54.803Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/categories/DevOps/</loc>
         <lastmod>2018-10-24T05:15:54.879Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -149,6 +142,13 @@
     <url>
         <loc>https://mds1455975151.github.io/categories/GFW/</loc>
         <lastmod>2018-10-27T09:11:41.577Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/categories/Hexo/</loc>
+        <lastmod>2018-10-27T09:27:45.512Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
