@@ -5,7 +5,7 @@
     
   <url>
     <loc>https://mds1455975151.github.io/archives/40609c5b.html</loc>
-    <lastmod>2018-10-27T09:27:45.512Z</lastmod>
+    <lastmod>2018-10-27T09:33:02.855Z</lastmod>
     <data>
         <display>
         <title>Hexo博客Next主题个性设置集锦</title>
@@ -2484,9 +2484,9 @@
          
         <tag>jenkins</tag>
          
-        <tag>Maven</tag>
-         
         <tag>Nexus</tag>
+         
+        <tag>Maven</tag>
          
          
            
@@ -3357,11 +3357,11 @@
         
         <tag>Docker</tag>
          
-        <tag>GitLab</tag>
-         
         <tag>Gitlab-CI</tag>
          
         <tag>GitLab-Runner</tag>
+         
+        <tag>GitLab</tag>
          
         <tag>持续集成</tag>
          
