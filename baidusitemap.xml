@@ -4,18 +4,18 @@
 
     
   <url>
-    <loc>https://mds1455975151.github.io/archives/883339a4.html</loc>
-    <lastmod>2018-10-27T07:11:21.764Z</lastmod>
+    <loc>https://mds1455975151.github.io/archives/ed6edbb9.html</loc>
+    <lastmod>2018-10-27T07:27:09.031Z</lastmod>
     <data>
         <display>
-        <title>群晖系列之源码管理</title>
-        <pubTime>2018-10-27T06:44:43.000Z</pubTime>
+        <title>群晖系列之群晖介绍</title>
+        <pubTime>2018-10-27T06:29:49.000Z</pubTime>
         
         <tag>群晖</tag>
          
         <tag>NAS</tag>
          
-        <tag>源码管理</tag>
+        <tag>存储</tag>
          
          
            
@@ -28,18 +28,18 @@
 
     
   <url>
-    <loc>https://mds1455975151.github.io/archives/ed6edbb9.html</loc>
-    <lastmod>2018-10-27T06:42:53.952Z</lastmod>
+    <loc>https://mds1455975151.github.io/archives/883339a4.html</loc>
+    <lastmod>2018-10-27T07:11:21.764Z</lastmod>
     <data>
         <display>
-        <title>群晖系列之群晖介绍</title>
-        <pubTime>2018-10-27T06:29:49.000Z</pubTime>
+        <title>群晖系列之源码管理</title>
+        <pubTime>2018-10-27T06:44:43.000Z</pubTime>
         
         <tag>群晖</tag>
          
         <tag>NAS</tag>
          
-        <tag>存储</tag>
+        <tag>源码管理</tag>
          
          
            
@@ -3285,11 +3285,11 @@
         
         <tag>Docker</tag>
          
-        <tag>GitLab</tag>
-         
         <tag>Gitlab-CI</tag>
          
         <tag>GitLab-Runner</tag>
+         
+        <tag>GitLab</tag>
          
         <tag>持续集成</tag>
          
