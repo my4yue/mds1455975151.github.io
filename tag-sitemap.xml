@@ -828,13 +828,6 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/tags/Open-Falcon/</loc>
-        <lastmod>2018-10-24T05:15:54.386Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/tags/%E8%85%BE%E8%AE%AF%E4%BA%91SMS/</loc>
         <lastmod>2018-10-24T05:15:54.386Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1789,6 +1782,48 @@
     <url>
         <loc>https://mds1455975151.github.io/tags/%E5%89%AF%E4%B8%9A/</loc>
         <lastmod>2018-10-28T03:41:07.420Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/Open-Falcon/</loc>
+        <lastmod>2018-11-02T03:38:17.104Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E5%B0%8F%E7%B1%B3%E7%9B%91%E6%8E%A7/</loc>
+        <lastmod>2018-11-02T03:38:17.104Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E5%BE%AE%E4%BF%A1%E6%8A%A5%E8%AD%A6/</loc>
+        <lastmod>2018-11-02T03:38:17.104Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E6%8A%A5%E8%AD%A6/</loc>
+        <lastmod>2018-11-02T03:38:17.104Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E5%91%8A%E8%AD%A6/</loc>
+        <lastmod>2018-11-02T03:38:17.104Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/IM/</loc>
+        <lastmod>2018-11-02T03:38:17.104Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
