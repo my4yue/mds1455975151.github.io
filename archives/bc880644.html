@@ -87,7 +87,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="dongsheng,Blog,自动化运维,Python,Hexo, NexT" />
+  <meta name="keywords" content="DevOps,Packer,镜像制作,Aliyun,资源编排,google Cloud,googlecompute," />
 
 
 
@@ -105,17 +105,20 @@
 
 
 
-<meta name="description" content="&amp;gt;">
+<meta name="description" content="DevOps">
+<meta name="keywords" content="DevOps,Packer,镜像制作,Aliyun,资源编排,google Cloud,googlecompute">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Packer之Packer介绍">
 <meta property="og:url" content="https://mds1455975151.github.io/archives/bc880644.html">
 <meta property="og:site_name" content="DongSheng&#39;s Blog">
-<meta property="og:description" content="&amp;gt;">
+<meta property="og:description" content="DevOps">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-06T03:37:45.651Z">
+<meta property="og:image" content="https://mds1455975151.github.io/archives/bc880644/01.png">
+<meta property="og:updated_time" content="2018-11-06T03:53:14.640Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Packer之Packer介绍">
-<meta name="twitter:description" content="&amp;gt;">
+<meta name="twitter:description" content="DevOps">
+<meta name="twitter:image" content="https://mds1455975151.github.io/archives/bc880644/01.png">
 
 
 
@@ -412,6 +415,28 @@ var _hmt = _hmt || [];
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Packer之Packer介绍/" itemprop="url" rel="index">
+                    <span itemprop="name">Packer之Packer介绍</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -447,7 +472,7 @@ var _hmt = _hmt || [];
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">195(字)</span>
+           <span class="post-count">503(字)</span>
 
          </span>
 
@@ -457,7 +482,7 @@ var _hmt = _hmt || [];
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">阅读时长:</span>
-           <span class="post-count">1(分)</span>
+           <span class="post-count">2(分)</span>
 
          </span>
 
@@ -465,6 +490,10 @@ var _hmt = _hmt || [];
 
           
 
+          
+              <div class="post-description">
+                  DevOps
+              </div>
           
 
         </div>
@@ -478,8 +507,17 @@ var _hmt = _hmt || [];
       
 
       
-        <script src="\assets\js\APlayer.min.js"> </script><p>&gt;</p>
+        <script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>Packer之Packer介绍</p>
+</blockquote>
 <a id="more"></a>
+<h1 id="Packer介绍"><a href="#Packer介绍" class="headerlink" title="Packer介绍"></a>Packer介绍</h1><p>Packer来自HashiCorp家族。Packer是镜像制作工具，它基于各公有云的基础镜像或者本地镜像，生成自定义镜像。</p>
+<h1 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h1><p>大致流程：模板–&gt;基于公有云基础镜像–&gt;创建主机、自定义设置–&gt;创建镜像–上传镜像–&gt;删除主机–&gt;返回镜像信息</p>
+<h1 id="基于google-Cloud案例"><a href="#基于google-Cloud案例" class="headerlink" title="基于google Cloud案例"></a>基于google Cloud案例</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"># cat google.json</span><br><span class="line">&#123;</span><br><span class="line">  &quot;builders&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;type&quot;: &quot;googlecompute&quot;,</span><br><span class="line">      &quot;account_file&quot;: &quot;account.json&quot;,</span><br><span class="line">      &quot;project_id&quot;: &quot;xxx&quot;,</span><br><span class="line">      &quot;source_image&quot;: &quot;debian-7-wheezy-v20150127&quot;,</span><br><span class="line">      &quot;ssh_username&quot;: &quot;packer&quot;,</span><br><span class="line">      &quot;zone&quot;: &quot;us-central1-a&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># ./packer build google.json</span><br><span class="line">googlecompute output will be in this color.</span><br><span class="line"></span><br><span class="line">==&gt; googlecompute: Checking image does not exist...</span><br><span class="line">==&gt; googlecompute: Creating temporary SSH key for instance...</span><br><span class="line">==&gt; googlecompute: Using image: debian-7-wheezy-v20150127</span><br><span class="line">==&gt; googlecompute: Creating instance...</span><br><span class="line">    googlecompute: Loading zone: us-central1-a</span><br><span class="line">    googlecompute: Loading machine type: n1-standard-1</span><br><span class="line">    googlecompute: Requesting instance creation...</span><br><span class="line">    googlecompute: Waiting for creation operation to complete...</span><br><span class="line">    googlecompute: Instance has been created!</span><br><span class="line">==&gt; googlecompute: Waiting for the instance to become running...</span><br><span class="line">    googlecompute: IP: 35.202.237.72</span><br><span class="line">==&gt; googlecompute: Using ssh communicator to connect: 35.202.237.72</span><br><span class="line">==&gt; googlecompute: Waiting for SSH to become available...</span><br><span class="line">==&gt; googlecompute: Connected to SSH!</span><br><span class="line">==&gt; googlecompute: Deleting instance...</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    googlecompute: Instance has been deleted!</span><br><span class="line">==&gt; googlecompute: Creating image...</span><br><span class="line">==&gt; googlecompute: Deleting disk...</span><br><span class="line">    googlecompute: Disk has been deleted!</span><br><span class="line">Build &apos;googlecompute&apos; finished.</span><br><span class="line"></span><br><span class="line">==&gt; Builds finished. The artifacts of successful builds are:</span><br><span class="line">--&gt; googlecompute: A disk image was created: packer-1541417917</span><br></pre></td></tr></table></figure>
+<p><img src="/archives/bc880644/01.png" alt=""></p>
+<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
+<li>Packer官网：<a href="https://www.packer.io/" target="_blank" rel="noopener">https://www.packer.io/</a></li>
+</ul>
 <p>======================================================<br>希望各位朋友支持一下</p>
 <ul>
 <li>领取我的<a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=xpdsz87p&amp;utm_source=xpdsz87p" target="_blank" rel="noopener">阿里云幸运券</a>,谢谢.</li>
@@ -492,7 +530,7 @@ var _hmt = _hmt || [];
 <li>喜欢购物的朋友可以看看，<a href="http://www.1zhe.com/yq/1066027" target="_blank" rel="noopener">一折特卖</a><!--注册一折特卖，免费领集分宝，集分宝可以当钱花，免费购物不是梦，注册马上送你10集分宝。-->
 </li>
 </ul>
-<p><strong>本文作者</strong>：dongsheng<br><strong>本文地址</strong>： <a href="https://mds1455975151.github.io/archives/undefined.html">https://mds1455975151.github.io/archives/undefined.html</a> <br><strong>版权声明</strong>：转载请注明出处！</p>
+<p><strong>本文作者</strong>：dongsheng<br><strong>本文地址</strong>： <a href="https://mds1455975151.github.io/archives/bc880644.html">https://mds1455975151.github.io/archives/bc880644.html</a> <br><strong>版权声明</strong>：转载请注明出处！</p>
 
       
     </div>
@@ -534,6 +572,24 @@ var _hmt = _hmt || [];
 
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/DevOps/" rel="tag"><i class="fa fa-tag"></i> DevOps</a>
+          
+            <a href="/tags/Packer/" rel="tag"><i class="fa fa-tag"></i> Packer</a>
+          
+            <a href="/tags/镜像制作/" rel="tag"><i class="fa fa-tag"></i> 镜像制作</a>
+          
+            <a href="/tags/Aliyun/" rel="tag"><i class="fa fa-tag"></i> Aliyun</a>
+          
+            <a href="/tags/资源编排/" rel="tag"><i class="fa fa-tag"></i> 资源编排</a>
+          
+            <a href="/tags/google-Cloud/" rel="tag"><i class="fa fa-tag"></i> google Cloud</a>
+          
+            <a href="/tags/googlecompute/" rel="tag"><i class="fa fa-tag"></i> googlecompute</a>
+          
+        </div>
       
 
       
@@ -654,8 +710,17 @@ var _hmt = _hmt || [];
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -679,7 +744,7 @@ var _hmt = _hmt || [];
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">21</span>
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -688,7 +753,7 @@ var _hmt = _hmt || [];
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">261</span>
+                <span class="site-state-item-count">267</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -792,6 +857,22 @@ var _hmt = _hmt || [];
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Packer介绍"><span class="nav-number">1.</span> <span class="nav-text"><a href="#Packer&#x4ECB;&#x7ECD;" class="headerlink" title="Packer&#x4ECB;&#x7ECD;"></a>Packer&#x4ECB;&#x7ECD;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工作流程"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;" class="headerlink" title="&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;"></a>&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于google-Cloud案例"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x57FA;&#x4E8E;google-Cloud&#x6848;&#x4F8B;" class="headerlink" title="&#x57FA;&#x4E8E;google Cloud&#x6848;&#x4F8B;"></a>&#x57FA;&#x4E8E;google Cloud&#x6848;&#x4F8B;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#相关资料"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x76F8;&#x5173;&#x8D44;&#x6599;" class="headerlink" title="&#x76F8;&#x5173;&#x8D44;&#x6599;"></a>&#x76F8;&#x5173;&#x8D44;&#x6599;</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

@@ -5,8 +5,17 @@
     <entry>
       <title><![CDATA[Packer之Packer介绍]]></title>
       <url>/archives/bc880644.html</url>
-      <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>&gt;</p>
+      <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><blockquote>
+<p>Packer之Packer介绍</p>
+</blockquote>
 <a id="more"></a>
+<h1 id="Packer介绍"><a href="#Packer介绍" class="headerlink" title="Packer介绍"></a>Packer介绍</h1><p>Packer来自HashiCorp家族。Packer是镜像制作工具，它基于各公有云的基础镜像或者本地镜像，生成自定义镜像。</p>
+<h1 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h1><p>大致流程：模板–&gt;基于公有云基础镜像–&gt;创建主机、自定义设置–&gt;创建镜像–上传镜像–&gt;删除主机–&gt;返回镜像信息</p>
+<h1 id="基于google-Cloud案例"><a href="#基于google-Cloud案例" class="headerlink" title="基于google Cloud案例"></a>基于google Cloud案例</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"># cat google.json</span><br><span class="line">&#123;</span><br><span class="line">  &quot;builders&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;type&quot;: &quot;googlecompute&quot;,</span><br><span class="line">      &quot;account_file&quot;: &quot;account.json&quot;,</span><br><span class="line">      &quot;project_id&quot;: &quot;xxx&quot;,</span><br><span class="line">      &quot;source_image&quot;: &quot;debian-7-wheezy-v20150127&quot;,</span><br><span class="line">      &quot;ssh_username&quot;: &quot;packer&quot;,</span><br><span class="line">      &quot;zone&quot;: &quot;us-central1-a&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># ./packer build google.json</span><br><span class="line">googlecompute output will be in this color.</span><br><span class="line"></span><br><span class="line">==&gt; googlecompute: Checking image does not exist...</span><br><span class="line">==&gt; googlecompute: Creating temporary SSH key for instance...</span><br><span class="line">==&gt; googlecompute: Using image: debian-7-wheezy-v20150127</span><br><span class="line">==&gt; googlecompute: Creating instance...</span><br><span class="line">    googlecompute: Loading zone: us-central1-a</span><br><span class="line">    googlecompute: Loading machine type: n1-standard-1</span><br><span class="line">    googlecompute: Requesting instance creation...</span><br><span class="line">    googlecompute: Waiting for creation operation to complete...</span><br><span class="line">    googlecompute: Instance has been created!</span><br><span class="line">==&gt; googlecompute: Waiting for the instance to become running...</span><br><span class="line">    googlecompute: IP: 35.202.237.72</span><br><span class="line">==&gt; googlecompute: Using ssh communicator to connect: 35.202.237.72</span><br><span class="line">==&gt; googlecompute: Waiting for SSH to become available...</span><br><span class="line">==&gt; googlecompute: Connected to SSH!</span><br><span class="line">==&gt; googlecompute: Deleting instance...</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    googlecompute: Instance has been deleted!</span><br><span class="line">==&gt; googlecompute: Creating image...</span><br><span class="line">==&gt; googlecompute: Deleting disk...</span><br><span class="line">    googlecompute: Disk has been deleted!</span><br><span class="line">Build &apos;googlecompute&apos; finished.</span><br><span class="line"></span><br><span class="line">==&gt; Builds finished. The artifacts of successful builds are:</span><br><span class="line">--&gt; googlecompute: A disk image was created: packer-1541417917</span><br></pre></td></tr></table></figure>
+<p><img src="/archives/bc880644/01.png" alt=""></p>
+<h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
+<li>Packer官网：<a href="https://www.packer.io/" target="_blank" rel="noopener">https://www.packer.io/</a></li>
+</ul>
 <p>======================================================<br>希望各位朋友支持一下</p>
 <ul>
 <li>领取我的<a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=xpdsz87p&amp;utm_source=xpdsz87p" target="_blank" rel="noopener">阿里云幸运券</a>,谢谢.</li>
@@ -19,9 +28,33 @@
 <li>喜欢购物的朋友可以看看，<a href="http://www.1zhe.com/yq/1066027" target="_blank" rel="noopener">一折特卖</a><!--注册一折特卖，免费领集分宝，集分宝可以当钱花，免费购物不是梦，注册马上送你10集分宝。-->
 </li>
 </ul>
-<p><strong>本文作者</strong>：dongsheng<br><strong>本文地址</strong>： <a href="https://mds1455975151.github.io/archives/undefined.html">https://mds1455975151.github.io/archives/undefined.html</a> <br><strong>版权声明</strong>：转载请注明出处！</p>
+<p><strong>本文作者</strong>：dongsheng<br><strong>本文地址</strong>： <a href="https://mds1455975151.github.io/archives/bc880644.html">https://mds1455975151.github.io/archives/bc880644.html</a> <br><strong>版权声明</strong>：转载请注明出处！</p>
 ]]></content>
       
+        <categories>
+            
+            <category> Packer之Packer介绍 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> DevOps </tag>
+            
+            <tag> Packer </tag>
+            
+            <tag> 镜像制作 </tag>
+            
+            <tag> Aliyun </tag>
+            
+            <tag> 资源编排 </tag>
+            
+            <tag> google Cloud </tag>
+            
+            <tag> googlecompute </tag>
+            
+        </tags>
         
     </entry>
     
@@ -9326,7 +9359,7 @@
 <p><a href="http://bruce-sha.github.io" target="_blank" rel="noopener">不如</a></p>
 <h2 id="自动链接"><a href="#自动链接" class="headerlink" title="自动链接"></a>自动链接</h2><p>尖括号<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;http://ibruce.info&gt;</span><br><span class="line">&lt;bu.ru@qq.com&gt;</span><br></pre></td></tr></table></figure></p>
 <p>效果如下：<br><a href="http://ibruce.info" target="_blank" rel="noopener">http://ibruce.info</a></p>
-<a href="&#x6d;&#97;&#x69;&#108;&#116;&#x6f;&#58;&#98;&#117;&#46;&#x72;&#x75;&#x40;&#113;&#113;&#46;&#99;&#x6f;&#109;">&#98;&#117;&#46;&#x72;&#x75;&#x40;&#113;&#113;&#46;&#99;&#x6f;&#109;</a>
+<a href="&#109;&#x61;&#105;&#x6c;&#x74;&#x6f;&#58;&#98;&#x75;&#46;&#x72;&#x75;&#64;&#x71;&#x71;&#46;&#x63;&#x6f;&#109;">&#98;&#x75;&#46;&#x72;&#x75;&#64;&#x71;&#x71;&#46;&#x63;&#x6f;&#109;</a>
 
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><h3 id="行内代码"><a href="#行内代码" class="headerlink" title="行内代码"></a>行内代码</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">``` python</span><br><span class="line">@requires_authorization</span><br><span class="line">def somefunc(param1=&apos;&apos;, param2=0):</span><br><span class="line">    &apos;&apos;&apos;A docstring&apos;&apos;&apos;</span><br><span class="line">    if param1 &gt; param2: # interesting</span><br><span class="line">        print &apos;Greater&apos;</span><br><span class="line">    return (param2 - param1 + 1) or None</span><br><span class="line">class SomeClass:</span><br><span class="line">    pass</span><br><span class="line">&gt;&gt;&gt; message = &apos;&apos;&apos;interpreter</span><br><span class="line">... prompt&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">可代码高亮</span><br><span class="line">``` python</span><br><span class="line">@requires_authorization</span><br><span class="line">def somefunc(param1=&apos;&apos;, param2=0):</span><br><span class="line">    &apos;&apos;&apos;A docstring&apos;&apos;&apos;</span><br><span class="line">    if param1 &gt; param2: # interesting</span><br><span class="line">        print &apos;Greater&apos;</span><br><span class="line">    return (param2 - param1 + 1) or None</span><br><span class="line">class SomeClass:</span><br><span class="line">    pass</span><br><span class="line">&gt;&gt;&gt; message = &apos;&apos;&apos;interpreter</span><br><span class="line">... prompt&apos;&apos;&apos;</span><br></pre></td></tr></table></figure>
