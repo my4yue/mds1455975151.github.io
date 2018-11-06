@@ -5,7 +5,7 @@
     
   <url>
     <loc>https://mds1455975151.github.io/archives/6a8f9b85.html</loc>
-    <lastmod>2018-11-06T08:28:52.356Z</lastmod>
+    <lastmod>2018-11-06T08:53:57.722Z</lastmod>
     <data>
         <display>
         <title>Packer之实战Packer创建Jenkins镜像</title>
@@ -3490,11 +3490,11 @@
         
         <tag>Docker</tag>
          
+        <tag>GitLab</tag>
+         
         <tag>Gitlab-CI</tag>
          
         <tag>GitLab-Runner</tag>
-         
-        <tag>GitLab</tag>
          
         <tag>持续集成</tag>
          
