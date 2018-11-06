@@ -4,6 +4,42 @@
 
     
   <url>
+    <loc>https://mds1455975151.github.io/archives/6a8f9b85.html</loc>
+    <lastmod>2018-11-06T07:59:09.276Z</lastmod>
+    <data>
+        <display>
+        <title>Packer之实战Packer创建Jenkins镜像</title>
+        <pubTime>2018-11-06T04:00:28.000Z</pubTime>
+        
+        <tag>DevOps</tag>
+         
+        <tag>Jenkins</tag>
+         
+        <tag>Packer</tag>
+         
+        <tag>镜像制作</tag>
+         
+        <tag>Aliyun</tag>
+         
+        <tag>资源编排</tag>
+         
+        <tag>google Cloud</tag>
+         
+        <tag>googlecompute</tag>
+         
+        <tag>应用场景</tag>
+         
+         
+           
+             
+              <breadCrumb title="DevOps" url="https://mds1455975151.github.io/categories/DevOps/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://mds1455975151.github.io/archives/bc880644.html</loc>
     <lastmod>2018-11-06T06:49:31.358Z</lastmod>
     <data>
@@ -44,42 +80,6 @@
         <pubTime>2018-11-06T04:01:37.000Z</pubTime>
         
         <tag>DevOps</tag>
-         
-        <tag>Packer</tag>
-         
-        <tag>镜像制作</tag>
-         
-        <tag>Aliyun</tag>
-         
-        <tag>资源编排</tag>
-         
-        <tag>google Cloud</tag>
-         
-        <tag>googlecompute</tag>
-         
-        <tag>应用场景</tag>
-         
-         
-           
-             
-              <breadCrumb title="DevOps" url="https://mds1455975151.github.io/categories/DevOps/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://mds1455975151.github.io/archives/6a8f9b85.html</loc>
-    <lastmod>2018-11-06T06:48:27.196Z</lastmod>
-    <data>
-        <display>
-        <title>Packer之实战Packer创建Jenkins镜像</title>
-        <pubTime>2018-11-06T04:00:28.000Z</pubTime>
-        
-        <tag>DevOps</tag>
-         
-        <tag>Jenkins</tag>
          
         <tag>Packer</tag>
          
@@ -3490,11 +3490,11 @@
         
         <tag>Docker</tag>
          
-        <tag>GitLab</tag>
-         
         <tag>Gitlab-CI</tag>
          
         <tag>GitLab-Runner</tag>
+         
+        <tag>GitLab</tag>
          
         <tag>持续集成</tag>
          
