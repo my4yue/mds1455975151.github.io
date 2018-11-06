@@ -4,6 +4,21 @@
 
     
   <url>
+    <loc>https://mds1455975151.github.io/archives/bc880644.html</loc>
+    <lastmod>2018-11-06T03:37:45.651Z</lastmod>
+    <data>
+        <display>
+        <title>Packer之Packer介绍</title>
+        <pubTime>2018-11-06T03:37:45.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://mds1455975151.github.io/archives/d5569d0d.html</loc>
     <lastmod>2018-11-02T04:02:31.607Z</lastmod>
     <data>
@@ -3388,11 +3403,11 @@
         
         <tag>Docker</tag>
          
+        <tag>GitLab</tag>
+         
         <tag>Gitlab-CI</tag>
          
         <tag>GitLab-Runner</tag>
-         
-        <tag>GitLab</tag>
          
         <tag>持续集成</tag>
          
