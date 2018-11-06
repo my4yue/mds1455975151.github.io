@@ -114,7 +114,7 @@
 <meta property="og:description" content="DevOps">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://mds1455975151.github.io/archives/bc880644/01.png">
-<meta property="og:updated_time" content="2018-11-06T03:56:00.327Z">
+<meta property="og:updated_time" content="2018-11-06T06:01:46.750Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Packer之Packer介绍">
 <meta name="twitter:description" content="DevOps">
@@ -472,7 +472,7 @@ var _hmt = _hmt || [];
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">字数统计:</span>
-           <span class="post-count">550(字)</span>
+           <span class="post-count">1,090(字)</span>
 
          </span>
 
@@ -482,7 +482,7 @@ var _hmt = _hmt || [];
              <i class="fa fa-calendar-o"></i>
            </span>
            <span class="post-meta-item-text">阅读时长:</span>
-           <span class="post-count">2(分)</span>
+           <span class="post-count">5(分)</span>
 
          </span>
 
@@ -511,15 +511,22 @@ var _hmt = _hmt || [];
 <p>Packer之Packer介绍</p>
 </blockquote>
 <a id="more"></a>
-<h1 id="Packer介绍"><a href="#Packer介绍" class="headerlink" title="Packer介绍"></a>Packer介绍</h1><p>Packer来自HashiCorp家族。Packer是镜像制作工具，它基于各公有云的基础镜像或者本地镜像，生成自定义镜像。</p>
+<h1 id="Packer介绍"><a href="#Packer介绍" class="headerlink" title="Packer介绍"></a>Packer介绍</h1><p>所谓的镜像，就是一个包含预先配置好操作系统和预装软件的静态单元，通过它可以快速的创建新的虚拟机运行实例，不同的平台支持不同的镜像格式，例如AWS的EC2支持AMIs，VMware支持VMDK/VMX,Alicloud的ECS支持RAW和VHD格式等等。各云平台都提供了大量的基础镜像供用户使用，但是随着云平台用户成熟度的增加，用户对镜像个性化的需要越来越强烈，同时出于商业的考虑，用户也希望自己的系统具有在不同云平台之间迁移的能力，当然也包含个性化的镜像迁移的能力。尽管各大云平台都提供了WEB界面工具使得用户可以手工创建自定义镜像，也开放了相应的API使得通过自动化的脚本来创建个性化的自定义镜像成为可能。但是都存在一定的局限性而难以满足用户的最终需求，Packer就在这种背景下诞生了。</p>
+<p>Packer是一个从单一的模板文件来创建多平台一致性镜像的轻量级开源工具，它能够运行在常用的主流操作系统如Windows、Linux和Mac os上，能够高效的并行创建多平台例如AWS、Azure和Alicloud的镜像，它的目的并不是取代Puppet/Chef等配置管理工具，实际上，当制作镜像的时候，Packer可以使用Chef或者Puppet等工具来安装镜像所需要的软件。通过Packer自动化的创建各种平台的镜像是非常容易的。</p>
 <p>优势：</p>
 <ul>
+<li>基础设施部署迅速</li>
+<li>可以移植性</li>
 <li>镜像制作自动化，提升效率，降低误操作</li>
 <li>支持所有常见的公有云厂商</li>
 <li>支持自定义插件(可自增强)</li>
 <li>开源(成熟、透明)</li>
 </ul>
 <h1 id="工作流程"><a href="#工作流程" class="headerlink" title="工作流程"></a>工作流程</h1><p>大致流程：模板–&gt;基于公有云基础镜像–&gt;创建主机、自定义设置–&gt;创建镜像–上传镜像–&gt;删除主机–&gt;返回镜像信息</p>
+<h1 id="Packer安装部署"><a href="#Packer安装部署" class="headerlink" title="Packer安装部署"></a>Packer安装部署</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># wget https://releases.hashicorp.com/packer/1.3.2/packer_1.3.2_linux_amd64.zip</span><br><span class="line"># unzip packer_1.3.2_linux_amd64.zip</span><br><span class="line"># packer --version</span><br><span class="line">1.3.2</span><br><span class="line"># packer -h</span><br><span class="line">Usage: packer [--version] [--help] &lt;command&gt; [&lt;args&gt;]</span><br><span class="line"></span><br><span class="line">Available commands are:</span><br><span class="line">    build       build image(s) from template</span><br><span class="line">    fix         fixes templates from old versions of packer</span><br><span class="line">    inspect     see components of a template</span><br><span class="line">    validate    check that a template is valid</span><br><span class="line">    version     Prints the Packer version</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注意</strong>: 下载解压后使用的时候建议使用包的绝对路径执行，因为包名和Linux下另外一个二进制包重名了，或者将packer重命名，例如：packer.io等等</p>
+</blockquote>
 <h1 id="基于google-Cloud案例"><a href="#基于google-Cloud案例" class="headerlink" title="基于google Cloud案例"></a>基于google Cloud案例</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"># cat google.json</span><br><span class="line">&#123;</span><br><span class="line">  &quot;builders&quot;: [</span><br><span class="line">    &#123;</span><br><span class="line">      &quot;type&quot;: &quot;googlecompute&quot;,</span><br><span class="line">      &quot;account_file&quot;: &quot;account.json&quot;,</span><br><span class="line">      &quot;project_id&quot;: &quot;xxx&quot;,</span><br><span class="line">      &quot;source_image&quot;: &quot;debian-7-wheezy-v20150127&quot;,</span><br><span class="line">      &quot;ssh_username&quot;: &quot;packer&quot;,</span><br><span class="line">      &quot;zone&quot;: &quot;us-central1-a&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># ./packer build google.json</span><br><span class="line">googlecompute output will be in this color.</span><br><span class="line"></span><br><span class="line">==&gt; googlecompute: Checking image does not exist...</span><br><span class="line">==&gt; googlecompute: Creating temporary SSH key for instance...</span><br><span class="line">==&gt; googlecompute: Using image: debian-7-wheezy-v20150127</span><br><span class="line">==&gt; googlecompute: Creating instance...</span><br><span class="line">    googlecompute: Loading zone: us-central1-a</span><br><span class="line">    googlecompute: Loading machine type: n1-standard-1</span><br><span class="line">    googlecompute: Requesting instance creation...</span><br><span class="line">    googlecompute: Waiting for creation operation to complete...</span><br><span class="line">    googlecompute: Instance has been created!</span><br><span class="line">==&gt; googlecompute: Waiting for the instance to become running...</span><br><span class="line">    googlecompute: IP: 35.202.237.72</span><br><span class="line">==&gt; googlecompute: Using ssh communicator to connect: 35.202.237.72</span><br><span class="line">==&gt; googlecompute: Waiting for SSH to become available...</span><br><span class="line">==&gt; googlecompute: Connected to SSH!</span><br><span class="line">==&gt; googlecompute: Deleting instance...</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    googlecompute: Instance has been deleted!</span><br><span class="line">==&gt; googlecompute: Creating image...</span><br><span class="line">==&gt; googlecompute: Deleting disk...</span><br><span class="line">    googlecompute: Disk has been deleted!</span><br><span class="line">Build &apos;googlecompute&apos; finished.</span><br><span class="line"></span><br><span class="line">==&gt; Builds finished. The artifacts of successful builds are:</span><br><span class="line">--&gt; googlecompute: A disk image was created: packer-1541417917</span><br></pre></td></tr></table></figure>
 <p><img src="/archives/bc880644/01.png" alt=""></p>
 <h1 id="相关资料"><a href="#相关资料" class="headerlink" title="相关资料"></a>相关资料</h1><ul>
@@ -764,7 +771,7 @@ var _hmt = _hmt || [];
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">267</span>
+                <span class="site-state-item-count">268</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -878,7 +885,7 @@ var _hmt = _hmt || [];
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Packer介绍"><span class="nav-number">1.</span> <span class="nav-text"><a href="#Packer&#x4ECB;&#x7ECD;" class="headerlink" title="Packer&#x4ECB;&#x7ECD;"></a>Packer&#x4ECB;&#x7ECD;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工作流程"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;" class="headerlink" title="&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;"></a>&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于google-Cloud案例"><span class="nav-number">3.</span> <span class="nav-text"><a href="#&#x57FA;&#x4E8E;google-Cloud&#x6848;&#x4F8B;" class="headerlink" title="&#x57FA;&#x4E8E;google Cloud&#x6848;&#x4F8B;"></a>&#x57FA;&#x4E8E;google Cloud&#x6848;&#x4F8B;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#相关资料"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x76F8;&#x5173;&#x8D44;&#x6599;" class="headerlink" title="&#x76F8;&#x5173;&#x8D44;&#x6599;"></a>&#x76F8;&#x5173;&#x8D44;&#x6599;</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Packer介绍"><span class="nav-number">1.</span> <span class="nav-text"><a href="#Packer&#x4ECB;&#x7ECD;" class="headerlink" title="Packer&#x4ECB;&#x7ECD;"></a>Packer&#x4ECB;&#x7ECD;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#工作流程"><span class="nav-number">2.</span> <span class="nav-text"><a href="#&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;" class="headerlink" title="&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;"></a>&#x5DE5;&#x4F5C;&#x6D41;&#x7A0B;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Packer安装部署"><span class="nav-number">3.</span> <span class="nav-text"><a href="#Packer&#x5B89;&#x88C5;&#x90E8;&#x7F72;" class="headerlink" title="Packer&#x5B89;&#x88C5;&#x90E8;&#x7F72;"></a>Packer&#x5B89;&#x88C5;&#x90E8;&#x7F72;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于google-Cloud案例"><span class="nav-number">4.</span> <span class="nav-text"><a href="#&#x57FA;&#x4E8E;google-Cloud&#x6848;&#x4F8B;" class="headerlink" title="&#x57FA;&#x4E8E;google Cloud&#x6848;&#x4F8B;"></a>&#x57FA;&#x4E8E;google Cloud&#x6848;&#x4F8B;</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#相关资料"><span class="nav-number">5.</span> <span class="nav-text"><a href="#&#x76F8;&#x5173;&#x8D44;&#x6599;" class="headerlink" title="&#x76F8;&#x5173;&#x8D44;&#x6599;"></a>&#x76F8;&#x5173;&#x8D44;&#x6599;</span></a></li></ol></div>
             
 
           </div>
