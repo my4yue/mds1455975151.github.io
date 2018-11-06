@@ -4,8 +4,40 @@
 
     
   <url>
+    <loc>https://mds1455975151.github.io/archives/bc880644.html</loc>
+    <lastmod>2018-11-06T06:49:31.358Z</lastmod>
+    <data>
+        <display>
+        <title>Packer之Packer介绍</title>
+        <pubTime>2018-11-06T03:37:45.000Z</pubTime>
+        
+        <tag>DevOps</tag>
+         
+        <tag>Packer</tag>
+         
+        <tag>镜像制作</tag>
+         
+        <tag>Aliyun</tag>
+         
+        <tag>资源编排</tag>
+         
+        <tag>google Cloud</tag>
+         
+        <tag>googlecompute</tag>
+         
+         
+           
+             
+              <breadCrumb title="DevOps" url="https://mds1455975151.github.io/categories/DevOps/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://mds1455975151.github.io/archives/22e81506.html</loc>
-    <lastmod>2018-11-06T06:37:59.799Z</lastmod>
+    <lastmod>2018-11-06T06:48:53.187Z</lastmod>
     <data>
         <display>
         <title>Packer之Packer应用场景及常用概念介绍</title>
@@ -38,14 +70,16 @@
 
     
   <url>
-    <loc>https://mds1455975151.github.io/archives/bc880644.html</loc>
-    <lastmod>2018-11-06T06:01:46.750Z</lastmod>
+    <loc>https://mds1455975151.github.io/archives/6a8f9b85.html</loc>
+    <lastmod>2018-11-06T06:48:27.196Z</lastmod>
     <data>
         <display>
-        <title>Packer之Packer介绍</title>
-        <pubTime>2018-11-06T03:37:45.000Z</pubTime>
+        <title>Packer之实战Packer创建Jenkins镜像</title>
+        <pubTime>2018-11-06T04:00:28.000Z</pubTime>
         
         <tag>DevOps</tag>
+         
+        <tag>Jenkins</tag>
          
         <tag>Packer</tag>
          
@@ -59,26 +93,13 @@
          
         <tag>googlecompute</tag>
          
+        <tag>应用场景</tag>
+         
          
            
              
-              <breadCrumb title="Packer之Packer介绍" url="https://mds1455975151.github.io/categories/Packer%E4%B9%8BPacker%E4%BB%8B%E7%BB%8D/"/>
+              <breadCrumb title="DevOps" url="https://mds1455975151.github.io/categories/DevOps/"/>
           
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://mds1455975151.github.io/archives/6a8f9b85.html</loc>
-    <lastmod>2018-11-06T04:01:51.914Z</lastmod>
-    <data>
-        <display>
-        <title>Packer之实战Packer创建Jenkins镜像</title>
-        <pubTime>2018-11-06T04:00:28.000Z</pubTime>
-        
-         
-           
         </display>
     </data>
     </url>
