@@ -4,6 +4,21 @@
 
     
   <url>
+    <loc>https://mds1455975151.github.io/archives/d31e7a12.html</loc>
+    <lastmod>2018-11-09T01:59:03.751Z</lastmod>
+    <data>
+        <display>
+        <title>搬瓦工VPS</title>
+        <pubTime>2018-11-09T01:59:03.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://mds1455975151.github.io/archives/eee8f7af.html</loc>
     <lastmod>2018-11-09T01:10:41.607Z</lastmod>
     <data>
@@ -3489,11 +3504,11 @@
         
         <tag>Docker</tag>
          
-        <tag>GitLab</tag>
-         
         <tag>Gitlab-CI</tag>
          
         <tag>GitLab-Runner</tag>
+         
+        <tag>GitLab</tag>
          
         <tag>持续集成</tag>
          
