@@ -5,14 +5,51 @@
     
   <url>
     <loc>https://mds1455975151.github.io/archives/d31e7a12.html</loc>
-    <lastmod>2018-11-09T01:59:03.751Z</lastmod>
+    <lastmod>2018-11-09T02:19:07.469Z</lastmod>
     <data>
         <display>
         <title>搬瓦工VPS</title>
         <pubTime>2018-11-09T01:59:03.000Z</pubTime>
         
+        <tag>翻墙</tag>
+         
+        <tag>搬瓦工</tag>
+         
+        <tag>VPS</tag>
+         
+        <tag>科学上网</tag>
+         
+        <tag>KVM</tag>
+         
+        <tag>OpenVZ</tag>
+         
+        <tag>BandwagonHost</tag>
+         
          
            
+             
+              <breadCrumb title="GFW" url="https://mds1455975151.github.io/categories/GFW/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://mds1455975151.github.io/archives/75a677a6.html</loc>
+    <lastmod>2018-11-09T02:04:32.580Z</lastmod>
+    <data>
+        <display>
+        <title>电影2018</title>
+        <pubTime>2018-01-27T12:01:24.000Z</pubTime>
+        
+        <tag>电影</tag>
+         
+         
+           
+             
+              <breadCrumb title="生活记录" url="https://mds1455975151.github.io/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
+          
         </display>
     </data>
     </url>
@@ -278,26 +315,6 @@
            
              
               <breadCrumb title="管理" url="https://mds1455975151.github.io/categories/%E7%AE%A1%E7%90%86/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://mds1455975151.github.io/archives/75a677a6.html</loc>
-    <lastmod>2018-11-09T01:10:41.196Z</lastmod>
-    <data>
-        <display>
-        <title>电影2018</title>
-        <pubTime>2018-01-27T12:01:24.000Z</pubTime>
-        
-        <tag>电影</tag>
-         
-         
-           
-             
-              <breadCrumb title="生活记录" url="https://mds1455975151.github.io/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/"/>
           
         </display>
     </data>
@@ -3504,11 +3521,11 @@
         
         <tag>Docker</tag>
          
+        <tag>GitLab</tag>
+         
         <tag>Gitlab-CI</tag>
          
         <tag>GitLab-Runner</tag>
-         
-        <tag>GitLab</tag>
          
         <tag>持续集成</tag>
          

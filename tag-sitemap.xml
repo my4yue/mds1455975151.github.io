@@ -1311,13 +1311,6 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/tags/%E7%BF%BB%E5%A2%99/</loc>
-        <lastmod>2018-11-09T01:10:40.326Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/tags/GFW/</loc>
         <lastmod>2018-11-09T01:10:40.326Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1717,13 +1710,6 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/tags/%E7%94%B5%E5%BD%B1/</loc>
-        <lastmod>2018-11-09T01:10:41.196Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/tags/360%E5%BA%A6%E7%BB%A9%E6%95%88%E8%80%83%E6%A0%B8/</loc>
         <lastmod>2018-11-09T01:10:41.213Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1873,6 +1859,62 @@
     <url>
         <loc>https://mds1455975151.github.io/tags/%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86/</loc>
         <lastmod>2018-11-09T01:10:41.607Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E7%94%B5%E5%BD%B1/</loc>
+        <lastmod>2018-11-09T02:04:32.580Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E7%BF%BB%E5%A2%99/</loc>
+        <lastmod>2018-11-09T02:19:07.469Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E6%90%AC%E7%93%A6%E5%B7%A5/</loc>
+        <lastmod>2018-11-09T02:19:07.469Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/VPS/</loc>
+        <lastmod>2018-11-09T02:19:07.469Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E7%A7%91%E5%AD%A6%E4%B8%8A%E7%BD%91/</loc>
+        <lastmod>2018-11-09T02:19:07.469Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/KVM/</loc>
+        <lastmod>2018-11-09T02:19:07.469Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/OpenVZ/</loc>
+        <lastmod>2018-11-09T02:19:07.469Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/BandwagonHost/</loc>
+        <lastmod>2018-11-09T02:19:07.469Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

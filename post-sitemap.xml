@@ -8,7 +8,15 @@
 
     <url>
         <loc>https://mds1455975151.github.io/archives/d31e7a12.html</loc>
-        <lastmod>2018-11-09T01:59:03.751Z</lastmod>
+        <lastmod>2018-11-09T02:19:07.469Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/archives/75a677a6.html</loc>
+        <lastmod>2018-11-09T02:04:32.580Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -105,14 +113,6 @@
     <url>
         <loc>https://mds1455975151.github.io/archives/d2e71f9d.html</loc>
         <lastmod>2018-11-09T01:10:41.213Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://mds1455975151.github.io/archives/75a677a6.html</loc>
-        <lastmod>2018-11-09T01:10:41.196Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
