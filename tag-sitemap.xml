@@ -1283,20 +1283,6 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/tags/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
-        <lastmod>2018-11-09T01:10:40.295Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://mds1455975151.github.io/tags/%E6%9C%AC%E5%9C%B0%E8%AE%BF%E9%97%AE/</loc>
-        <lastmod>2018-11-09T01:10:40.295Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1/</loc>
         <lastmod>2018-11-09T01:10:40.307Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1915,6 +1901,27 @@
     <url>
         <loc>https://mds1455975151.github.io/tags/BandwagonHost/</loc>
         <lastmod>2018-11-09T02:19:07.469Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E4%BA%91%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+        <lastmod>2018-11-12T05:51:42.176Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E6%9C%AC%E5%9C%B0%E8%AE%BF%E9%97%AE/</loc>
+        <lastmod>2018-11-12T05:51:42.176Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/SQLyog/</loc>
+        <lastmod>2018-11-12T05:51:42.176Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
