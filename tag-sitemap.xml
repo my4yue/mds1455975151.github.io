@@ -1661,13 +1661,6 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/tags/%E6%B8%B8%E6%88%8F/</loc>
-        <lastmod>2018-11-09T01:10:41.071Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/tags/%E6%96%87%E6%A1%A3%E6%A8%A1%E6%9D%BF/</loc>
         <lastmod>2018-11-09T01:10:41.071Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1922,6 +1915,55 @@
     <url>
         <loc>https://mds1455975151.github.io/tags/SQLyog/</loc>
         <lastmod>2018-11-12T05:51:42.176Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E6%B8%B8%E6%88%8F/</loc>
+        <lastmod>2018-11-21T03:12:22.132Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E5%90%8D%E7%A7%B0%E8%A7%A3%E9%87%8A/</loc>
+        <lastmod>2018-11-21T03:12:22.132Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E7%8B%AC%E7%AB%8B%E6%B8%B8%E6%88%8F/</loc>
+        <lastmod>2018-11-21T03:12:22.132Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E5%B0%8F%E4%BC%97%E6%B8%B8%E6%88%8F/</loc>
+        <lastmod>2018-11-21T03:12:22.132Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E5%8D%A1%E7%89%8C/</loc>
+        <lastmod>2018-11-21T03:12:22.132Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E6%BF%80%E6%B4%BB%E7%A0%81%E6%B5%8B%E8%AF%95/</loc>
+        <lastmod>2018-11-21T03:12:22.132Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E8%87%AA%E7%A0%94%E5%BC%95%E6%93%8E/</loc>
+        <lastmod>2018-11-21T03:12:22.132Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
