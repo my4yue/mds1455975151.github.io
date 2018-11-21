@@ -4,6 +4,21 @@
 
     
   <url>
+    <loc>https://mds1455975151.github.io/archives/78b6d9db.html</loc>
+    <lastmod>2018-11-21T03:05:45.639Z</lastmod>
+    <data>
+        <display>
+        <title>游戏界名称解释(转)</title>
+        <pubTime>2018-11-21T03:05:45.000Z</pubTime>
+        
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://mds1455975151.github.io/archives/5595fe34.html</loc>
     <lastmod>2018-11-12T05:51:42.176Z</lastmod>
     <data>
@@ -3523,11 +3538,11 @@
         
         <tag>Docker</tag>
          
+        <tag>GitLab</tag>
+         
         <tag>Gitlab-CI</tag>
          
         <tag>GitLab-Runner</tag>
-         
-        <tag>GitLab</tag>
          
         <tag>持续集成</tag>
          
