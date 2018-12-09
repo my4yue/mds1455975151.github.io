@@ -1066,14 +1066,14 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/tags/SaltStack/</loc>
+        <loc>https://mds1455975151.github.io/tags/Docker/</loc>
         <lastmod>2018-11-09T01:10:39.661Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/tags/Docker/</loc>
+        <loc>https://mds1455975151.github.io/tags/SaltStack/</loc>
         <lastmod>2018-11-09T01:10:39.661Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
@@ -1843,13 +1843,6 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/tags/%E7%94%B5%E5%BD%B1/</loc>
-        <lastmod>2018-11-09T02:04:32.580Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/tags/%E7%BF%BB%E5%A2%99/</loc>
         <lastmod>2018-11-09T02:19:07.469Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -1964,6 +1957,13 @@
     <url>
         <loc>https://mds1455975151.github.io/tags/%E8%87%AA%E7%A0%94%E5%BC%95%E6%93%8E/</loc>
         <lastmod>2018-11-21T03:12:22.132Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/tags/%E7%94%B5%E5%BD%B1/</loc>
+        <lastmod>2018-12-09T04:05:13.653Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

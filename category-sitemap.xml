@@ -126,13 +126,6 @@
     </url>
 
     <url>
-        <loc>https://mds1455975151.github.io/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/</loc>
-        <lastmod>2018-11-09T02:04:32.580Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
         <loc>https://mds1455975151.github.io/categories/GFW/</loc>
         <lastmod>2018-11-09T02:19:07.469Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -149,6 +142,13 @@
     <url>
         <loc>https://mds1455975151.github.io/categories/%E6%B8%B8%E6%88%8F/</loc>
         <lastmod>2018-11-21T03:12:22.132Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
+        <loc>https://mds1455975151.github.io/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E5%BD%95/</loc>
+        <lastmod>2018-12-09T04:05:13.653Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
