@@ -5,7 +5,7 @@
     
   <url>
     <loc>https://mds1455975151.github.io/archives/2a14730.html</loc>
-    <lastmod>2019-02-16T09:01:04.185Z</lastmod>
+    <lastmod>2019-02-16T09:05:33.863Z</lastmod>
     <data>
         <display>
         <title>电影2019</title>
@@ -2654,9 +2654,9 @@
          
         <tag>jenkins</tag>
          
-        <tag>Nexus</tag>
-         
         <tag>Maven</tag>
+         
+        <tag>Nexus</tag>
          
          
            
@@ -3575,11 +3575,11 @@
         
         <tag>Docker</tag>
          
-        <tag>GitLab</tag>
-         
         <tag>Gitlab-CI</tag>
          
         <tag>GitLab-Runner</tag>
+         
+        <tag>GitLab</tag>
          
         <tag>持续集成</tag>
          
