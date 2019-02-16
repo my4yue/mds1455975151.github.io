@@ -4,6 +4,23 @@
 
     
   <url>
+    <loc>https://mds1455975151.github.io/archives/2a14730.html</loc>
+    <lastmod>2019-02-16T05:05:00.399Z</lastmod>
+    <data>
+        <display>
+        <title>电影2019</title>
+        <pubTime>2019-02-16T04:57:29.000Z</pubTime>
+        
+        <tag>电影</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://mds1455975151.github.io/archives/75a677a6.html</loc>
     <lastmod>2018-12-22T00:58:37.601Z</lastmod>
     <data>
@@ -1504,9 +1521,9 @@
         <title>SaltStack+Docker构建高可用与自动发现服务</title>
         <pubTime>2018-01-13T09:07:04.000Z</pubTime>
         
-        <tag>Docker</tag>
-         
         <tag>SaltStack</tag>
+         
+        <tag>Docker</tag>
          
         <tag>自动发现</tag>
          
@@ -3555,11 +3572,11 @@
         
         <tag>Docker</tag>
          
-        <tag>GitLab</tag>
-         
         <tag>Gitlab-CI</tag>
          
         <tag>GitLab-Runner</tag>
+         
+        <tag>GitLab</tag>
          
         <tag>持续集成</tag>
          
